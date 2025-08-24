@@ -86,242 +86,224 @@
             0%, 100% { opacity: 1; }
             50% { opacity: .5; }
         }
-
-        <!-- 플로팅 버튼 CSS -->
-<style>
         
-    /* 빠른신청 플로팅 버튼 - 완전 새로운 디자인 */
-    .floating-quick-apply {
-        position: fixed;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 9999;
-        background: linear-gradient(45deg, #FF6B6B, #FFE66D);
-        padding: 20px 40px;
-        border-radius: 100px;
-        box-shadow: 0 10px 40px rgba(255, 107, 107, 0.4);
-        animation: bounce 2s infinite;
-        transition: all 0.3s ease;
-    }
-    
-    @keyframes bounce {
-        0%, 100% { transform: translateX(-50%) translateY(0); }
-        50% { transform: translateX(-50%) translateY(-10px); }
-    }
-    
-    .floating-quick-apply:hover {
-        transform: translateX(-50%) scale(1.1);
-        box-shadow: 0 15px 50px rgba(255, 107, 107, 0.6);
-    }
-    
-    .quick-apply-text {
-        color: white;
-        font-size: 20px;
-        font-weight: 900;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .quick-apply-icon {
-        font-size: 24px;
-        animation: pulse 1s infinite;
-    }
-    
-    /* 모바일 대응 */
-    @media (max-width: 768px) {
+        .program-card {
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        /* ===== 여기부터 새로운 플로팅 버튼 CSS ===== */
         .floating-quick-apply {
-            bottom: 20px;
-            padding: 15px 30px;
-            width: 90%;
-            max-width: 300px;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            background: linear-gradient(45deg, #FF6B6B, #FFE66D);
+            padding: 20px 40px;
+            border-radius: 100px;
+            box-shadow: 0 10px 40px rgba(255, 107, 107, 0.4);
+            animation: bounce 2s infinite;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        .floating-quick-apply:hover {
+            transform: translateX(-50%) scale(1.1);
+            box-shadow: 0 15px 50px rgba(255, 107, 107, 0.6);
         }
         
         .quick-apply-text {
-            font-size: 18px;
+            color: white;
+            font-size: 20px;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-    }
-    
-    /* 빠른신청 드롭다운 메뉴 */
-    .quick-apply-dropdown {
-        position: fixed;
-        bottom: 100px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: white;
-        border-radius: 20px;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        padding: 20px;
-        width: 400px;
-        max-width: 90%;
-        display: none;
-        z-index: 9998;
-    }
-    
-    .quick-apply-dropdown.show {
-        display: block;
-        animation: slideUp 0.3s ease;
-    }
-    
-    @keyframes slideUp {
-        from { 
-            opacity: 0;
-            transform: translateX(-50%) translateY(20px);
+        
+        .quick-apply-icon {
+            font-size: 24px;
+            animation: pulse 1s infinite;
         }
-        to { 
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
+        
+        @media (max-width: 768px) {
+            .floating-quick-apply {
+                bottom: 20px;
+                padding: 15px 30px;
+                width: 90%;
+                max-width: 300px;
+            }
+            
+            .quick-apply-text {
+                font-size: 18px;
+            }
         }
-    }
-    
-    .quick-apply-list {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .quick-apply-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 15px;
-        background: #f8f9fa;
-        border-radius: 10px;
-        transition: all 0.3s ease;
-    }
-    
-    .quick-apply-item:hover {
-        background: #e9ecef;
-        transform: translateX(5px);
-    }
-    
-    .quick-apply-item-title {
-        font-weight: bold;
-        color: #333;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .quick-apply-link {
-        background: linear-gradient(45deg, #4CAF50, #45a049);
-        color: white;
-        padding: 8px 20px;
-        border-radius: 20px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: all 0.3s ease;
-    }
-    
-    .quick-apply-link:hover {
-        transform: scale(1.05);
-        box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
-    }
-</style>
-
-<!-- 플로팅 빠른신청 버튼 HTML -->
-<div class="floating-quick-apply" onclick="toggleQuickApply()">
-    <div class="quick-apply-text">
-        <span class="quick-apply-icon">🚀</span>
-        <span>빠른 신청하기</span>
-        <span class="quick-apply-icon">✨</span>
-    </div>
-</div>
-
-<!-- 빠른신청 드롭다운 메뉴 -->
-<div class="quick-apply-dropdown" id="quickApplyDropdown">
-    <h3 style="text-align: center; margin-bottom: 20px; color: #333; font-size: 24px;">
-        🎯 원하는 프로그램을 선택하세요!
-    </h3>
-    <div class="quick-apply-list">
-        <div class="quick-apply-item">
-            <div class="quick-apply-item-title">
-                <span>🥁</span>
-                <span>외국인풍물체험</span>
-            </div>
-            <a href="https://forms.gle/tzi3aRJtZ6gQWB9R8" target="_blank" class="quick-apply-link">
-                신청 GO!
-            </a>
-        </div>
         
-        <div class="quick-apply-item">
-            <div class="quick-apply-item-title">
-                <span>🚶</span>
-                <span>걷다보니부평</span>
-            </div>
-            <a href="https://forms.gle/UbUPgw3M39cqGXbd9" target="_blank" class="quick-apply-link">
-                신청 GO!
-            </a>
-        </div>
+        .quick-apply-dropdown {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 20px;
+            width: 400px;
+            max-width: 90%;
+            display: none;
+            z-index: 9998;
+        }
         
-        <div class="quick-apply-item">
-            <div class="quick-apply-item-title">
-                <span>🎭</span>
-                <span>만만세 유나이티드</span>
-            </div>
-            <a href="https://forms.gle/LwJLd9FjgSNiH2SF8" target="_blank" class="quick-apply-link">
-                신청 GO!
-            </a>
-        </div>
+        .quick-apply-dropdown.show {
+            display: block;
+            animation: slideUp 0.3s ease;
+        }
         
-        <div class="quick-apply-item">
-            <div class="quick-apply-item-title">
-                <span>🎮</span>
-                <span>K-콘텐츠 놀이터</span>
-            </div>
-            <a href="https://forms.gle/eA1y6YGiv2VKBYfA8" target="_blank" class="quick-apply-link">
-                신청 GO!
-            </a>
-        </div>
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
         
-        <div class="quick-apply-item">
-            <div class="quick-apply-item-title">
-                <span>🎨</span>
-                <span>K-데코라운지</span>
-            </div>
-            <a href="https://forms.gle/zzH1JU4KfVtzBxjT9" target="_blank" class="quick-apply-link">
-                신청 GO!
-            </a>
+        .quick-apply-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .quick-apply-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-apply-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .quick-apply-item-title {
+            font-weight: bold;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quick-apply-link {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-apply-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 새로운 플로팅 버튼 -->
+    <div class="floating-quick-apply" onclick="toggleQuickApply()">
+        <div class="quick-apply-text">
+            <span class="quick-apply-icon">🚀</span>
+            <span>빠른 신청하기</span>
+            <span class="quick-apply-icon">✨</span>
         </div>
     </div>
-    <div style="text-align: center; margin-top: 15px;">
-        <button onclick="toggleQuickApply()" style="background: #6c757d; color: white; border: none; padding: 10px 30px; border-radius: 20px; cursor: pointer;">
-            닫기
-        </button>
-    </div>
-</div>
 
-<!-- JavaScript -->
-<script>
-    function toggleQuickApply() {
-        const dropdown = document.getElementById('quickApplyDropdown');
-        dropdown.classList.toggle('show');
-    }
-    
-    // 드롭다운 외부 클릭시 닫기
-    document.addEventListener('click', function(event) {
-        const dropdown = document.getElementById('quickApplyDropdown');
-        const button = document.querySelector('.floating-quick-apply');
-        
-        if (!dropdown.contains(event.target) && !button.contains(event.target)) {
-            dropdown.classList.remove('show');
-        }
-    });
-</script>
-        
+    <!-- 빠른신청 드롭다운 메뉴 -->
+    <div class="quick-apply-dropdown" id="quickApplyDropdown">
+        <h3 style="text-align: center; margin-bottom: 20px; color: #333; font-size: 24px;">
+            🎯 원하는 프로그램을 선택하세요!
+        </h3>
+        <div class="quick-apply-list">
+            <div class="quick-apply-item">
+                <div class="quick-apply-item-title">
+                    <span>🥁</span>
+                    <span>외국인풍물체험</span>
+                </div>
+                <a href="https://forms.gle/tzi3aRJtZ6gQWB9R8" target="_blank" class="quick-apply-link">
+                    신청 GO!
+                </a>
+            </div>
+            
+            <div class="quick-apply-item">
+                <div class="quick-apply-item-title">
+                    <span>🚶</span>
+                    <span>걷다보니부평</span>
+                </div>
+                <a href="https://forms.gle/UbUPgw3M39cqGXbd9" target="_blank" class="quick-apply-link">
+                    신청 GO!
+                </a>
+            </div>
+            
+            <div class="quick-apply-item">
+                <div class="quick-apply-item-title">
+                    <span>🎭</span>
+                    <span>만만세 유나이티드</span>
+                </div>
+                <a href="https://forms.gle/LwJLd9FjgSNiH2SF8" target="_blank" class="quick-apply-link">
+                    신청 GO!
+                </a>
+            </div>
+            
+            <div class="quick-apply-item">
+                <div class="quick-apply-item-title">
+                    <span>🎮</span>
+                    <span>K-콘텐츠 놀이터</span>
+                </div>
+                <a href="https://forms.gle/eA1y6YGiv2VKBYfA8" target="_blank" class="quick-apply-link">
+                    신청 GO!
+                </a>
+            </div>
+            
+            <div class="quick-apply-item">
+                <div class="quick-apply-item-title">
+                    <span>🎨</span>
+                    <span>K-데코라운지</span>
+                </div>
+                <a href="https://forms.gle/zzH1JU4KfVtzBxjT9" target="_blank" class="quick-apply-link">
+                    신청 GO!
+                </a>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 15px;">
+            <button onclick="toggleQuickApply()" style="background: #6c757d; color: white; border: none; padding: 10px 30px; border-radius: 20px; cursor: pointer;">
+                닫기
+            </button>
+        </div>
+    </div>
+
     <!-- Language Selector -->
     <div class="bg-gray-900 text-white py-2">
-        <div class="container mx-auto px-4 text-right">
-            <div class="inline-flex space-x-2">
-                <a href="index.html" class="language-btn px-4 py-1 rounded bg-gray-700 active-lang hover:bg-gray-600">한국어</a>
-                <a href="en.html" class="language-btn px-4 py-1 rounded bg-gray-700 hover:bg-gray-600">English</a>
-                <a href="zh.html" class="language-btn px-4 py-1 rounded bg-gray-700 hover:bg-gray-600">中文</a>
-                <a href="ja.html" class="language-btn px-4 py-1 rounded bg-gray-700 hover:bg-gray-600">日本語</a>
-                <a href="vi.html" class="language-btn px-4 py-1 rounded bg-gray-700 hover:bg-gray-600">Tiếng Việt</a>
-            </div>
-        </div>
+        <!-- 여기부터는 기존 코드 그대로 -->
     </div>
 
     <!-- Hero Section - 임시 헤더 (나중에 수정) -->
@@ -757,19 +739,22 @@
                 }
             });
         });
+        
+        // 플로팅 버튼 토글 기능
+        function toggleQuickApply() {
+            const dropdown = document.getElementById('quickApplyDropdown');
+            dropdown.classList.toggle('show');
+        }
+        
+        // 드롭다운 외부 클릭시 닫기
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('quickApplyDropdown');
+            const button = document.querySelector('.floating-quick-apply');
+            
+            if (!dropdown.contains(event.target) && !button.contains(event.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
