@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Bupyeong Pungmul Festival Global Zone</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .korean-traditional {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+        }
+        .festival-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .festival-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .apply-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            transition: all 0.3s ease;
+        }
+        .apply-btn:hover {
+            background: linear-gradient(45deg, #ff5252, #ff9800);
+            transform: scale(1.05);
+        }
+        .language-btn {
+            transition: all 0.3s ease;
+        }
+        .language-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .active-lang {
+            background-color: #4a5568;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Language Selector -->
+    <div class="bg-gray-900 text-white py-2">
+        <div class="container mx-auto px-4 text-right">
+            <div class="inline-flex space-x-2">
+                <a href="index.html" class="language-btn px-4 py-1 rounded bg-gray-700 hover:bg-gray-600">한국어</a>
+                <a href="en.html" class="language-btn px-4 py-1 rounded bg-gray-700 active-lang hover:bg-gray-600">English</a>
+                <a href="zh.html" class="language-btn px-4 py-1 rounded bg-gray-700 hover:bg-gray-600">中文</a>
+                <a href="ja.html" class="language-btn px-4 py-1 rounded bg-gray-700 hover:bg-gray-600">日本語</a>
+                <a href="vi.html" class="language-btn px-4 py-1 rounded bg-gray-700 hover:bg-gray-600">Tiếng Việt</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Banner -->
+    <section class="relative">
+        <div class="w-full h-screen relative overflow-hidden">
+            <img src="global-zone-main-poster.jpg" alt="2025 Bupyeong Pungmul Festival Global Zone" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div class="text-center text-white">
+                    <h1 class="text-6xl font-bold mb-4 animate-pulse">GLOBAL ZONE</h1>
+                    <h2 class="text-4xl mb-6">2025 Bupyeong Pungmul Festival</h2>
+                    <p class="text-2xl mb-8">Play Pungmul, Feel Korea</p>
+                    <a href="#global-zone-intro" class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full text-xl font-bold transition-all">
+                        Explore Global Zone <i class="fas fa-arrow-down ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Zone Introduction -->
+    <section id="global-zone-intro" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">About Global Zone</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg p-8 mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-purple-800">Special Space for International Visitors</h3>
+                    <p class="text-lg text-gray-700 mb-4">
+                        The Global Zone at Bupyeong Pungmul Festival is a special area where international tourists 
+                        and foreign residents in Korea can directly experience and enjoy Korean traditional culture.
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-6 mt-6">
+                        <div class="bg-white rounded-lg p-6 shadow-md">
+                            <i class="fas fa-globe-asia text-4xl text-blue-500 mb-4"></i>
+                            <h4 class="font-bold text-xl mb-2">Multilingual Support</h4>
+                            <p>English, Chinese, Japanese, and Vietnamese interpretation services</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-6 shadow-md">
+                            <i class="fas fa-hands-helping text-4xl text-green-500 mb-4"></i>
+                            <h4 class="font-bold text-xl mb-2">Customized Programs</h4>
+                            <p>Experience programs tailored for international visitors</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-6 shadow-md">
+                            <i class="fas fa-camera text-4xl text-purple-500 mb-4"></i>
+                            <h4 class="font-bold text-xl mb-2">Memory Making</h4>
+                            <p>Hanbok experience, photo zones, and souvenirs</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-6 shadow-md">
+                            <i class="fas fa-users text-4xl text-orange-500 mb-4"></i>
+                            <h4 class="font-bold text-xl mb-2">Cultural Exchange</h4>
+                            <p>Cultural exchange with participants from various nationalities</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Festival Overview -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Festival Overview</h2>
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="festival-poster-en.jpg" alt="2025 Bupyeong Pungmul Festival" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold mb-6 korean-traditional text-white p-4 rounded-lg">
+                        Korea's Representative Traditional Culture Festival
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-lg p-6 shadow-md">
+                            <h4 class="text-xl font-bold mb-3 text-orange-600">29 Years of History and Tradition</h4>
+                            <p class="text-gray-700">
+                                Started in 1997, the Bupyeong Pungmul Festival is Korea's representative traditional culture festival, 
+                                attracting over 600,000 visitors annually as Incheon's signature festival.
+                            </p>
+                        </div>
+                        <div class="bg-white rounded-lg p-6 shadow-md">
+                            <h4 class="text-xl font-bold mb-3 text-blue-600">Designated Cultural Tourism Festival</h4>
+                            <p class="text-gray-700">
+                                Selected as one of only 25 festivals out of 1,200 nationwide by the Ministry of Culture, 
+                                Sports and Tourism for 2024-2025.
+                            </p>
+                        </div>
+                        <div class="bg-white rounded-lg p-6 shadow-md">
+                            <h4 class="text-xl font-bold mb-3 text-green-600">Modern Interpretation of Pungmul</h4>
+                            <p class="text-gray-700">
+                                A participatory festival that reinterprets traditional pungmul performances in a modern way, 
+                                enjoyable for all ages and nationalities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Programs -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Signature Programs</h2>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Pungmul Class -->
+                <div class="festival-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="pungmul-class.jpg" alt="Pungmul Class" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 text-red-600">🥁 Pungmul Class</h3>
+                        <h4 class="text-lg font-semibold mb-4 text-gray-600">Traditional Music Experience</h4>
+                        <div class="space-y-3 text-gray-700 mb-6">
+                            <p><i class="fas fa-music mr-2 text-blue-500"></i>Learn Korean traditional instruments</p>
+                            <p><i class="fas fa-book mr-2 text-green-500"></i>English notation & certificate</p>
+                            <p><i class="fas fa-camera mr-2 text-purple-500"></i>Hanbok experience & photo</p>
+                            <p><i class="fas fa-clock mr-2 text-orange-500"></i>30 min session / 4 times daily</p>
+                        </div>
+                        <a href="https://forms.gle/tzi3aRJtZ6gQWB9R8" target="_blank" class="apply-btn text-white px-6 py-3 rounded-lg font-bold block text-center">
+                            <i class="fas fa-edit mr-2"></i>Apply Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Bupyeong Tour -->
+                <div class="festival-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="bupyeong-tour.jpg" alt="Bupyeong Tour" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 text-blue-600">🚶 Bupyeong Tour</h3>
+                        <h4 class="text-lg font-semibold mb-4 text-gray-600">Underground & Culture Tour</h4>
+                        <div class="space-y-3 text-gray-700 mb-6">
+                            <p><i class="fas fa-route mr-2 text-blue-500"></i>Historical culture tour</p>
+                            <p><i class="fas fa-user-tie mr-2 text-green-500"></i>Professional guide</p>
+                            <p><i class="fas fa-gift mr-2 text-purple-500"></i>Local shop discounts</p>
+                            <p><i class="fas fa-clock mr-2 text-orange-500"></i>3-hour course</p>
+                        </div>
+                        <a href="https://forms.gle/UbUPgw3M39cqGXbd9" target="_blank" class="apply-btn text-white px-6 py-3 rounded-lg font-bold block text-center">
+                            <i class="fas fa-edit mr-2"></i>Apply Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Manmanse United -->
+                <div class="festival-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="manmanse-united.jpg" alt="Manmanse United" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 text-purple-600">🎭 Manmanse United</h3>
+                        <h4 class="text-lg font-semibold mb-4 text-gray-600">Global Parade</h4>
+                        <div class="space-y-3 text-gray-700 mb-6">
+                            <p><i class="fas fa-flag mr-2 text-blue-500"></i>International parade</p>
+                            <p><i class="fas fa-moon mr-2 text-green-500"></i>Night performance</p>
+                            <p><i class="fas fa-hashtag mr-2 text-purple-500"></i>SNS event</p>
+                            <p><i class="fas fa-users mr-2 text-red-500"></i>Limited to 100 people</p>
+                        </div>
+                        <a href="https://forms.gle/LwJLd9FjgSNiH2SF8" target="_blank" class="apply-btn text-white px-6 py-3 rounded-lg font-bold block text-center">
+                            <i class="fas fa-edit mr-2"></i>Apply Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pop-up Programs -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Pop-up Programs</h2>
+            <div class="grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
+                <!-- Pungmul Challenge -->
+                <div class="festival-card bg-gradient-to-br from-pink-50 to-orange-50 rounded-lg shadow-lg p-6">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-mobile-alt text-4xl text-pink-500 mb-3"></i>
+                        <h3 class="text-xl font-bold text-pink-600">Pungmul Challenge</h3>
+                    </div>
+                    <div class="space-y-2 text-sm text-gray-700 mb-4">
+                        <p><i class="fas fa-camera mr-2"></i>Experience & SNS hashtag</p>
+                        <p><i class="fas fa-gift mr-2"></i>Goods for participants</p>
+                        <p><i class="fas fa-clock mr-2"></i>All day (11:00~20:00)</p>
+                    </div>
+                    <div class="bg-pink-100 text-pink-800 px-4 py-2 rounded-lg text-center font-bold">
+                        On-site Participation
+                    </div>
+                </div>
+
+                <!-- K-Content Playground -->
+                <div class="festival-card bg-gradient-to-br from-green-50 to-blue-50 rounded-lg shadow-lg p-6">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-gamepad text-4xl text-green-500 mb-3"></i>
+                        <h3 class="text-xl font-bold text-green-600">K-Content Playground</h3>
+                    </div>
+                    <div class="space-y-2 text-sm text-gray-700 mb-4">
+                        <p><i class="fas fa-running mr-2"></i>Traditional games</p>
+                        <p><i class="fas fa-cookie-bite mr-2"></i>Dalgona prizes</p>
+                        <p><i class="fas fa-clock mr-2"></i>Every hour</p>
+                    </div>
+                    <a href="https://forms.gle/eA1y6YGiv2VKBYfA8" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-center block font-bold text-sm">
+                        Apply
+                    </a>
+                </div>
+
+                <!-- K-Deco Lounge -->
+                <div class="festival-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg shadow-lg p-6">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-palette text-4xl text-purple-500 mb-3"></i>
+                        <h3 class="text-xl font-bold text-purple-600">K-Deco Lounge</h3>
+                    </div>
+                    <div class="space-y-2 text-sm text-gray-700 mb-4">
+                        <p><i class="fas fa-gem mr-2"></i>Traditional crafts</p>
+                        <p><i class="fas fa-hand-sparkles mr-2"></i>Accessories making</p>
+                        <p><i class="fas fa-clock mr-2"></i>60 min sessions</p>
+                    </div>
+                    <a href="https://forms.gle/zzH1JU4KfVtzBxjT9" target="_blank" class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg text-center block font-bold text-sm">
+                        Apply
+                    </a>
+                </div>
+
+                <!-- Event Booths -->
+                <div class="festival-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-lg shadow-lg p-6">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-gift text-4xl text-yellow-500 mb-3"></i>
+                        <h3 class="text-xl font-bold text-yellow-600">Event Booths</h3>
+                    </div>
+                    <div class="space-y-2 text-sm text-gray-700 mb-4">
+                        <p><i class="fas fa-clipboard-list mr-2"></i>Survey participation</p>
+                        <p><i class="fas fa-popcorn mr-2"></i>Popcorn & balloons</p>
+                        <p><i class="fas fa-clock mr-2"></i>All day</p>
+                    </div>
+                    <div class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-lg text-center font-bold text-sm">
+                        On-site Participation
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Apply -->
+    <section class="py-16 korean-traditional">
+        <div class="container mx-auto px-4 text-center text-white">
+            <h2 class="text-4xl font-bold mb-8">How to Apply</h2>
+            <div class="bg-white bg-opacity-20 rounded-lg p-8 max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div class="text-left">
+                        <h3 class="text-2xl font-bold mb-4"><i class="fas fa-calendar-check mr-2"></i>Pre-registration Programs</h3>
+                        <ul class="space-y-3 text-lg">
+                            <li><i class="fas fa-music mr-2"></i>Pungmul Class</li>
+                            <li><i class="fas fa-walking mr-2"></i>Bupyeong Tour</li>
+                            <li><i class="fas fa-flag mr-2"></i>Manmanse United</li>
+                            <li><i class="fas fa-gamepad mr-2"></i>K-Content Playground</li>
+                            <li><i class="fas fa-palette mr-2"></i>K-Deco Lounge</li>
+                        </ul>
+                    </div>
+                    <div class="text-left">
+                        <h3 class="text-2xl font-bold mb-4"><i class="fas fa-door-open mr-2"></i>On-site Programs</h3>
+                        <ul class="space-y-3 text-lg">
+                            <li><i class="fas fa-mobile-alt mr-2"></i>Pungmul Challenge</li>
+                            <li><i class="fas fa-gift mr-2"></i>Event Booths</li>
+                        </ul>
+                        <div class="mt-6 p-4 bg-white bg-opacity-30 rounded">
+                            <h4 class="font-bold mb-2">Registration Period</h4>
+                            <p>Opens after August 26</p>
+                            <h4 class="font-bold mb-2 mt-3">How to Apply</h4>
+                            <p>Online pre-registration (On-site if not full)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-3xl font-bold mb-4">🆓 All Programs are FREE!</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact -->
+    <section class="py-16 bg-gray-800 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Location & Contact</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6"><i class="fas fa-map-marker-alt mr-2 text-red-400"></i>Festival Location</h3>
+                    <div class="bg-gray-700 p-6 rounded-lg mb-6">
+                        <p class="text-xl mb-2"><strong>Bupyeong-daero, Bupyeong-gu, Incheon</strong></p>
+                        <p class="text-lg text-gray-300">Zone B near Bupyeong Station</p>
+                        <div class="mt-4">
+                            <a href="https://maps.google.com/?q=Bupyeong+Station+Incheon" target="_blank" 
+                               class="inline-block bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-white">
+                                <i class="fas fa-map mr-2"></i>View on Google Maps
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <h4 class="text-xl font-bold mb-4"><i class="fas fa-subway mr-2 text-blue-400"></i>By Subway</h4>
+                    <ul class="text-lg space-y-2 mb-6">
+                        <li>• Line 1 Bupyeong Station Exit 1 (5 min walk)</li>
+                        <li>• Incheon Metro Line 1 Bupyeong Station</li>
+                    </ul>
+                    
+                    <h4 class="text-xl font-bold mb-4"><i class="fas fa-bus mr-2 text-green-400"></i>By Bus</h4>
+                    <ul class="text-lg space-y-2">
+                        <li>• Get off at Bupyeong Station</li>
+                        <li>• Multiple city buses available</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-6"><i class="fas fa-phone mr-2 text-yellow-400"></i>Contact Information</h3>
+                    <div class="bg-gray-700 p-6 rounded-lg space-y-4">
+                        <div>
+                            <h4 class="text-xl font-bold text-yellow-400">Bupyeong Festival Committee</h4>
+                            <p class="text-lg">
+                                <i class="fas fa-phone mr-2"></i>
+                                <a href="tel:+82-32-509-7516" class="hover:text-yellow-300">+82-32-509-7516~7</a>
+                            </p>
+                            <p class="text-lg">
+                                <i class="fas fa-envelope mr-2"></i>
+                                <a href="mailto:bpf7515@naver.com" class="hover:text-yellow-300">bpf7515@naver.com</a>
+                            </p>
+                        </div>
+                        <div class="border-t border-gray-600 pt-4">
+                            <p class="text-lg"><i class="fas fa-map-marker-alt mr-2"></i>168 Bupyeong-daero, Bupyeong-gu, Incheon</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://portal.icbp.go.kr/bpf/" target="_blank" 
+                               class="inline-block bg-purple-500 hover:bg-purple-600 px-4 py-2 rounded text-white">
+                                <i class="fas fa-globe mr-2"></i>Official Website
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-8 text-center">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold mb-4">🇰🇷 2025 Bupyeong Pungmul Festival Global Zone 🇰🇷</h3>
+            <p class="text-xl">Play Pungmul, Feel Korea!</p>
+        </div>
+    </footer>
+</body>
+</html>
