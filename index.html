@@ -18,10 +18,13 @@
         }
         
         .hero-gradient {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 25%, #4ecdc4 50%, #45b7d1 75%, #96ceb4 100%);
+            background-size: 400% 400%;
+            animation: festivalColors 12s ease infinite;
 
             position: relative;
-            min-height: 70vh;
+            min-height: 80vh;
+            overflow: hidden;
             display: flex;
             align-items: center;
 
@@ -374,6 +377,41 @@
             z-index: 2;
         }
         
+        @keyframes festivalColors {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 50% 100%; }
+            75% { background-position: 100% 0%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .pungmul-instruments {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .instrument {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.15;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .instrument:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .instrument:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+        .instrument:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 2s; }
+        .instrument:nth-child(4) { bottom: 20%; right: 10%; animation-delay: 3s; }
+        .instrument:nth-child(5) { top: 50%; left: 5%; animation-delay: 4s; }
+        .instrument:nth-child(6) { top: 60%; right: 8%; animation-delay: 5s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
         .hero-badge {
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
@@ -511,19 +549,56 @@
 
     <!-- Hero Section - 임시 헤더 (나중에 수정) -->
     <header class="hero-gradient text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-30"></div>
-        <div class="container mx-auto px-4 relative z-10">
+        <!-- 풍물악기 플로팅 애니메이션 -->
+        <div class="pungmul-instruments">
+            <div class="instrument">🥁</div>
+            <div class="instrument">🔔</div>
+            <div class="instrument">🎵</div>
+            <div class="instrument">🎭</div>
+            <div class="instrument">🏮</div>
+            <div class="instrument">🎪</div>
+        </div>
+        
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container mx-auto px-4 relative z-10 hero-content">
             <div class="text-center">
-                <div class="mb-6 inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full backdrop-blur-sm">
-                    <span class="text-sm font-medium">
-                    🌍 International Cultural Festival
+                <div class="hero-badge text-white font-bold text-lg mb-6">
+
+                    🎭 제29회 BPF 2025 🎭
                 </div>
                 
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 text-shadow leading-tight">
-                    2025 부평풍물대축제
-                    <span class="block text-4xl md:text-6xl text-blue-200 font-light">글로벌존</span>
+                <h1 class="text-5xl md:text-7xl font-bold mb-4 text-shadow leading-tight">
+                    부평풍물대축제
+                    <span class="block text-4xl md:text-6xl text-yellow-300 font-light mt-2">글로벌 존</span>
                 </h1>
-                <p class="text-2xl">Play Pungmul, Feel Korea</p>
+                <p class="text-xl md:text-2xl font-medium mb-8">
+                    🌍 세계인과 함께하는 K-전통문화 체험 플랫폼<br>
+                    <span class="text-lg text-yellow-200">Play Pungmul, Feel Korea, Share Culture</span>
+                </p>
+                
+                <!-- 축제 정보 카드들 -->
+                <div class="hero-info">
+                    <div class="hero-info-item">
+                        <div class="text-2xl font-bold">📅</div>
+                        <div class="text-sm font-medium mt-1">2025.09.26-28</div>
+                        <div class="text-xs opacity-80">3일간</div>
+                    </div>
+                    <div class="hero-info-item">
+                        <div class="text-2xl font-bold">👥</div>
+                        <div class="text-sm font-medium mt-1">60만+ 방문객</div>
+                        <div class="text-xs opacity-80">연간</div>
+                    </div>
+                    <div class="hero-info-item">
+                        <div class="text-2xl font-bold">🌏</div>
+                        <div class="text-sm font-medium mt-1">5개국 언어 지원</div>
+                        <div class="text-xs opacity-80">다국어</div>
+                    </div>
+                    <div class="hero-info-item">
+                        <div class="text-2xl font-bold">🏆</div>
+                        <div class="text-sm font-medium mt-1">문화관광축제</div>
+                        <div class="text-xs opacity-80">문체부 선정</div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -965,9 +1040,7 @@
             }
         });
     </script>
-    <script>
-        });
-    </script>
+
 </body>
 </html>
 
