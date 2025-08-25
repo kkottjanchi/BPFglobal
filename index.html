@@ -18,9 +18,11 @@
         }
         
         .hero-gradient {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 50%, #ff6b6b 100%);
-            background-size: 200% 200%;
-            animation: gradientShift 5s ease infinite;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 300% 300%;
+            position: relative;
+            min-height: 60vh;
+            animation: gradientShift 8s ease infinite;
         }
         
         @keyframes gradientShift {
@@ -30,7 +32,7 @@
         }
         
         .text-shadow {
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.2);
         }
         
         .korean-traditional {
@@ -128,7 +130,7 @@
             color: white;
             font-size: 20px;
             font-weight: 900;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.2);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -226,9 +228,213 @@
             transform: scale(1.05);
             box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
         }
+        
+        /* 다국어 버튼 스타일 - 모든 언어가 보이는 버튼형 */
+        .language-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .lang-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .lang-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .lang-btn:hover:before {
+            opacity: 0.1;
+        }
+        
+        .lang-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+        
+        /* 메인 언어 (영어) 강조 */
+        .lang-primary {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+        
+        .lang-primary:before {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .lang-primary:hover {
+            transform: translateY(-4px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.5);
+        }
+        
+        /* 현재 페이지 표시 */
+        .lang-current {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+            color: white;
+            border-color: rgba(255, 107, 107, 0.6);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+        
+        .lang-current:before {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .flag-icon {
+            font-size: 20px;
+            margin-bottom: 2px;
+        }
+        
+        .lang-text {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .lang-primary .lang-text,
+        .lang-current .lang-text {
+            color: white;
+        }
+        
+        .lang-btn:not(.lang-primary):not(.lang-current) .lang-text {
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .language-buttons {
+                top: 15px;
+                right: 15px;
+                gap: 6px;
+            }
+            
+            .lang-btn {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .flag-icon {
+                font-size: 18px;
+            }
+            
+            .lang-text {
+                font-size: 9px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .language-buttons {
+                gap: 4px;
+            }
+            
+            .lang-btn {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .flag-icon {
+                font-size: 16px;
+            }
+            
+            .lang-text {
+                font-size: 8px;
+            }
+        }
+        
+        /* 헤더 추가 스타일 */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .hero-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .hero-info-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 15px 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
+    <!-- 다국어 버튼 (우상단에 위치) - 영어 메인 준비된 순서 -->
+    <div class="language-buttons">
+        <a href="en.html" class="lang-btn lang-primary" title="English (Main)">
+            <span class="flag-icon">🇺🇸</span>
+            <span class="lang-text">EN</span>
+        </a>
+        <a href="zh.html" class="lang-btn" title="中文">
+            <span class="flag-icon">🇨🇳</span>
+            <span class="lang-text">中文</span>
+        </a>
+        <a href="ja.html" class="lang-btn" title="日本語">
+            <span class="flag-icon">🇯🇵</span>
+            <span class="lang-text">日本</span>
+        </a>
+        <a href="vi.html" class="lang-btn" title="Tiếng Việt">
+            <span class="flag-icon">🇻🇳</span>
+            <span class="lang-text">VN</span>
+        </a>
+        <a href="index.html" class="lang-btn lang-current" title="한국어 (현재 페이지)">
+            <span class="flag-icon">🇰🇷</span>
+            <span class="lang-text">KO</span>
+        </a>
+    </div>
+
     <!-- 새로운 플로팅 버튼 -->
     <div class="floating-quick-apply" onclick="toggleQuickApply()">
         <div class="quick-apply-text">
@@ -309,7 +515,7 @@
     <!-- Hero Section - 임시 헤더 (나중에 수정) -->
     <header class="hero-gradient text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-black opacity-20"></div>
-        <div class="container mx-auto px-4 py-16 relative z-10">
+        <div class="container mx-auto px-4 py-20 relative z-10">
             <div class="text-center">
                 <h1 class="text-4xl md:text-6xl font-black mb-4 text-shadow">
                     2025 부평풍물대축제 글로벌존
@@ -756,5 +962,9 @@
             }
         });
     </script>
+    <script>
+        });
+    </script>
 </body>
 </html>
+
