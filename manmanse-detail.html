@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>만만세 유나이티드 | 2025 부평풍물대축제 글로벌존</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 50%, #ff6b6b 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .festival-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .festival-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .apply-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            transition: all 0.3s ease;
+        }
+        
+        .apply-btn:hover {
+            background: linear-gradient(45deg, #ff5252, #ff7043);
+            transform: scale(1.05);
+        }
+        
+        .program-detail-card {
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .info-badge {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 4px;
+        }
+        
+        .schedule-item {
+            background: #f8f9fa;
+            border-left: 4px solid #ff6b6b;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 0 10px 10px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .schedule-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .feature-box {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .breadcrumb {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-btn:hover {
+            background: white;
+            color: #ff6b6b;
+        }
+        
+        .parade-timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 60px;
+            width: 2px;
+            height: 40px;
+            background: #ff6b6b;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .time-badge {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .floating-apply {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+            z-index: 1000;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating-apply:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+        }
+        
+        .flag-animation {
+            animation: wave 2s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .floating-apply {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Hero Section with Breadcrumb -->
+    <header class="hero-gradient text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container mx-auto px-4 py-16 relative z-10">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb text-gray-800 mb-8">
+                <a href="index.html" class="hover:text-gray-600">
+                    <i class="fas fa-home mr-1"></i>홈
+                </a>
+                <i class="fas fa-chevron-right mx-2"></i>
+                <a href="index.html#programs" class="hover:text-gray-600">시그니처 프로그램</a>
+                <i class="fas fa-chevron-right mx-2"></i>
+                <span class="font-bold">만만세 유나이티드</span>
+            </div>
+            
+            <!-- Back Button -->
+            <div class="mb-8">
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>메인으로 돌아가기</span>
+                </a>
+            </div>
+            
+            <div class="text-center">
+                <div class="text-6xl mb-4 flag-animation">🎭</div>
+                <h1 class="text-4xl md:text-6xl font-black mb-4 text-shadow">
+                    만만세 유나이티드
+                </h1>
+                <p class="text-xl md:text-2xl mb-2">Manmanse United</p>
+                <p class="text-lg text-gray-200">다국적 참여자들과 함께하는 특별한 야간 퍼레이드</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-12">
+        
+        <!-- Program Overview -->
+        <section class="mb-16">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Program Image -->
+                <div>
+                    <img src="manmanse-united.jpg" alt="만만세 유나이티드" 
+                         class="w-full rounded-2xl shadow-xl program-detail-card">
+                </div>
+                
+                <!-- Program Info -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 text-gray-800">프로그램 개요</h2>
+                    <div class="space-y-4">
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            축제의 대미를 장식하는 <strong>다국적 풍물 퍼레이드</strong>입니다. 
+                            외국인 참여자들이 한복을 입고 태극기와 함께 부평의 밤거리를 행진하며 
+                            한국의 아름다운 전통문화를 전 세계에 알리는 특별한 시간입니다.
+                        </p>
+                        
+                        <div class="bg-gradient-to-r from-red-50 to-orange-50 p-6 rounded-xl">
+                            <h4 class="text-xl font-bold mb-3 text-red-700">퍼레이드 하이라이트</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-users text-red-500 mr-3"></i>
+                                    <span>다국적 참여자들과 함께하는 풍물팀</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-flag text-red-500 mr-3"></i>
+                                    <span>태극기와 각국 국기 퍼포먼스</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-tshirt text-red-500 mr-3"></i>
+                                    <span>전통 한복 착용 체험</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-camera text-red-500 mr-3"></i>
+                                    <span>SNS 인증 및 단체사진 촬영</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-moon text-red-500 mr-3"></i>
+                                    <span>축제 마지막 밤의 특별한 추억</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="info-badge">무료 참여</span>
+                            <span class="info-badge">한복 제공</span>
+                            <span class="info-badge">기념품</span>
+                            <span class="info-badge">야간 퍼레이드</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Parade Timeline -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">퍼레이드 타임라인</h2>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-xl">
+                <div class="parade-timeline">
+                    <div class="timeline-item">
+                        <div class="time-badge">20:00</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">집결 및 준비</h4>
+                            <p class="text-gray-600">글로벌존 부스에서 참가자 집결</p>
+                            <p class="text-sm text-orange-600 mt-1"><i class="fas fa-info-circle mr-1"></i>한복 착용 및 악기 배치</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="time-badge">20:15</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">최종 리허설</h4>
+                            <p class="text-gray-600">퍼레이드 순서 및 동선 확인</p>
+                            <p class="text-sm text-orange-600 mt-1"><i class="fas fa-music mr-1"></i>풍물 박자 연습 및 구호 연습</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="time-badge">20:30</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">퍼레이드 시작 대기</h4>
+                            <p class="text-gray-600">메인 퍼레이드 순서 대기</p>
+                            <p class="text-sm text-orange-600 mt-1"><i class="fas fa-flag mr-1"></i>태극기 및 깃발 준비 완료</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="time-badge">21:00</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">🎉 퍼레이드 진행</h4>
+                            <p class="text-gray-600">부평 거리 B존 전체 구간 행진</p>
+                            <p class="text-sm text-orange-600 mt-1"><i class="fas fa-route mr-1"></i>약 30분간 야간 퍼레이드 진행</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="time-badge">21:30</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">마무리 및 기념촬영</h4>
+                            <p class="text-gray-600">글로벌존 부스로 재집결</p>
+                            <p class="text-sm text-orange-600 mt-1"><i class="fas fa-camera mr-1"></i>단체사진 촬영 및 의상 반납</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 p-6 bg-red-50 rounded-lg">
+                    <h4 class="font-bold text-red-800 mb-3">
+                        <i class="fas fa-exclamation-circle mr-2"></i>중요 안내사항
+                    </h4>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <p class="font-bold text-gray-700">참여 대상</p>
+                            <p class="text-red-600">외국인 우선 (약 100명 목표)</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-700">소요 시간</p>
+                            <p class="text-red-600">약 1시간 30분</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-700">운영 일자</p>
+                            <p class="text-red-600">9월 28일(일) 저녁만</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-700">날씨 대비</p>
+                            <p class="text-red-600">우천 시 실내 대체 프로그램</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Participation Details -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">참가 안내 및 혜택</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Participation Info -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                        <i class="fas fa-users text-red-500 mr-3"></i>참가 대상 및 조건
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">👥 우선 참가 대상</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-globe text-red-500 mr-3"></i>
+                                    <span>외국인 관광객 (사전신청 필수)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-graduation-cap text-red-500 mr-3"></i>
+                                    <span>외국인 유학생</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-heart text-red-500 mr-3"></i>
+                                    <span>다문화가정</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-user-friends text-red-500 mr-3"></i>
+                                    <span>외국인 동반 내국인</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">📋 참가 조건</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start">
+                                    <i class="fas fa-clock text-orange-500 mt-1 mr-3"></i>
+                                    <span>저녁 8시부터 9시 30분까지 참여 가능</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-walking text-orange-500 mt-1 mr-3"></i>
+                                    <span>약 30분간 보행 가능한 체력</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-camera text-orange-500 mt-1 mr-3"></i>
+                                    <span>사진/영상 촬영 및 SNS 활용 동의</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Benefits & Provides -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                        <i class="fas fa-gift text-green-500 mr-3"></i>제공 혜택
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">🎁 무료 제공품</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-tshirt text-green-500 mr-3"></i>
+                                    <span>전통 한복 대여 (남녀 사이즈별)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-flag text-green-500 mr-3"></i>
+                                    <span>태극기 및 응원 소품</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-music text-green-500 mr-3"></i>
+                                    <span>풍물 악기 (간단한 소품류)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-certificate text-green-500 mr-3"></i>
+                                    <span>참여 기념품 및 수료증</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">📸 특별 서비스</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-camera-retro text-purple-500 mr-3"></i>
+                                    <span>전문 사진사 동행 촬영</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-users text-purple-500 mr-3"></i>
+                                    <span>단체사진 및 개인사진 촬영</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-share-alt text-purple-500 mr-3"></i>
+                                    <span>SNS 해시태그 이벤트 참여</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-download text-purple-500 mr-3"></i>
+                                    <span>촬영 사진 후일 제공</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Program Features -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">퍼레이드의 특별함</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="feature-box">
+                    <div class="text-4xl mb-4">🌍</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">국제 화합</h4>
+                    <p class="text-sm text-gray-600">전 세계 사람들이 하나 되는 순간</p>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="text-4xl mb-4">🎌</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">문화 교류</h4>
+                    <p class="text-sm text-gray-600">한국과 세계 문화의 아름다운 만남</p>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">SNS 화제</h4>
+                    <p class="text-sm text-gray-600">전 세계로 퍼져나가는 부평축제</p>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="text-4xl mb-4">💫</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">특별한 추억</h4>
+                    <p class="text-sm text-gray-600">평생 기억에 남을 한국 여행의 하이라이트</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Application Info -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">신청 방법</h2>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-xl max-w-4xl mx-auto">
+                <div class="text-center mb-8">
+                    <div class="inline-block bg-red-100 px-6 py-3 rounded-full">
+                        <p class="text-red-700 font-bold">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>
+                            사전 신청 필수 (현장 신청 불가)
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-red-700">
+                            <i class="fas fa-laptop mr-2"></i>온라인 사전 신청만 가능
+                        </h3>
+                        <ul class="space-y-3 text-gray-700 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-red-500 mt-1 mr-3"></i>
+                                <span>100명 한정 모집</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-red-500 mt-1 mr-3"></i>
+                                <span>외국인 우선 선발</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-red-500 mt-1 mr-3"></i>
+                                <span>신청 완료 시 개별 연락</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="https://forms.gle/LwJLd9FjgSNiH2SF8" target="_blank" 
+                           class="apply-btn text-white px-6 py-3 rounded-full text-lg font-bold inline-block text-center w-full">
+                            <i class="fas fa-external-link-alt mr-2"></i>지금 신청하기
+                        </a>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-blue-700">
+                            <i class="fas fa-info-circle mr-2"></i>신청 안내
+                        </h3>
+                        <ul class="space-y-3 text-gray-700 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-calendar text-blue-500 mt-1 mr-3"></i>
+                                <span>신청 기간: 8월 26일 이후 오픈</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-clock text-blue-500 mt-1 mr-3"></i>
+                                <span>선착순 마감 (조기 마감 가능)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-phone text-blue-500 mt-1 mr-3"></i>
+                                <span>선발 시 개별 연락 및 안내</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <p class="text-blue-700 text-sm">
+                                <i class="fas fa-lightbulb mr-2"></i>
+                                <strong>팁:</strong> 신청서에 참여 의지와 SNS 활용 계획을 자세히 작성하세요!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Required Information -->
+                <div class="mt-8 p-6 bg-gray-50 rounded-lg">
+                    <h4 class="font-bold text-gray-800 mb-3">
+                        <i class="fas fa-clipboard-list mr-2"></i>신청 시 필요 정보
+                    </h4>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
+                        <ul class="space-y-2">
+                            <li>• 이름 및 참여 인원수</li>
+                            <li>• 국적 및 거주지</li>
+                            <li>• 연령대 및 성별</li>
+                            <li>• 한복 사이즈 (상세 치수)</li>
+                        </ul>
+                        <ul class="space-y-2">
+                            <li>• 언어 가능 여부 (한국어/영어)</li>
+                            <li>• 방문 목적 및 일정</li>
+                            <li>• 연락처 (필수)</li>
+                            <li>• 개인정보 및 촬영 활용 동의</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact & Questions -->
+        <section class="mb-16">
+            <div class="bg-gradient-to-r from-red-600 to-orange-600 text-white rounded-2xl p-8">
+                <h2 class="text-3xl font-bold mb-6 text-center">문의사항 | Contact</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">
+                            <i class="fas fa-phone mr-2"></i>연락처
+                        </h3>
+                        <div class="space-y-2">
+                            <p><strong>부평구축제위원회</strong></p>
+                            <p><i class="fas fa-phone mr-2"></i>032-509-7516</p>
+                            <p><i class="fas fa-envelope mr-2"></i>bpf2024@naver.com</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">
+                            <i class="fas fa-question-circle mr-2"></i>자주 묻는 질문
+                        </h3>
+                        <div class="space-y-2 text-sm">
+                            <p><strong>Q:</strong> 한복 사이즈를 모르겠어요</p>
+                            <p><strong>A:</strong> 신청 시 대략적인 사이즈로 신청하시고 당일 피팅 가능합니다</p>
+                            <p><strong>Q:</strong> 비가 오면 어떻게 되나요?</p>
+                            <p><strong>A:</strong> 실내 대체 프로그램으로 진행됩니다</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Related Programs -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">다른 프로그램도 확인해보세요!</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="pungmul-class.jpg" alt="외국인풍물체험" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">🥁 외국인풍물체험</h3>
+                        <p class="text-gray-600 text-sm mb-4">전통 사물놀이 체험</p>
+                        <a href="detail-template.html" class="bg-orange-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-orange-600">
+                            자세히 보기
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="bupyeong-tour.jpg" alt="걷다보니부평" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">🚶 걷다보니부평</h3>
+                        <p class="text-gray-600 text-sm mb-4">부평 지하상가 문화투어</p>
+                        <a href="tour-detail.html" class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-600">
+                            자세히 보기
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="k-contents playground.jpg" alt="K-콘텐츠 놀이터" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">🎮 K-콘텐츠 놀이터</h3>
+                        <p class="text-gray-600 text-sm mb-4">한국 전통놀이 체험</p>
+                        <a href="k-content-detail.html" class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-green-600">
+                            자세히 보기
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Floating Apply Button -->
+    <a href="https://forms.gle/LwJLd9FjgSNiH2SF8" target="_blank" class="floating-apply">
+        <i class="fas fa-flag mr-2"></i>퍼레이드 신청
+    </a>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">🇰🇷 2025 부평풍물대축제 글로벌존 🇰🇷</h3>
+            <p class="text-xl mb-6">Unite with Korea, Celebrate Together!</p>
+            <p class="text-gray-400">
+                ⓒ INCHEON BUPYEONG. All Rights Reserved. | 
+                주최: 인천광역시 부평구 | 
+                주관: 부평구축제위원회, 부평구문화재단, 부평문화원
+            </p>
+            
+            <div class="mt-8">
+                <a href="index.html" class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full font-bold transition-all">
+                    <i class="fas fa-home mr-2"></i>메인 페이지로 돌아가기
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

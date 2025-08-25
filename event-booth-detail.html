@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트부스 | 2025 부평풍물대축제 글로벌존</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #FFC107 0%, #FF9800 50%, #FFC107 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .festival-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .festival-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .apply-btn {
+            background: linear-gradient(45deg, #FFC107, #FF9800);
+            transition: all 0.3s ease;
+        }
+        
+        .apply-btn:hover {
+            background: linear-gradient(45deg, #FFB300, #F57C00);
+            transform: scale(1.05);
+        }
+        
+        .program-detail-card {
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .info-badge {
+            background: linear-gradient(45deg, #FFC107, #FF9800);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 4px;
+        }
+        
+        .reward-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .reward-card:hover {
+            transform: translateY(-5px);
+            border-color: #FFC107;
+            box-shadow: 0 10px 25px rgba(255, 193, 7, 0.3);
+        }
+        
+        .feature-box {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .breadcrumb {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-btn:hover {
+            background: white;
+            color: #FFC107;
+        }
+        
+        .survey-preview {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px solid #FFC107;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        .survey-question {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #FFC107;
+        }
+        
+        .balloon-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        
+        .popcorn-animation {
+            animation: bounce 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(-5deg); }
+            50% { transform: scale(1.05) rotate(0deg); }
+            75% { transform: scale(1.1) rotate(5deg); }
+        }
+        
+        .floating-apply {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #FFC107, #FF9800);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 10px 30px rgba(255, 193, 7, 0.4);
+            z-index: 1000;
+            animation: bounce 2s infinite;
+        }
+        
+        .floating-apply:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(255, 193, 7, 0.6);
+        }
+        
+        @media (max-width: 768px) {
+            .floating-apply {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Hero Section with Breadcrumb -->
+    <header class="hero-gradient text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container mx-auto px-4 py-16 relative z-10">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb text-gray-800 mb-8">
+                <a href="index.html" class="hover:text-gray-600">
+                    <i class="fas fa-home mr-1"></i>홈
+                </a>
+                <i class="fas fa-chevron-right mx-2"></i>
+                <a href="index.html#programs" class="hover:text-gray-600">팝업 프로그램</a>
+                <i class="fas fa-chevron-right mx-2"></i>
+                <span class="font-bold">이벤트부스</span>
+            </div>
+            
+            <!-- Back Button -->
+            <div class="mb-8">
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>메인으로 돌아가기</span>
+                </a>
+            </div>
+            
+            <div class="text-center">
+                <div class="text-6xl mb-4 balloon-animation">🎁</div>
+                <h1 class="text-4xl md:text-6xl font-black mb-4 text-shadow">
+                    이벤트부스
+                </h1>
+                <p class="text-xl md:text-2xl mb-2">Event Booth</p>
+                <p class="text-lg text-gray-200">간단한 설문 참여로 받는 달콤한 선물</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-12">
+        
+        <!-- Program Overview -->
+        <section class="mb-16">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Program Image -->
+                <div>
+                    <img src="event booth.jpg" alt="이벤트부스" 
+                         class="w-full rounded-2xl shadow-xl program-detail-card">
+                </div>
+                
+                <!-- Program Info -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 text-gray-800">이벤트부스 개요</h2>
+                    <div class="space-y-4">
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            <strong>간단한 문화관광축제 설문</strong>에 참여하면 즉시 <strong>팝콘과 풍선</strong>을 
+                            받을 수 있는 달콤한 이벤트 공간입니다. 축제에 대한 여러분의 소중한 의견을 
+                            들려주시고 특별한 선물도 가져가세요!
+                        </p>
+                        
+                        <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-xl">
+                            <h4 class="text-xl font-bold mb-3 text-yellow-700">이벤트부스 특징</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-clipboard-list text-yellow-500 mr-3"></i>
+                                    <span>문화관광축제 설문조사 참여</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-popcorn text-yellow-500 mr-3 popcorn-animation"></i>
+                                    <span>갓 만든 따뜻한 팝콘 증정</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-heart text-yellow-500 mr-3 balloon-animation"></i>
+                                    <span>알록달록 예쁜 풍선 선물</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-clock text-yellow-500 mr-3"></i>
+                                    <span>축제 기간 내 상시 운영</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-users text-yellow-500 mr-3"></i>
+                                    <span>외국인 관광객 및 일반 시민 모두 참여</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="info-badge">무료 참여</span>
+                            <span class="info-badge">즉시 선물</span>
+                            <span class="info-badge">상시 운영</span>
+                            <span class="info-badge">누구나 참여</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Participation Process -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">참여 방법</h2>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-xl">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-clipboard-list text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">1단계: 설문 참여</h3>
+                        <p class="text-gray-600">
+                            글로벌존 부스 D동에서 문화관광축제 설문조사에 참여합니다
+                        </p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-check-circle text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">2단계: 완료 확인</h3>
+                        <p class="text-gray-600">
+                            담당자가 설문 완료를 확인한 후 선물을 준비합니다
+                        </p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-br from-red-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-gift text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">3단계: 선물 수령</h3>
+                        <p class="text-gray-600">
+                            따뜻한 팝콘과 예쁜 풍선을 받고 축제를 더욱 즐겁게!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Survey Preview -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">설문 내용 미리보기</h2>
+            
+            <div class="survey-preview">
+                <h3 class="text-2xl font-bold mb-6 text-center text-yellow-800">
+                    <i class="fas fa-poll mr-3"></i>2025 부평풍물대축제 만족도 조사
+                </h3>
+                
+                <div class="survey-question">
+                    <h4 class="font-bold mb-2 text-gray-800">
+                        <i class="fas fa-star text-yellow-500 mr-2"></i>
+                        축제 전체적인 만족도는 어떠신가요?
+                    </h4>
+                    <p class="text-sm text-gray-600">매우 만족 / 만족 / 보통 / 불만족 / 매우 불만족</p>
+                </div>
+                
+                <div class="survey-question">
+                    <h4 class="font-bold mb-2 text-gray-800">
+                        <i class="fas fa-heart text-red-500 mr-2"></i>
+                        가장 인상 깊었던 프로그램은?
+                    </h4>
+                    <p class="text-sm text-gray-600">외국인풍물체험 / 걷다보니부평 / 만만세 유나이티드 / 기타</p>
+                </div>
+                
+                <div class="survey-question">
+                    <h4 class="font-bold mb-2 text-gray-800">
+                        <i class="fas fa-globe text-blue-500 mr-2"></i>
+                        어느 나라에서 오셨나요?
+                    </h4>
+                    <p class="text-sm text-gray-600">국가명 또는 지역명을 선택해 주세요</p>
+                </div>
+                
+                <div class="survey-question">
+                    <h4 class="font-bold mb-2 text-gray-800">
+                        <i class="fas fa-comment text-green-500 mr-2"></i>
+                        축제에 대한 추가 의견이나 제안사항
+                    </h4>
+                    <p class="text-sm text-gray-600">자유롭게 의견을 작성해 주세요 (선택사항)</p>
+                </div>
+                
+                <div class="text-center mt-6 p-4 bg-yellow-100 rounded-lg">
+                    <p class="text-yellow-800 font-semibold">
+                        <i class="fas fa-clock mr-2"></i>
+                        설문 소요시간: 약 2~3분
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Rewards Section -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">제공되는 선물</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="reward-card">
+                    <div class="text-6xl mb-4 popcorn-animation">🍿</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">갓 만든 팝콘</h3>
+                    <div class="space-y-2 text-gray-700">
+                        <p><i class="fas fa-fire text-red-500 mr-2"></i><strong>따뜻한 상태로 제공</strong></p>
+                        <p><i class="fas fa-star text-yellow-500 mr-2"></i>프리미엄 옥수수 사용</p>
+                        <p><i class="fas fa-heart text-pink-500 mr-2"></i>달콤하고 고소한 맛</p>
+                        <p><i class="fas fa-leaf text-green-500 mr-2"></i>건강한 간식</p>
+                    </div>
+                    
+                    <div class="mt-4 p-3 bg-yellow-50 rounded-lg">
+                        <p class="text-yellow-700 text-sm">
+                            <i class="fas fa-info-circle mr-1"></i>
+                            현장에서 직접 만드는 신선한 팝콘을 드려요!
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="reward-card">
+                    <div class="text-6xl mb-4 balloon-animation">🎈</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">예쁜 풍선</h3>
+                    <div class="space-y-2 text-gray-700">
+                        <p><i class="fas fa-palette text-purple-500 mr-2"></i><strong>다양한 색상</strong></p>
+                        <p><i class="fas fa-smile text-yellow-500 mr-2"></i>축제 로고 인쇄</p>
+                        <p><i class="fas fa-camera text-blue-500 mr-2"></i>인증샷 소품으로 최고</p>
+                        <p><i class="fas fa-gift text-red-500 mr-2"></i>기념품으로 가져가세요</p>
+                    </div>
+                    
+                    <div class="mt-4 p-3 bg-pink-50 rounded-lg">
+                        <p class="text-pink-700 text-sm">
+                            <i class="fas fa-info-circle mr-1"></i>
+                            헬륨 풍선으로 하늘에 띄울 수 있어요!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Operating Info -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">운영 안내</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Operating Details -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                        <i class="fas fa-info-circle text-blue-500 mr-3"></i>운영 정보
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">📅 운영 기간</h4>
+                            <p class="text-gray-800">2025년 9월 27일(토) ~ 28일(일)</p>
+                            <p class="text-gray-600">오전 11시 ~ 오후 8시 상시 운영</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">📍 운영 장소</h4>
+                            <p class="text-gray-800 font-semibold">글로벌존 부스 D동</p>
+                            <p class="text-sm text-gray-600">부평역 인근 거리 B존</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">👥 참여 대상</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-globe text-blue-500 mr-3"></i>
+                                    <span>외국인 관광객</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-users text-blue-500 mr-3"></i>
+                                    <span>일반 시민</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-child text-blue-500 mr-3"></i>
+                                    <span>어린이부터 성인까지</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-heart text-blue-500 mr-3"></i>
+                                    <span>누구나 환영!</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Staff & Equipment -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                        <i class="fas fa-cogs text-green-500 mr-3"></i>운영 시설
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">👨‍💼 운영진</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-user-tie text-green-500 mr-3"></i>
+                                    <span>전담 담당자 1명</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-user-friends text-green-500 mr-3"></i>
+                                    <span>보조 스태프 (필요시)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-language text-green-500 mr-3"></i>
+                                    <span>다국어 지원 가능</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">🛠️ 운영 장비</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-fire text-red-500 mr-3"></i>
+                                    <span>팝콘 제작 기계 (렌탈)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-wind text-blue-500 mr-3"></i>
+                                    <span>헬륨 풍선 제작 장비</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-tablet text-purple-500 mr-3"></i>
+                                    <span>설문조사 태블릿/종이</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-box text-brown-500 mr-3"></i>
+                                    <span>선물 포장 및 보관함</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <p class="text-green-700 text-sm">
+                                <i class="fas fa-recycle mr-2"></i>
+                                <strong>친환경 운영:</strong> 생분해 가능한 포장재 사용
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Program Features -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">이벤트부스만의 특별함</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="feature-box">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">간편 참여</h4>
+                    <p class="text-sm text-gray-600">2~3분이면 끝나는 간단한 설문조사</p>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="text-4xl mb-4">🎁</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">즉시 보상</h4>
+                    <p class="text-sm text-gray-600">설문 완료 즉시 팝콘과 풍선을 드려요</p>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">의견 반영</h4>
+                    <p class="text-sm text-gray-600">여러분의 소중한 의견으로 축제가 발전해요</p>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="text-4xl mb-4">🌈</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">모든 연령</h4>
+                    <p class="text-sm text-gray-600">어린이부터 어른까지 누구나 참여 가능</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Participation Guidelines -->
+        <section class="mb-16">
+            <div class="bg-gradient-to-r from-yellow-600 to-orange-600 text-white rounded-2xl p-8">
+                <h2 class="text-3xl font-bold mb-6 text-center">참여 안내사항 | Guidelines</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">
+                            <i class="fas fa-check-circle mr-2"></i>참여 전 확인사항
+                        </h3>
+                        <div class="space-y-3 text-sm">
+                            <p><strong>소요시간:</strong> 설문 작성 2~3분 + 선물 수령</p>
+                            <p><strong>언어:</strong> 한국어, 영어, 기타 언어 지원</p>
+                            <p><strong>연령제한:</strong> 없음 (어린이는 보호자 동반)</p>
+                            <p><strong>참여횟수:</strong> 1인 1회 참여 원칙</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">
+                            <i class="fas fa-gift mr-2"></i>선물 수령 안내
+                        </h3>
+                        <div class="space-y-3 text-sm">
+                            <p><strong>팝콘:</strong> 따뜻할 때 드시는 것을 추천</p>
+                            <p><strong>풍선:</strong> 바람이 강한 날 주의하세요</p>
+                            <p><strong>포장:</strong> 친환경 포장재로 제공</p>
+                            <p><strong>보관:</strong> 축제 기념품으로 간직하세요</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Related Programs -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">다른 프로그램도 확인해보세요!</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="punmul challenge.jpg" alt="풍물챌린지" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">📱 풍물챌린지</h3>
+                        <p class="text-gray-600 text-sm mb-4">SNS 인증 이벤트</p>
+                        <a href="pungmul-challenge-detail.html" class="bg-pink-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-pink-600">
+                            자세히 보기
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="K-decolounge.jpg" alt="K-데코라운지" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">🎨 K-데코라운지</h3>
+                        <p class="text-gray-600 text-sm mb-4">한국 전통 소재 꾸미기</p>
+                        <a href="k-deco-detail.html" class="bg-purple-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-purple-600">
+                            자세히 보기
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="k-contents playground.jpg" alt="K-콘텐츠 놀이터" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">🎮 K-콘텐츠 놀이터</h3>
+                        <p class="text-gray-600 text-sm mb-4">한국 전통놀이 체험</p>
+                        <a href="k-content-detail.html" class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-green-600">
+                            자세히 보기
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Floating Apply Button -->
+    <a href="index.html#programs" class="floating-apply">
+        <i class="fas fa-clipboard-list mr-2"></i>설문 참여
+    </a>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">🇰🇷 2025 부평풍물대축제 글로벌존 🇰🇷</h3>
+            <p class="text-xl mb-6">Share Your Voice, Take Sweet Rewards!</p>
+            <p class="text-gray-400">
+                ⓒ INCHEON BUPYEONG. All Rights Reserved. | 
+                주최: 인천광역시 부평구 | 
+                주관: 부평구축제위원회, 부평구문화재단, 부평문화원
+            </p>
+            
+            <div class="mt-8">
+                <a href="index.html" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-full font-bold transition-all">
+                    <i class="fas fa-home mr-2"></i>메인 페이지로 돌아가기
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

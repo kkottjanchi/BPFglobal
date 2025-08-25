@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>풍물챌린지 | 2025 부평풍물대축제 글로벌존</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #E91E63 0%, #FF5722 50%, #E91E63 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .festival-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .festival-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .apply-btn {
+            background: linear-gradient(45deg, #E91E63, #FF5722);
+            transition: all 0.3s ease;
+        }
+        
+        .apply-btn:hover {
+            background: linear-gradient(45deg, #D81B60, #F4511E);
+            transform: scale(1.05);
+        }
+        
+        .program-detail-card {
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .info-badge {
+            background: linear-gradient(45deg, #E91E63, #FF5722);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 4px;
+        }
+        
+        .sns-platform {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .sns-platform:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.2);
+        }
+        
+        .feature-box {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .breadcrumb {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-btn:hover {
+            background: white;
+            color: #E91E63;
+        }
+        
+        .hashtag-display {
+            background: linear-gradient(45deg, #E91E63, #FF5722);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin: 10px 5px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .hashtag-display:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+        }
+        
+        .challenge-step {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .challenge-step:hover {
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #E91E63, #FF5722);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            margin: 0 auto 15px;
+        }
+        
+        .floating-apply {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #E91E63, #FF5722);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.4);
+            z-index: 1000;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating-apply:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(233, 30, 99, 0.6);
+        }
+        
+        .phone-mockup {
+            background: #333;
+            border-radius: 25px;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .floating-apply {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Hero Section with Breadcrumb -->
+    <header class="hero-gradient text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container mx-auto px-4 py-16 relative z-10">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb text-gray-800 mb-8">
+                <a href="index.html" class="hover:text-gray-600">
+                    <i class="fas fa-home mr-1"></i>홈
+                </a>
+                <i class="fas fa-chevron-right mx-2"></i>
+                <a href="index.html#programs" class="hover:text-gray-600">팝업 프로그램</a>
+                <i class="fas fa-chevron-right mx-2"></i>
+                <span class="font-bold">풍물챌린지</span>
+            </div>
+            
+            <!-- Back Button -->
+            <div class="mb-8">
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>메인으로 돌아가기</span>
+                </a>
+            </div>
+            
+            <div class="text-center">
+                <div class="text-6xl mb-4">📱</div>
+                <h1 class="text-4xl md:text-6xl font-black mb-4 text-shadow">
+                    풍물챌린지
+                </h1>
+                <p class="text-xl md:text-2xl mb-2">Pungmul Challenge</p>
+                <p class="text-lg text-gray-200">SNS로 전 세계에 알리는 K-풍물의 매력</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-12">
+        
+        <!-- Program Overview -->
+        <section class="mb-16">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Program Image -->
+                <div>
+                    <img src="punmul challenge.jpg" alt="풍물챌린지" 
+                         class="w-full rounded-2xl shadow-xl program-detail-card">
+                </div>
+                
+                <!-- Program Info -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 text-gray-800">챌린지 개요</h2>
+                    <div class="space-y-4">
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            <strong>풍물 체험 영상</strong>을 SNS에 업로드하고 지정된 해시태그를 사용하면 
+                            특별한 굿즈를 받을 수 있는 글로벌 SNS 이벤트입니다. 
+                            전 세계 사람들과 함께 K-풍물의 아름다움을 공유하세요!
+                        </p>
+                        
+                        <div class="bg-gradient-to-r from-pink-50 to-red-50 p-6 rounded-xl">
+                            <h4 class="text-xl font-bold mb-3 text-pink-700">챌린지 특징</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-video text-pink-500 mr-3"></i>
+                                    <span>풍물 체험 영상 촬영 및 업로드</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-hashtag text-pink-500 mr-3"></i>
+                                    <span>다국어 해시태그 이벤트 참여</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-gift text-pink-500 mr-3"></i>
+                                    <span>참여 확인 시 즉시 굿즈 증정</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-clock text-pink-500 mr-3"></i>
+                                    <span>축제 기간 내 상시 운영</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-globe text-pink-500 mr-3"></i>
+                                    <span>전 세계 다양한 SNS 플랫폼 지원</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="info-badge">무료 참여</span>
+                            <span class="info-badge">즉시 굿즈</span>
+                            <span class="info-badge">상시 운영</span>
+                            <span class="info-badge">글로벌 이벤트</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Challenge Steps -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">참여 방법</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="challenge-step">
+                    <div class="step-number">1</div>
+                    <h4 class="text-lg font-bold mb-3 text-gray-800">풍물 체험</h4>
+                    <p class="text-sm text-gray-600">
+                        글로벌존 부스 B동에서 풍물 악기를 체험하고 영상을 촬영하세요
+                    </p>
+                </div>
+                
+                <div class="challenge-step">
+                    <div class="step-number">2</div>
+                    <h4 class="text-lg font-bold mb-3 text-gray-800">영상 업로드</h4>
+                    <p class="text-sm text-gray-600">
+                        본인의 SNS 계정에 풍물 체험 영상을 업로드합니다
+                    </p>
+                </div>
+                
+                <div class="challenge-step">
+                    <div class="step-number">3</div>
+                    <h4 class="text-lg font-bold mb-3 text-gray-800">해시태그 추가</h4>
+                    <p class="text-sm text-gray-600">
+                        지정된 해시태그를 포함하여 게시물을 완성합니다
+                    </p>
+                </div>
+                
+                <div class="challenge-step">
+                    <div class="step-number">4</div>
+                    <h4 class="text-lg font-bold mb-3 text-gray-800">굿즈 수령</h4>
+                    <p class="text-sm text-gray-600">
+                        담당자에게 업로드 화면을 보여주고 특별 굿즈를 받으세요!
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Hashtags Section -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">공식 해시태그</h2>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-xl">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                        <i class="fas fa-hashtag text-pink-500 mr-3"></i>필수 해시태그
+                    </h3>
+                    <p class="text-gray-600">다음 해시태그 중 <strong>최소 2개 이상</strong>을 포함해 주세요</p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center mb-8">
+                    <div class="hashtag-display">#BPF</div>
+                    <div class="hashtag-display">#BupyeongPungmulFestival</div>
+                    <div class="hashtag-display">#富平传统音乐节</div>
+                    <div class="hashtag-display">#富平風物大祭り</div>
+                    <div class="hashtag-display">#LễhộiâmnhạctruyềnthốngBupyeong</div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-pink-100 to-red-100 rounded-xl p-6">
+                    <h4 class="text-lg font-bold mb-3 text-pink-800">
+                        <i class="fas fa-lightbulb mr-2"></i>해시태그 팁
+                    </h4>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
+                        <div>
+                            <ul class="space-y-2">
+                                <li>• <strong>한국어:</strong> #부평풍물대축제 #K풍물</li>
+                                <li>• <strong>영어:</strong> #KoreanTraditional #Pungmul</li>
+                                <li>• <strong>중국어:</strong> #韩国传统 #风物节</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="space-y-2">
+                                <li>• <strong>일본어:</strong> #韓国伝統 #プンムル</li>
+                                <li>• <strong>베트남어:</strong> #truyềnthốngHànQuốc</li>
+                                <li>• <strong>추가:</strong> 개인적인 감상도 자유롭게!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SNS Platforms -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">지원 SNS 플랫폼</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="sns-platform">
+                    <div class="text-4xl mb-4">📷</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">Instagram</h4>
+                    <p class="text-sm text-gray-600">스토리, 릴스, 피드 모두 가능</p>
+                </div>
+                
+                <div class="sns-platform">
+                    <div class="text-4xl mb-4">🎵</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">TikTok</h4>
+                    <p class="text-sm text-gray-600">짧은 풍물 챌린지 영상</p>
+                </div>
+                
+                <div class="sns-platform">
+                    <div class="text-4xl mb-4">📘</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">Facebook</h4>
+                    <p class="text-sm text-gray-600">게시물, 스토리 업로드</p>
+                </div>
+                
+                <div class="sns-platform">
+                    <div class="text-4xl mb-4">🐦</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">X (Twitter)</h4>
+                    <p class="text-sm text-gray-600">영상 트윗 및 리트윗</p>
+                </div>
+                
+                <div class="sns-platform">
+                    <div class="text-4xl mb-4">▶️</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-808">YouTube</h4>
+                    <p class="text-sm text-gray-600">Shorts 및 일반 영상</p>
+                </div>
+                
+                <div class="sns-platform">
+                    <div class="text-4xl mb-4">💬</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">위챗 스토리</h4>
+                    <p class="text-sm text-gray-600">WeChat Moments</p>
+                </div>
+                
+                <div class="sns-platform">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">기타 플랫폼</h4>
+                    <p class="text-sm text-gray-600">Snapchat, LinkedIn 등</p>
+                </div>
+                
+                <div class="sns-platform">
+                    <div class="text-4xl mb-4">🌐</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">개인 블로그</h4>
+                    <p class="text-sm text-gray-600">네이버, 티스토리 등</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Challenge Zone -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">체험존 안내</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Zone Info -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                        <i class="fas fa-map-marker-alt text-pink-500 mr-3"></i>풍물챌린지 존
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">📍 운영 장소</h4>
+                            <p class="text-gray-800 font-semibold">글로벌존 부스 B동</p>
+                            <p class="text-sm text-gray-600">부평역 인근 거리 B존</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">🕐 운영 시간</h4>
+                            <p class="text-gray-800">2025년 9월 27일(토) ~ 28일(일)</p>
+                            <p class="text-gray-800">오전 11시 ~ 오후 8시 상시 운영</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">🎯 체험 내용</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-music text-pink-500 mr-3"></i>
+                                    <span>풍물 악기 체험 (징, 장구, 꽹과리, 북)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-camera text-pink-500 mr-3"></i>
+                                    <span>등신대와 함께 포토존 촬영</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-couch text-pink-500 mr-3"></i>
+                                    <span>돗자리 휴식 공간 제공</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-video text-pink-500 mr-3"></i>
+                                    <span>참고 영상 시청 및 따라하기</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Prizes & Guidelines -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                        <i class="fas fa-gift text-green-500 mr-3"></i>참여 혜택 및 안내
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">🎁 증정 굿즈</h4>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <ul class="space-y-2 text-green-700">
+                                    <li>• 부평풍물대축제 기념품</li>
+                                    <li>• K-풍물 스티커 세트</li>
+                                    <li>• 전통 문양 에코백</li>
+                                    <li>• 축제 기념 뱃지</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">📋 참여 조건</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-500 mr-3"></i>
+                                    <span>SNS 계정 보유 (공개 설정)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-500 mr-3"></i>
+                                    <span>해시태그 2개 이상 포함</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-500 mr-3"></i>
+                                    <span>담당자에게 업로드 화면 확인</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-500 mr-3"></i>
+                                    <span>1인 1회 참여 (중복 참여 가능)</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">⚠️ 주의사항</h4>
+                            <div class="bg-yellow-50 p-4 rounded-lg">
+                                <p class="text-yellow-700 text-sm">
+                                    • 영상은 축제 홍보 목적으로 활용될 수 있습니다<br>
+                                    • 개인정보 보호를 위해 얼굴 모자이크 처리 가능<br>
+                                    • 저작권 문제없는 배경음악 사용 권장
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sample Content -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">참고 영상 예시</h2>
+            
+            <div class="bg-gradient-to-r from-pink-600 to-red-600 text-white rounded-2xl p-8">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">
+                            <i class="fas fa-video mr-2"></i>이런 영상을 찍어보세요!
+                        </h3>
+                        <ul class="space-y-3 text-sm">
+                            <li><strong>💡 아이디어 1:</strong> 풍물 악기 하나씩 소개하며 연주</li>
+                            <li><strong>💡 아이디어 2:</strong> 친구들과 함께하는 풍물 합주</li>
+                            <li><strong>💡 아이디어 3:</strong> 본인 나라 음악과 풍물 비교</li>
+                            <li><strong>💡 아이디어 4:</strong> 풍물 배우는 과정 타임랩스</li>
+                        </ul>
+                        
+                        <div class="mt-6 bg-white bg-opacity-20 p-4 rounded-lg">
+                            <p class="text-sm">
+                                <i class="fas fa-star mr-2"></i>
+                                <strong>꿀팁:</strong> 15~30초 짧은 영상이 가장 인기가 많아요!
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="phone-mockup">
+                        <div class="bg-gray-800 rounded-t-lg p-4 text-center">
+                            <i class="fas fa-mobile-alt text-3xl mb-2"></i>
+                            <p class="text-sm">SNS 업로드 예시</p>
+                        </div>
+                        <div class="bg-gray-600 p-4 rounded-b-lg">
+                            <p class="text-xs mb-2">"한국 전통 풍물 체험 중! 🥁"</p>
+                            <p class="text-xs text-gray-300">
+                                #BPF #BupyeongPungmulFestival<br>
+                                #부평풍물대축제 #K풍물<br>
+                                #KoreanTraditional #Pungmul
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Related Programs -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">다른 프로그램도 확인해보세요!</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="pungmul-class.jpg" alt="외국인풍물체험" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">🥁 외국인풍물체험</h3>
+                        <p class="text-gray-600 text-sm mb-4">전통 사물놀이 체험</p>
+                        <a href="detail-template.html" class="bg-orange-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-orange-600">
+                            자세히 보기
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="K-decolounge.jpg" alt="K-데코라운지" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">🎨 K-데코라운지</h3>
+                        <p class="text-gray-600 text-sm mb-4">한국 전통 소재 꾸미기</p>
+                        <a href="k-deco-detail.html" class="bg-purple-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-purple-600">
+                            자세히 보기
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="event booth.jpg" alt="이벤트부스" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">🎁 이벤트부스</h3>
+                        <p class="text-gray-600 text-sm mb-4">설문참여 & 굿즈 증정</p>
+                        <a href="event-booth-detail.html" class="bg-yellow-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-yellow-600">
+                            자세히 보기
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Floating Apply Button -->
+    <a href="index.html#programs" class="floating-apply">
+        <i class="fas fa-camera mr-2"></i>지금 참여
+    </a>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">🇰🇷 2025 부평풍물대축제 글로벌존 🇰🇷</h3>
+            <p class="text-xl mb-6">Challenge with Korea, Share the Beat!</p>
+            <p class="text-gray-400">
+                ⓒ INCHEON BUPYEONG. All Rights Reserved. | 
+                주최: 인천광역시 부평구 | 
+                주관: 부평구축제위원회, 부평구문화재단, 부평문화원
+            </p>
+            
+            <div class="mt-8">
+                <a href="index.html" class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-full font-bold transition-all">
+                    <i class="fas fa-home mr-2"></i>메인 페이지로 돌아가기
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

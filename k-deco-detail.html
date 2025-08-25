@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-데코라운지 | 2025 부평풍물대축제 글로벌존</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #9C27B0 0%, #E91E63 50%, #9C27B0 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .festival-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .festival-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .apply-btn {
+            background: linear-gradient(45deg, #9C27B0, #E91E63);
+            transition: all 0.3s ease;
+        }
+        
+        .apply-btn:hover {
+            background: linear-gradient(45deg, #8E24AA, #D81B60);
+            transform: scale(1.05);
+        }
+        
+        .program-detail-card {
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .info-badge {
+            background: linear-gradient(45deg, #9C27B0, #E91E63);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 4px;
+        }
+        
+        .material-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .material-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(156, 39, 176, 0.2);
+        }
+        
+        .feature-box {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .breadcrumb {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-btn:hover {
+            background: white;
+            color: #9C27B0;
+        }
+        
+        .craft-process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .process-step {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #9C27B0, #E91E63);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            margin: 0 auto 15px;
+        }
+        
+        .floating-apply {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #9C27B0, #E91E63);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 10px 30px rgba(156, 39, 176, 0.4);
+            z-index: 1000;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating-apply:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(156, 39, 176, 0.6);
+        }
+        
+        .sparkle {
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(90deg) scale(1.1); }
+            50% { transform: rotate(180deg) scale(1); }
+            75% { transform: rotate(270deg) scale(1.1); }
+        }
+        
+        @media (max-width: 768px) {
+            .floating-apply {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Hero Section with Breadcrumb -->
+    <header class="hero-gradient text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container mx-auto px-4 py-16 relative z-10">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb text-gray-800 mb-8">
+                <a href="index.html" class="hover:text-gray-600">
+                    <i class="fas fa-home mr-1"></i>홈
+                </a>
+                <i class="fas fa-chevron-right mx-2"></i>
+                <a href="index.html#programs" class="hover:text-gray-600">팝업 프로그램</a>
+                <i class="fas fa-chevron-right mx-2"></i>
+                <span class="font-bold">K-데코라운지</span>
+            </div>
+            
+            <!-- Back Button -->
+            <div class="mb-8">
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>메인으로 돌아가기</span>
+                </a>
+            </div>
+            
+            <div class="text-center">
+                <div class="text-6xl mb-4 sparkle">🎨</div>
+                <h1 class="text-4xl md:text-6xl font-black mb-4 text-shadow">
+                    K-데코라운지
+                </h1>
+                <p class="text-xl md:text-2xl mb-2">K-Deco Lounge</p>
+                <p class="text-lg text-gray-200">한국 전통 소재로 만드는 나만의 특별한 작품</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-12">
+        
+        <!-- Program Overview -->
+        <section class="mb-16">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Program Image -->
+                <div>
+                    <img src="K-decolounge.jpg" alt="K-데코라운지" 
+                         class="w-full rounded-2xl shadow-xl program-detail-card">
+                </div>
+                
+                <!-- Program Info -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 text-gray-800">프로그램 개요</h2>
+                    <div class="space-y-4">
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            <strong>한국의 아름다운 전통 소재</strong>를 활용해 세상에 하나뿐인 
+                            나만의 작품을 만드는 특별한 공예 체험 공간입니다. 
+                            노리개, 자개 스티커, 전통 천 등으로 개성 넘치는 작품을 완성해보세요!
+                        </p>
+                        
+                        <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-xl">
+                            <h4 class="text-xl font-bold mb-3 text-purple-700">체험 하이라이트</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-gem text-purple-500 mr-3"></i>
+                                    <span>전통 노리개 만들기 체험</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-sparkles text-purple-500 mr-3"></i>
+                                    <span>자개 스티커 아트 (Mother-of-pearl Art)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-cut text-purple-500 mr-3"></i>
+                                    <span>전통 장식천과 마스킹테이프 활용</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-palette text-purple-500 mr-3"></i>
+                                    <span>개인 소장품 꾸미기 (스마트폰 케이스, 소품 등)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-recycle text-purple-500 mr-3"></i>
+                                    <span>친환경 소재 활용 (ESG 연계)</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="info-badge">무료 체험</span>
+                            <span class="info-badge">재료 제공</span>
+                            <span class="info-badge">작품 가져가기</span>
+                            <span class="info-badge">60분 회전</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Materials & Tools -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">제공되는 전통 재료</h2>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-xl">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="material-card">
+                        <div class="text-4xl mb-4">💎</div>
+                        <h4 class="text-lg font-bold mb-2 text-gray-800">노리개</h4>
+                        <p class="text-sm text-gray-600">한국 전통 장신구 소재와 도구</p>
+                    </div>
+                    
+                    <div class="material-card">
+                        <div class="text-4xl mb-4">🐚</div>
+                        <h4 class="text-lg font-bold mb-2 text-gray-800">자개 스티커</h4>
+                        <p class="text-sm text-gray-600">반짝이는 자개를 활용한 아트 소재</p>
+                    </div>
+                    
+                    <div class="material-card">
+                        <div class="text-4xl mb-4">🎋</div>
+                        <h4 class="text-lg font-bold mb-2 text-gray-800">전통 천</h4>
+                        <p class="text-sm text-gray-600">한복 소재의 아름다운 전통 직물</p>
+                    </div>
+                    
+                    <div class="material-card">
+                        <div class="text-4xl mb-4">🎨</div>
+                        <h4 class="text-lg font-bold mb-2 text-gray-800">옥장식</h4>
+                        <p class="text-sm text-gray-600">전통 옥 소재를 활용한 장식품</p>
+                    </div>
+                    
+                    <div class="material-card">
+                        <div class="text-4xl mb-4">🏷️</div>
+                        <h4 class="text-lg font-bold mb-2 text-gray-800">전통 마스킹테이프</h4>
+                        <p class="text-sm text-gray-600">한국 전통 패턴의 특별한 테이프</p>
+                    </div>
+                    
+                    <div class="material-card">
+                        <div class="text-4xl mb-4">✂️</div>
+                        <h4 class="text-lg font-bold mb-2 text-gray-800">공예 도구</h4>
+                        <p class="text-sm text-gray-600">가위, 풀, 핀셋 등 전문 도구</p>
+                    </div>
+                    
+                    <div class="material-card">
+                        <div class="text-4xl mb-4">📱</div>
+                        <h4 class="text-lg font-bold mb-2 text-gray-800">개인 소품</h4>
+                        <p class="text-sm text-gray-600">본인 소장품 꾸미기 가능</p>
+                    </div>
+                    
+                    <div class="material-card">
+                        <div class="text-4xl mb-4">🌿</div>
+                        <h4 class="text-lg font-bold mb-2 text-gray-800">친환경 소재</h4>
+                        <p class="text-sm text-gray-600">지속가능한 천연 재료 사용</p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 p-6 bg-purple-50 rounded-lg">
+                    <h4 class="font-bold text-purple-800 mb-3">
+                        <i class="fas fa-info-circle mr-2"></i>재료 안내사항
+                    </h4>
+                    <div class="grid md:grid-cols-3 gap-4 text-sm text-gray-700">
+                        <div>
+                            <p class="font-bold">재료 구성</p>
+                            <p class="text-purple-600">1인당 1세트 (약 3,500원 상당)</p>
+                        </div>
+                        <div>
+                            <p class="font-bold">테이블 구성</p>
+                            <p class="text-purple-600">6인용 테이블별 공동 도구</p>
+                        </div>
+                        <div>
+                            <p class="font-bold">추가 재료</p>
+                            <p class="text-purple-600">요청 시 추가 재료 제공 가능</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Craft Process -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">체험 과정</h2>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-xl">
+                <div class="craft-process">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h4 class="text-lg font-bold mb-2 text-gray-800">재료 선택</h4>
+                        <p class="text-sm text-gray-600">
+                            원하는 전통 소재와 꾸밀 개인 소품을 선택합니다
+                        </p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h4 class="text-lg font-bold mb-2 text-gray-800">디자인 구상</h4>
+                        <p class="text-sm text-gray-600">
+                            QR 코드로 예시 사진을 보며 나만의 디자인을 생각해보세요
+                        </p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h4 class="text-lg font-bold mb-2 text-gray-800">제작 시작</h4>
+                        <p class="text-sm text-gray-600">
+                            담당자 안내를 받으며 차근차근 작품을 만들어갑니다
+                        </p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h4 class="text-lg font-bold mb-2 text-gray-800">완성 & 인증</h4>
+                        <p class="text-sm text-gray-600">
+                            완성된 작품으로 기념사진 촬영 및 SNS 해시태그 인증
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 p-6 bg-pink-50 rounded-lg">
+                    <h4 class="font-bold text-pink-800 mb-3">
+                        <i class="fas fa-clock mr-2"></i>소요 시간 및 회전률
+                    </h4>
+                    <div class="grid md:grid-cols-3 gap-4 text-sm">
+                        <div>
+                            <p class="font-bold text-gray-700">체험 시간</p>
+                            <p class="text-pink-600">개인당 약 45~60분</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-700">회전률</p>
+                            <p class="text-pink-600">60분 회전 (1회 최대 48명)</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-700">일일 수용인원</p>
+                            <p class="text-pink-600">2일간 약 672명 목표</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Operating Details -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">운영 안내</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Schedule -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                        <i class="fas fa-calendar-alt text-purple-500 mr-3"></i>운영 일정
+                    </h3>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-lg font-bold mb-3 text-gray-700">📅 축제 기간</h4>
+                        <p class="text-xl font-bold text-purple-600 mb-2">2025년 9월 27일(토) ~ 28일(일)</p>
+                        <p class="text-gray-600">오전 11시 ~ 오후 8시 상시 운영</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-lg font-bold mb-3 text-gray-700">📍 운영 장소</h4>
+                        <p class="text-gray-800 font-semibold">글로벌존 부스 D, E동</p>
+                        <p class="text-sm text-gray-600">부평역 인근 거리 B존</p>
+                    </div>
+                    
+                    <div class="bg-purple-50 p-4 rounded-lg">
+                        <p class="text-sm text-gray-700">
+                            <i class="fas fa-users text-purple-500 mr-2"></i>
+                            6인용 테이블 8식이 준비되어 있으며, 담당자 3인이 교대로 운영합니다.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Participation Info -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                        <i class="fas fa-hand-paper text-green-500 mr-3"></i>참여 방법
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">🎯 참여 대상</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-globe text-green-500 mr-3"></i>
+                                    <span>외국인 관광객 (사전신청 가능)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-users text-green-500 mr-3"></i>
+                                    <span>일반 시민 (현장신청)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-child text-green-500 mr-3"></i>
+                                    <span>어린이부터 성인까지 누구나</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">📝 신청 방법</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start">
+                                    <i class="fas fa-laptop text-blue-500 mt-1 mr-3"></i>
+                                    <span>사전 신청 + 현장 신청 모두 가능</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-clock text-blue-500 mt-1 mr-3"></i>
+                                    <span>대기 시간이 있을 수 있음</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-hand-holding-heart text-blue-500 mt-1 mr-3"></i>
+                                    <span>선착순 입장 (테이블 여석 시)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Program Features -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">K-데코라운지만의 특별함</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="feature-box">
+                    <div class="text-4xl mb-4">🎨</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">전통 미학</h4>
+                    <p class="text-sm text-gray-600">한국 전통 소재로 만드는 현대적 감각의 작품</p>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="text-4xl mb-4">💝</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">특별한 기념품</h4>
+                    <p class="text-sm text-gray-600">세상에 하나뿐인 나만의 작품을 가져가세요</p>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="text-4xl mb-4">🌍</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">친환경 체험</h4>
+                    <p class="text-sm text-gray-600">지속가능한 재료로 만드는 ESG 가치 실현</p>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="text-4xl mb-4">🤳</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">SNS 인증</h4>
+                    <p class="text-sm text-gray-600">완성작과 함께하는 인증샷으로 추억 남기기</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Application Info -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">참여 신청</h2>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-xl max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-purple-700">
+                            <i class="fas fa-laptop mr-2"></i>사전 신청 (권장)
+                        </h3>
+                        <ul class="space-y-3 text-gray-700 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i>
+                                <span>대기 시간 단축</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i>
+                                <span>원하는 재료 미리 예약</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i>
+                                <span>확실한 참여 보장</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="https://forms.gle/zzH1JU4KfVtzBxjT9" target="_blank" 
+                           class="apply-btn text-white px-6 py-3 rounded-full text-lg font-bold inline-block text-center w-full">
+                            <i class="fas fa-external-link-alt mr-2"></i>지금 신청하기
+                        </a>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-blue-700">
+                            <i class="fas fa-walking mr-2"></i>현장 참여
+                        </h3>
+                        <ul class="space-y-3 text-gray-700 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-info-circle text-blue-500 mt-1 mr-3"></i>
+                                <span>테이블 여석 시 즉시 참여</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-info-circle text-blue-500 mt-1 mr-3"></i>
+                                <span>대기 시간이 있을 수 있음</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-info-circle text-blue-500 mt-1 mr-3"></i>
+                                <span>선착순 입장</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <p class="text-blue-700 text-sm">
+                                <i class="fas fa-lightbulb mr-2"></i>
+                                <strong>팁:</strong> 개인 소장품(스마트폰 케이스, 다이어리 등)을 가져오면 더욱 특별한 작품을 만들 수 있어요!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- What to Bring -->
+                <div class="mt-8 p-6 bg-gray-50 rounded-lg">
+                    <h4 class="font-bold text-gray-800 mb-3">
+                        <i class="fas fa-suitcase mr-2"></i>준비물 및 가져오면 좋은 것들
+                    </h4>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
+                        <div>
+                            <h5 class="font-bold mb-2">✅ 꼭 준비할 것</h5>
+                            <ul class="space-y-1">
+                                <li>• 창작 의지와 상상력</li>
+                                <li>• 완성작을 담을 작은 가방</li>
+                                <li>• 좋은 마음가짐</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="font-bold mb-2">💡 가져오면 더 좋은 것</h5>
+                            <ul class="space-y-1">
+                                <li>• 꾸미고 싶은 개인 소품</li>
+                                <li>• 스마트폰 케이스, 다이어리</li>
+                                <li>• 포토카드나 작은 액자</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Tips & Guidelines -->
+        <section class="mb-16">
+            <div class="bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-2xl p-8">
+                <h2 class="text-3xl font-bold mb-6 text-center">체험 가이드 | Craft Guidelines</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">
+                            <i class="fas fa-palette mr-2"></i>창작 팁
+                        </h3>
+                        <div class="space-y-3 text-sm">
+                            <p><strong>디자인:</strong> QR 코드로 다양한 예시 작품을 먼저 확인해보세요</p>
+                            <p><strong>색상:</strong> 전통 소재의 자연스러운 조화를 활용하세요</p>
+                            <p><strong>배치:</strong> 작은 것부터 큰 것 순으로 차근차근 배치</p>
+                            <p><strong>완성도:</strong> 욕심내지 말고 간결하고 깔끔하게</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">
+                            <i class="fas fa-heart mr-2"></i>체험 에티켓
+                        </h3>
+                        <div class="space-y-3 text-sm">
+                            <p><strong>공유:</strong> 테이블 도구는 6명이 함께 사용합니다</p>
+                            <p><strong>정리:</strong> 사용 후에는 깔끔하게 정리해주세요</p>
+                            <p><strong>시간:</strong> 다른 참여자를 위해 시간을 지켜주세요</p>
+                            <p><strong>도움:</strong> 궁금한 점은 언제든 담당자에게 문의하세요</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Related Programs -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">다른 프로그램도 확인해보세요!</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="k-contents playground.jpg" alt="K-콘텐츠 놀이터" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">🎮 K-콘텐츠 놀이터</h3>
+                        <p class="text-gray-600 text-sm mb-4">한국 전통놀이 체험</p>
+                        <a href="k-content-detail.html" class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-green-600">
+                            자세히 보기
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="punmul challenge.jpg" alt="풍물챌린지" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">📱 풍물챌린지</h3>
+                        <p class="text-gray-600 text-sm mb-4">SNS 인증 이벤트</p>
+                        <a href="pungmul-challenge-detail.html" class="bg-pink-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-pink-600">
+                            자세히 보기
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="event booth.jpg" alt="이벤트부스" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">🎁 이벤트부스</h3>
+                        <p class="text-gray-600 text-sm mb-4">설문참여 & 굿즈 증정</p>
+                        <a href="event-booth-detail.html" class="bg-yellow-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-yellow-600">
+                            자세히 보기
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Floating Apply Button -->
+    <a href="https://forms.gle/zzH1JU4KfVtzBxjT9" target="_blank" class="floating-apply">
+        <i class="fas fa-palette mr-2"></i>체험 신청
+    </a>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">🇰🇷 2025 부평풍물대축제 글로벌존 🇰🇷</h3>
+            <p class="text-xl mb-6">Create with Korea, Take Home Memories!</p>
+            <p class="text-gray-400">
+                ⓒ INCHEON BUPYEONG. All Rights Reserved. | 
+                주최: 인천광역시 부평구 | 
+                주관: 부평구축제위원회, 부평구문화재단, 부평문화원
+            </p>
+            
+            <div class="mt-8">
+                <a href="index.html" class="bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-full font-bold transition-all">
+                    <i class="fas fa-home mr-2"></i>메인 페이지로 돌아가기
+                </a>
+            </div>
+        </footer>
+    </footer>
+    
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
