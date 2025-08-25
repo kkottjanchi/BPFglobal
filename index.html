@@ -443,6 +443,85 @@
             border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
+        
+        /* 🔥 카운트다운 타이머 스타일 🔥 */
+        .countdown-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .countdown-title {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #FFE66D, 0 0 20px #FFE66D, 0 0 30px #FFE66D; }
+            to { text-shadow: 0 0 20px #FF6B6B, 0 0 30px #FF6B6B, 0 0 40px #FF6B6B; }
+        }
+        
+        .countdown-timer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 20px 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+        
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 60px;
+        }
+        
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #FFE66D;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-family: 'Courier New', monospace;
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: white;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+        
+        .countdown-separator {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FFE66D;
+            margin: 0 5px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+        
+        @media (max-width: 768px) {
+            .countdown-number {
+                font-size: 1.8rem;
+            }
+            .countdown-item {
+                min-width: 45px;
+            }
+            .countdown-timer {
+                padding: 15px 20px;
+                gap: 8px;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -575,6 +654,34 @@
                     🌍 세계인과 함께하는 K-전통문화 체험 플랫폼<br>
                     <span class="text-lg text-yellow-200">Play Pungmul, Feel Korea, Share Culture</span>
                 </p>
+                
+                <!-- 🔥 카운트다운 타이머 🔥 -->
+                <div class="countdown-container mb-8">
+                    <div class="countdown-title text-lg font-bold text-yellow-300 mb-3">
+                        🚀 글로벌존 오픈까지 D-DAY! 🚀
+                    </div>
+                    <div class="countdown-timer" id="countdownTimer">
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="days">000</div>
+                            <div class="countdown-label">일</div>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="hours">00</div>
+                            <div class="countdown-label">시간</div>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="minutes">00</div>
+                            <div class="countdown-label">분</div>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="seconds">00</div>
+                            <div class="countdown-label">초</div>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- 축제 정보 카드들 -->
                 <div class="hero-info">
@@ -1010,6 +1117,42 @@
     </footer>
 
     <script>
+        // 🔥 실시간 카운트다운 타이머 🔥
+        function updateCountdown() {
+            // 축제 시작일: 2025년 9월 26일 09:00 (한국시간)
+            const festivalDate = new Date('2025-09-26T09:00:00+09:00').getTime();
+            const now = new Date().getTime();
+            const distance = festivalDate - now;
+            
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(3, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            } else {
+                // 축제 시작! 🎉
+                document.getElementById('days').textContent = '🎉';
+                document.getElementById('hours').textContent = '축제';
+                document.getElementById('minutes').textContent = '시작';
+                document.getElementById('seconds').textContent = '🎉';
+                
+                // 타이머 제목도 변경
+                const titleElement = document.querySelector('.countdown-title');
+                if (titleElement) {
+                    titleElement.innerHTML = '🎉 부평풍물대축제 진행중! 🎉';
+                }
+            }
+        }
+        
+        // 페이지 로드시 즉시 실행 및 매초 업데이트
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
