@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>걷다보니부평 | 2025 부평풍물대축제 글로벌존</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .festival-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .festival-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .apply-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+        }
+        
+        .apply-btn:hover {
+            background: linear-gradient(45deg, #5a6fd8, #6a4190);
+            transform: scale(1.05);
+        }
+        
+        .program-detail-card {
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .info-badge {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 4px;
+        }
+        
+        .schedule-item {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 0 10px 10px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .schedule-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .feature-box {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .breadcrumb {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-btn:hover {
+            background: white;
+            color: #667eea;
+        }
+        
+        .tour-route {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .tour-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .tour-step::after {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 60px;
+            width: 2px;
+            height: 40px;
+            background: #667eea;
+        }
+        
+        .tour-step:last-child::after {
+            display: none;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .floating-apply {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            z-index: 1000;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating-apply:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+        
+        @media (max-width: 768px) {
+            .floating-apply {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Hero Section with Breadcrumb -->
+    <header class="hero-gradient text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container mx-auto px-4 py-16 relative z-10">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb text-gray-800 mb-8">
+                <a href="index.html" class="hover:text-gray-600">
+                    <i class="fas fa-home mr-1"></i>홈
+                </a>
+                <i class="fas fa-chevron-right mx-2"></i>
+                <a href="index.html#programs" class="hover:text-gray-600">시그니처 프로그램</a>
+                <i class="fas fa-chevron-right mx-2"></i>
+                <span class="font-bold">걷다보니부평</span>
+            </div>
+            
+            <!-- Back Button -->
+            <div class="mb-8">
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>메인으로 돌아가기</span>
+                </a>
+            </div>
+            
+            <div class="text-center">
+                <div class="text-6xl mb-4">🚶</div>
+                <h1 class="text-4xl md:text-6xl font-black mb-4 text-shadow">
+                    걷다보니부평
+                </h1>
+                <p class="text-xl md:text-2xl mb-2">Bupyeong Underground Tour</p>
+                <p class="text-lg text-gray-200">부평 지하상가를 통해 발견하는 새로운 부평의 매력</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-12">
+        
+        <!-- Program Overview -->
+        <section class="mb-16">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Program Image -->
+                <div>
+                    <img src="bupyeong-tour.jpg" alt="걷다보니부평" 
+                         class="w-full rounded-2xl shadow-xl program-detail-card">
+                </div>
+                
+                <!-- Program Info -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 text-gray-800">프로그램 개요</h2>
+                    <div class="space-y-4">
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            부평의 숨겨진 보석 같은 공간, <strong>부평 지하상가</strong>를 현지 가이드와 함께 
+                            걸으며 부평의 역사와 문화를 체험하는 특별한 투어 프로그램입니다.
+                        </p>
+                        
+                        <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl">
+                            <h4 class="text-xl font-bold mb-3 text-blue-700">투어 하이라이트</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-walking text-blue-500 mr-3"></i>
+                                    <span>부평 지하상가 문화투어 (3시간 코스)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-user-tie text-blue-500 mr-3"></i>
+                                    <span>전문 로컬 가이드 동행</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-language text-blue-500 mr-3"></i>
+                                    <span>다국어 통역 지원</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-percent text-blue-500 mr-3"></i>
+                                    <span>지역 상권 할인권 제공</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-book text-blue-500 mr-3"></i>
+                                    <span>스탬프 투어 리플렛 제공</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="info-badge">무료 참여</span>
+                            <span class="info-badge">통역 지원</span>
+                            <span class="info-badge">할인권 제공</span>
+                            <span class="info-badge">가이드 동행</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Tour Route -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">투어 코스 안내</h2>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-xl">
+                <div class="tour-route">
+                    <div class="tour-step">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">부평 4동 성당 정문</h4>
+                            <p class="text-gray-600">집결 장소에서 출석체크 및 투어 시작</p>
+                            <p class="text-sm text-blue-600 mt-1"><i class="fas fa-clock mr-1"></i>집결 시간: 11:00 / 15:30</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tour-step">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">부평지하상가 입구</h4>
+                            <p class="text-gray-600">부평 지하상가의 역사와 문화 소개</p>
+                            <p class="text-sm text-blue-600 mt-1"><i class="fas fa-info-circle mr-1"></i>지하상가 개요 및 안전 안내</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tour-step">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">문화 체험 구간</h4>
+                            <p class="text-gray-600">전통 시장과 현대 상점이 조화된 공간 탐방</p>
+                            <p class="text-sm text-blue-600 mt-1"><i class="fas fa-shopping-bag mr-1"></i>로컬 맛집 및 특산품 소개</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tour-step">
+                        <div class="step-number">4</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">포토존 & 체험</h4>
+                            <p class="text-gray-600">기념사진 촬영 및 문화체험 활동</p>
+                            <p class="text-sm text-blue-600 mt-1"><i class="fas fa-camera mr-1"></i>인증샷 촬영 및 스탬프 수집</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tour-step">
+                        <div class="step-number">5</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">투어 종료</h4>
+                            <p class="text-gray-600">할인권 배부 및 자유 쇼핑 시간</p>
+                            <p class="text-sm text-blue-600 mt-1"><i class="fas fa-gift mr-1"></i>지역 상권 할인 혜택 안내</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 p-6 bg-blue-50 rounded-lg">
+                    <h4 class="font-bold text-blue-800 mb-3">
+                        <i class="fas fa-route mr-2"></i>투어 정보
+                    </h4>
+                    <div class="grid md:grid-cols-3 gap-4 text-sm">
+                        <div>
+                            <p class="font-bold text-gray-700">총 소요시간</p>
+                            <p class="text-blue-600">약 3시간</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-700">이동 거리</p>
+                            <p class="text-blue-600">약 2km (지하)</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-700">난이도</p>
+                            <p class="text-blue-600">쉬움 (누구나 참여)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Schedule & Details -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">운영 일정 및 세부사항</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Schedule -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                        <i class="fas fa-calendar-alt text-blue-500 mr-3"></i>운영 일정
+                    </h3>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-lg font-bold mb-3 text-gray-700">📅 운영 일자</h4>
+                        <p class="text-xl font-bold text-blue-600 mb-2">2025년 9월 27일(토)</p>
+                        <p class="text-gray-600">1일 2회 운영</p>
+                    </div>
+                    
+                    <h4 class="text-lg font-bold mb-3 text-gray-700">🕐 운영 시간</h4>
+                    <div class="space-y-2">
+                        <div class="schedule-item">
+                            <div class="font-bold text-gray-800">1차: 11:00 ~ 14:30</div>
+                            <div class="text-sm text-gray-600">정원: 15~20명 | 3시간 30분</div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="font-bold text-gray-800">2차: 15:30 ~ 19:00</div>
+                            <div class="text-sm text-gray-600">정원: 15~20명 | 3시간 30분</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded">
+                        <p class="text-sm text-gray-700">
+                            <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
+                            부평문화원과 협력하여 진행되며, 일정은 변경될 수 있습니다.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Participation Info -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                        <i class="fas fa-users text-green-500 mr-3"></i>참가 안내
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">👥 참가 대상</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-globe text-green-500 mr-3"></i>
+                                    <span>외국인 관광객 (사전신청 우선)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-user-friends text-green-500 mr-3"></i>
+                                    <span>일반 시민 (현장신청 가능)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-graduation-cap text-green-500 mr-3"></i>
+                                    <span>유학생 및 다문화가정</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">🎁 제공 혜택</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-language text-purple-500 mr-3"></i>
+                                    <span>다국어 통역 서비스</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-percent text-purple-500 mr-3"></i>
+                                    <span>지역 상권 할인권</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-book text-purple-500 mr-3"></i>
+                                    <span>스탬프 투어 리플렛</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-camera text-purple-500 mr-3"></i>
+                                    <span>가이드 동행 및 포토 서비스</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">📞 문의처</h4>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-gray-800 font-semibold">부평문화원</p>
+                                <p class="text-sm text-gray-600">
+                                    <i class="fas fa-phone mr-2"></i>032-505-9001
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Program Features -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">투어의 특별함</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="feature-box">
+                    <div class="text-4xl mb-4">🏛️</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">역사 탐방</h4>
+                    <p class="text-sm text-gray-600">부평 지하상가의 역사와 문화 이야기를 들어보세요</p>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="text-4xl mb-4">🛍️</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">쇼핑 체험</h4>
+                    <p class="text-sm text-gray-600">전통 시장과 현대 상점이 어우러진 특별한 쇼핑</p>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="text-4xl mb-4">🍜</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">맛집 투어</h4>
+                    <p class="text-sm text-gray-600">부평 지역 대표 맛집과 특산품을 소개받으세요</p>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="text-4xl mb-4">🤝</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">로컬 소통</h4>
+                    <p class="text-sm text-gray-600">현지인과의 자연스러운 만남과 소통의 기회</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Application Info -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">신청 방법</h2>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-xl max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-green-700">
+                            <i class="fas fa-laptop mr-2"></i>사전 신청 (권장)
+                        </h3>
+                        <ul class="space-y-3 text-gray-700 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>온라인 신청서 작성</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>투어 시간 선택 가능 (1차/2차)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>확실한 참여 보장</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="https://forms.gle/UbUPgw3M39cqGXbd9" target="_blank" 
+                           class="apply-btn text-white px-6 py-3 rounded-full text-lg font-bold inline-block text-center w-full">
+                            <i class="fas fa-external-link-alt mr-2"></i>지금 신청하기
+                        </a>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-blue-700">
+                            <i class="fas fa-walking mr-2"></i>현장 신청
+                        </h3>
+                        <ul class="space-y-3 text-gray-700 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-info-circle text-blue-500 mt-1 mr-3"></i>
+                                <span>각 회차 20명 미만 시 가능</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-info-circle text-blue-500 mt-1 mr-3"></i>
+                                <span>부평 4동 성당 정문에서 접수</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-info-circle text-blue-500 mt-1 mr-3"></i>
+                                <span>선착순 마감</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <p class="text-blue-700 text-sm">
+                                <i class="fas fa-lightbulb mr-2"></i>
+                                <strong>주의:</strong> 3시간 코스이므로 편한 신발과 복장을 권장합니다!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Required Information -->
+                <div class="mt-8 p-6 bg-gray-50 rounded-lg">
+                    <h4 class="font-bold text-gray-800 mb-3">
+                        <i class="fas fa-clipboard-list mr-2"></i>신청 시 필요 정보
+                    </h4>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
+                        <ul class="space-y-2">
+                            <li>• 이름 및 참여 인원수</li>
+                            <li>• 국적 (Nationality)</li>
+                            <li>• 연령대 및 성별</li>
+                            <li>• 언어 가능 여부</li>
+                        </ul>
+                        <ul class="space-y-2">
+                            <li>• 방문 목적</li>
+                            <li>• 연락처 (Emergency Contact)</li>
+                            <li>• 특별 요청사항</li>
+                            <li>• 개인정보 활용 동의</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Notice & Tips -->
+        <section class="mb-16">
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl p-8">
+                <h2 class="text-3xl font-bold mb-6 text-center">투어 안내사항 | Tour Guidelines</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">
+                            <i class="fas fa-info-circle mr-2"></i>참여 전 확인사항
+                        </h3>
+                        <div class="space-y-3 text-sm">
+                            <p><strong>복장:</strong> 편한 신발과 복장 (3시간 보행)</p>
+                            <p><strong>준비물:</strong> 개인 물병, 카메라 (선택사항)</p>
+                            <p><strong>언어:</strong> 한국어, 영어, 기타 언어 통역 지원</p>
+                            <p><strong>접근성:</strong> 지하상가 특성상 계단 이용 필요</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">
+                            <i class="fas fa-heart mr-2"></i>투어 TIP
+                        </h3>
+                        <div class="space-y-3 text-sm">
+                            <p><strong>포토존:</strong> SNS 인증샷을 위한 포토존 다수 준비</p>
+                            <p><strong>쇼핑:</strong> 투어 후 자유 쇼핑 시간 및 할인 혜택</p>
+                            <p><strong>맛집:</strong> 가이드 추천 로컬 맛집 정보 제공</p>
+                            <p><strong>문화체험:</strong> 부평의 역사와 문화 이야기 청취</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Related Programs -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">다른 프로그램도 확인해보세요!</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="pungmul-class.jpg" alt="외국인풍물체험" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">🥁 외국인풍물체험</h3>
+                        <p class="text-gray-600 text-sm mb-4">전통 사물놀이 체험</p>
+                        <a href="detail-template.html" class="bg-orange-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-orange-600">
+                            자세히 보기
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="manmanse-united.jpg" alt="만만세 유나이티드" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">🎭 만만세 유나이티드</h3>
+                        <p class="text-gray-600 text-sm mb-4">다국적 야간 퍼레이드</p>
+                        <a href="manmanse-detail.html" class="bg-pink-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-pink-600">
+                            자세히 보기
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="k-contents playground.jpg" alt="K-콘텐츠 놀이터" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">🎮 K-콘텐츠 놀이터</h3>
+                        <p class="text-gray-600 text-sm mb-4">한국 전통놀이 체험</p>
+                        <a href="k-content-detail.html" class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-green-600">
+                            자세히 보기
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Floating Apply Button -->
+    <a href="https://forms.gle/UbUPgw3M39cqGXbd9" target="_blank" class="floating-apply">
+        <i class="fas fa-route mr-2"></i>투어 신청
+    </a>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">🇰🇷 2025 부평풍물대축제 글로벌존 🇰🇷</h3>
+            <p class="text-xl mb-6">Walk with Bupyeong, Feel Korea!</p>
+            <p class="text-gray-400">
+                ⓒ INCHEON BUPYEONG. All Rights Reserved. | 
+                주최: 인천광역시 부평구 | 
+                주관: 부평구축제위원회, 부평구문화재단, 부평문화원
+            </p>
+            
+            <div class="mt-8">
+                <a href="index.html" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-bold transition-all">
+                    <i class="fas fa-home mr-2"></i>메인 페이지로 돌아가기
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
