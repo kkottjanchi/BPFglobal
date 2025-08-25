@@ -100,6 +100,31 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
         
+        /* 🎯 카드 높이 균등화 CSS */
+        .signature-programs .grid {
+            align-items: stretch;
+        }
+        
+        .program-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .program-card .p-8 {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .program-card .text-center.mb-6 {
+            flex-grow: 1;
+        }
+        
+        .program-card .flex.gap-4 {
+            margin-top: auto;
+        }
+        
         /* ===== 여기부터 새로운 플로팅 버튼 CSS ===== */
         .floating-quick-apply {
             position: fixed;
@@ -616,7 +641,7 @@
         </div>
         <div style="text-align: center; margin-top: 15px;">
             <button onclick="toggleQuickApply()" style="background: #6c757d; color: white; border: none; padding: 10px 30px; border-radius: 20px; cursor: pointer;">
-                닫기
+                Close
             </button>
         </div>
     </div>
@@ -725,7 +750,7 @@
             <div class="grid lg:grid-cols-3 gap-8 items-start">
                 <!-- 왼쪽: 글로벌존 포스터 -->
                 <div class="lg:col-span-1">
-                    <img src="global-zone-main-poster.jpg" alt="2025 부평풍물대축제 글로벌존" 
+                    <img src="global-zone-main-poster.jpg" alt="2025 Bupyeong Pungmul Festival Global Zone" 
                          class="w-full rounded-2xl shadow-xl">
                 </div>
                 
@@ -786,7 +811,7 @@
             <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Festival Overview</h2>
             <div class="grid lg:grid-cols-3 gap-8 items-center">
                 <div class="lg:col-span-1">
-                    <img src="festival-poster-en.jpg" alt="2025 부평풍물대축제" class="rounded-lg shadow-xl w-full">
+                    <img src="festival-poster-en.jpg" alt="2025 Bupyeong Pungmul Festival" class="rounded-lg shadow-xl w-full">
                 </div>
                 <div class="lg:col-span-2">
                     <div class="space-y-6">
@@ -829,7 +854,7 @@
                 
                 <!-- 외국인풍물체험 -->
                 <div class="program-card bg-white shadow-xl">
-                    <img src="pungmul-class.jpg" alt="외국인풍물체험" class="w-full h-64 object-cover">
+                    <img src="pungmul-class.jpg" alt="Pungmul Experience for Foreigners" class="w-full h-64 object-cover">
                     <div class="p-8">
                         <h3 class="text-2xl font-bold mb-4 text-center">🥁 Pungmul Experience for Foreigners</h3>
                         <p class="text-gray-600 text-center mb-6">
@@ -850,12 +875,12 @@
 
                 <!-- 걷다보니부평 -->
                 <div class="program-card bg-white shadow-xl">
-                    <img src="bupyeong-tour.jpg" alt="걷다보니부평" class="w-full h-64 object-cover">
+                    <img src="bupyeong-tour.jpg" alt="Bupyeong Walking Tour" class="w-full h-64 object-cover">
                     <div class="p-8">
                         <h3 class="text-2xl font-bold mb-4 text-center">🚶 Bupyeong Walking Tour</h3>
                         <p class="text-gray-600 text-center mb-6">
                             Bupyeong underground shopping culture tour (3-hour course) + Local guide<br>
-                            + 통역 지원 + 할인권 제공
+                            + Interpretation support + Discount coupons
                         </p>
                         <div class="flex gap-4">
                             <a href="tour-detail-en.html" class="flex-1 bg-blue-500 text-white py-3 rounded-lg text-center font-bold hover:bg-blue-600 transition">
@@ -875,8 +900,8 @@
                     <div class="p-8">
                         <h3 class="text-2xl font-bold mb-4 text-center">🎭 Manmanse United Parade</h3>
                         <p class="text-gray-600 text-center mb-6">
-                            다국적 참여자들과 함께하는 야간 퍼레이드 + 한복 착용<br>
-                            + 태극기 퍼포먼스 + 단체사진
+                            Night parade with multinational participants + Hanbok wearing<br>
+                            + Korean flag performance + Group photos
                         </p>
                         <div class="flex gap-4">
                             <a href="manmanse-detail-en.html" class="flex-1 bg-blue-500 text-white py-3 rounded-lg text-center font-bold hover:bg-blue-600 transition">
@@ -906,7 +931,7 @@
                         <h3 class="text-xl font-bold text-center mb-3 text-pink-600">Pungmul Challenge</h3>
                         <p class="text-sm text-gray-600 text-center mb-4">
                             Pungmul experience + SNS hashtag authentication<br>
-                            굿즈 증정 / 상시 운영
+                            Goods giveaway / Always open
                         </p>
                         <div class="flex gap-2">
                             <a href="k-content-detail-en.html" class="flex-1 bg-blue-500 text-white py-2 rounded text-center text-sm font-bold hover:bg-blue-600">
@@ -927,7 +952,7 @@
                         <h3 class="text-xl font-bold text-center mb-3 text-green-600">K-Content Playground</h3>
                         <p class="text-sm text-gray-600 text-center mb-4">
                             Korean traditional games experience<br>
-                            승자 달고나 상품 / 매시간 운영
+                            Winner Dalgona prizes / Hourly operation
                         </p>
                         <div class="flex gap-2">
                             <a href="k-content-detail-en.html" class="flex-1 bg-blue-500 text-white py-2 rounded text-center text-sm font-bold hover:bg-blue-600">
@@ -948,7 +973,7 @@
                         <h3 class="text-xl font-bold text-center mb-3 text-purple-600">K-Deco Lounge</h3>
                         <p class="text-sm text-gray-600 text-center mb-4">
                             Korean traditional craft decoration experience<br>
-                            노리개, 자개스티커 / 60분 회전
+                            Traditional ornaments, mother-of-pearl stickers / 60-min rotation
                         </p>
                         <div class="flex gap-2">
                             <a href="k-deco-detail-en.html" class="flex-1 bg-blue-500 text-white py-2 rounded text-center text-sm font-bold hover:bg-blue-600">
@@ -968,8 +993,8 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-center mb-3 text-yellow-600">Event Booth</h3>
                         <p class="text-sm text-gray-600 text-center mb-4">
-                            설문 참여 시 굿즈 증정<br>
-                            팝콘 & 풍선 / 상시 운영
+                            Goods giveaway for survey participation<br>
+                            Popcorn & balloons / Always available
                         </p>
                         <div class="flex gap-2">
                             <a href="k-content-detail-en.html" class="flex-1 bg-blue-500 text-white py-2 rounded text-center text-sm font-bold hover:bg-blue-600">
@@ -1044,7 +1069,7 @@
                     
                     <h4 class="text-xl font-bold mb-4"><i class="fas fa-subway mr-2 text-blue-400"></i>지하철</h4>
                     <ul class="text-lg space-y-2 mb-6">
-                        <li>• 1호선 부평역 1번 출구 도보 5분</li>
+                        <li>• Line 1 Bupyeong Station Exit 1, 5 minutes walk</li>
                         <li>• 인천지하철 1호선 부평역</li>
                     </ul>
                     
@@ -1173,7 +1198,7 @@
             dropdown.classList.toggle('show');
         }
         
-        // 드롭다운 외부 클릭시 닫기
+        // 드롭다운 외부 클릭시 Close
         document.addEventListener('click', function(event) {
             const dropdown = document.getElementById('quickApplyDropdown');
             const button = document.querySelector('.floating-quick-apply');
