@@ -135,8 +135,9 @@
             left: 30px;
             top: 60px;
             width: 2px;
-            height: 40px;
+            height: calc(100% + 20px);
             background: #667eea;
+            z-index: 1;
         }
         
         .tour-step:last-child::after {
@@ -147,6 +148,8 @@
             width: 60px;
             height: 60px;
             background: linear-gradient(45deg, #667eea, #764ba2);
+            position: relative;
+            z-index: 2;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -190,6 +193,26 @@
                 right: 20px;
                 padding: 12px 20px;
                 font-size: 16px;
+            }
+            
+            .tour-step {
+                margin-bottom: 30px;
+            }
+            
+            .tour-step::after {
+                left: 24px;
+                height: calc(100% + 30px);
+            }
+            
+            .step-number {
+                width: 48px;
+                height: 48px;
+                font-size: 18px;
+                margin-right: 15px;
+            }
+            
+            .tour-route {
+                padding: 10px 0;
             }
         }
     </style>
@@ -342,20 +365,20 @@
                 
                 <div class="mt-8 p-6 bg-blue-50 rounded-lg">
                     <h4 class="font-bold text-blue-800 mb-3">
-                        <i class="fas fa-route mr-2"></i>투어 정보
+                        <i class="fas fa-route mr-2"></i>Tour Information
                     </h4>
                     <div class="grid md:grid-cols-3 gap-4 text-sm">
                         <div>
-                            <p class="font-bold text-gray-700">총 소요시간</p>
-                            <p class="text-blue-600">약 3시간</p>
+                            <p class="font-bold text-gray-700">Total Duration</p>
+                            <p class="text-blue-600">About 3 hours</p>
                         </div>
                         <div>
                             <p class="font-bold text-gray-700">이동 거리</p>
                             <p class="text-blue-600">약 2km (지하)</p>
                         </div>
                         <div>
-                            <p class="font-bold text-gray-700">난이도</p>
-                            <p class="text-blue-600">쉬움 (누구나 참여)</p>
+                            <p class="font-bold text-gray-700">Difficulty Level</p>
+                            <p class="text-blue-600">Easy (Anyone can participate)</p>
                         </div>
                     </div>
                 </div>
@@ -364,37 +387,37 @@
         
         <!-- Schedule & Details -->
         <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">운영 일정 및 세부사항</h2>
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Operating Schedule & Details</h2>
             
             <div class="grid lg:grid-cols-2 gap-8">
                 <!-- Schedule -->
                 <div class="bg-white rounded-2xl p-8 shadow-xl">
                     <h3 class="text-2xl font-bold mb-6 text-gray-800">
-                        <i class="fas fa-calendar-alt text-blue-500 mr-3"></i>운영 일정
+                        <i class="fas fa-calendar-alt text-blue-500 mr-3"></i>Operating Schedule
                     </h3>
                     
                     <div class="mb-6">
-                        <h4 class="text-lg font-bold mb-3 text-gray-700">📅 운영 일자</h4>
-                        <p class="text-xl font-bold text-blue-600 mb-2">2025년 9월 27일(토)</p>
-                        <p class="text-gray-600">1일 2회 운영</p>
+                        <h4 class="text-lg font-bold mb-3 text-gray-700">📅 Operating Date</h4>
+                        <p class="text-xl font-bold text-blue-600 mb-2">September 27, 2025 (Saturday)</p>
+                        <p class="text-gray-600">2 sessions per day</p>
                     </div>
                     
-                    <h4 class="text-lg font-bold mb-3 text-gray-700">🕐 운영 시간</h4>
+                    <h4 class="text-lg font-bold mb-3 text-gray-700">🕐 Operating Hours</h4>
                     <div class="space-y-2">
                         <div class="schedule-item">
-                            <div class="font-bold text-gray-800">1차: 11:00 ~ 14:30</div>
-                            <div class="text-sm text-gray-600">정원: 15~20명 | 3시간 30분</div>
+                            <div class="font-bold text-gray-800">Session 1: 11:00 ~ 14:30</div>
+                            <div class="text-sm text-gray-600">Capacity: 15-20 people | 3 hours 30 minutes</div>
                         </div>
                         <div class="schedule-item">
-                            <div class="font-bold text-gray-800">2차: 15:30 ~ 19:00</div>
-                            <div class="text-sm text-gray-600">정원: 15~20명 | 3시간 30분</div>
+                            <div class="font-bold text-gray-800">Session 2: 15:30 ~ 19:00</div>
+                            <div class="text-sm text-gray-600">Capacity: 15-20 people | 3 hours 30 minutes</div>
                         </div>
                     </div>
                     
                     <div class="mt-6 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded">
                         <p class="text-sm text-gray-700">
                             <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
-                            부평문화원과 협력하여 진행되며, 일정은 변경될 수 있습니다.
+                            Conducted in cooperation with Bupyeong Cultural Center. Schedule subject to change.
                         </p>
                     </div>
                 </div>
@@ -402,12 +425,12 @@
                 <!-- Participation Info -->
                 <div class="bg-white rounded-2xl p-8 shadow-xl">
                     <h3 class="text-2xl font-bold mb-6 text-gray-800">
-                        <i class="fas fa-users text-green-500 mr-3"></i>참가 안내
+                        <i class="fas fa-users text-green-500 mr-3"></i>Participation Guide
                     </h3>
                     
                     <div class="space-y-6">
                         <div>
-                            <h4 class="text-lg font-bold mb-3 text-gray-700">👥 참가 대상</h4>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">👥 Target Participants</h4>
                             <ul class="space-y-2 text-gray-700">
                                 <li class="flex items-center">
                                     <i class="fas fa-globe text-green-500 mr-3"></i>
@@ -437,19 +460,19 @@
                                 </li>
                                 <li class="flex items-center">
                                     <i class="fas fa-book text-purple-500 mr-3"></i>
-                                    <span>스탬프 투어 리플렛</span>
+                                    <span>Stamp tour leaflet</span>
                                 </li>
                                 <li class="flex items-center">
                                     <i class="fas fa-camera text-purple-500 mr-3"></i>
-                                    <span>Guide Accompaniment 및 포토 서비스</span>
+                                    <span>Guide accompaniment & photo service</span>
                                 </li>
                             </ul>
                         </div>
                         
                         <div>
-                            <h4 class="text-lg font-bold mb-3 text-gray-700">📞 문의처</h4>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">📞 Contact Information</h4>
                             <div class="bg-gray-50 p-4 rounded-lg">
-                                <p class="text-gray-800 font-semibold">부평문화원</p>
+                                <p class="text-gray-800 font-semibold">Bupyeong Cultural Center</p>
                                 <p class="text-sm text-gray-600">
                                     <i class="fas fa-phone mr-2"></i>032-505-9001
                                 </p>
@@ -462,19 +485,19 @@
         
         <!-- Program Features -->
         <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">투어의 특별함</h2>
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Special Features of the Tour</h2>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="feature-box">
                     <div class="text-4xl mb-4">🏛️</div>
-                    <h4 class="text-lg font-bold mb-2 text-gray-800">역사 탐방</h4>
-                    <p class="text-sm text-gray-600">부평 지하상가의 역사와 문화 이야기를 들어보세요</p>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">Historical Exploration</h4>
+                    <p class="text-sm text-gray-600">Discover the history and cultural stories of Bupyeong Underground Shopping Center</p>
                 </div>
                 
                 <div class="feature-box">
                     <div class="text-4xl mb-4">🛍️</div>
-                    <h4 class="text-lg font-bold mb-2 text-gray-800">쇼핑 체험</h4>
-                    <p class="text-sm text-gray-600">전통 시장과 현대 상점이 어우러진 특별한 쇼핑</p>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">Shopping Experience</h4>
+                    <p class="text-sm text-gray-600">Unique shopping experience where traditional markets and modern stores blend together</p>
                 </div>
                 
                 <div class="feature-box">
@@ -485,8 +508,8 @@
                 
                 <div class="feature-box">
                     <div class="text-4xl mb-4">🤝</div>
-                    <h4 class="text-lg font-bold mb-2 text-gray-800">로컬 소통</h4>
-                    <p class="text-sm text-gray-600">현지인과의 자연스러운 만남과 소통의 기회</p>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">Local Communication</h4>
+                    <p class="text-sm text-gray-600">Natural encounters and communication opportunities with locals</p>
                 </div>
             </div>
         </section>
@@ -512,24 +535,24 @@
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span>확실한 참여 보장</span>
+                                <span>Guaranteed participation</span>
                             </li>
                         </ul>
                         
                         <a href="https://forms.gle/UbUPgw3M39cqGXbd9" target="_blank" 
                            class="apply-btn text-white px-6 py-3 rounded-full text-lg font-bold inline-block text-center w-full">
-                            <i class="fas fa-external-link-alt mr-2"></i>지금 신청하기
+                            <i class="fas fa-external-link-alt mr-2"></i>Apply Now
                         </a>
                     </div>
                     
                     <div>
                         <h3 class="text-xl font-bold mb-4 text-blue-700">
-                            <i class="fas fa-walking mr-2"></i>현장 신청
+                            <i class="fas fa-walking mr-2"></i>On-site Registration
                         </h3>
                         <ul class="space-y-3 text-gray-700 mb-6">
                             <li class="flex items-start">
                                 <i class="fas fa-info-circle text-blue-500 mt-1 mr-3"></i>
-                                <span>각 회차 20명 미만 시 가능</span>
+                                <span>Available when less than 20 people per session</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-info-circle text-blue-500 mt-1 mr-3"></i>
@@ -537,14 +560,14 @@
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-info-circle text-blue-500 mt-1 mr-3"></i>
-                                <span>선착순 마감</span>
+                                <span>First come, first served</span>
                             </li>
                         </ul>
                         
                         <div class="bg-blue-50 p-4 rounded-lg">
                             <p class="text-blue-700 text-sm">
                                 <i class="fas fa-lightbulb mr-2"></i>
-                                <strong>주의:</strong> 3시간 코스이므로 편한 신발과 복장을 권장합니다!
+                                <strong>Note:</strong> Comfortable shoes and clothing recommended for the 3-hour course!
                             </p>
                         </div>
                     </div>
@@ -553,19 +576,19 @@
                 <!-- Required Information -->
                 <div class="mt-8 p-6 bg-gray-50 rounded-lg">
                     <h4 class="font-bold text-gray-800 mb-3">
-                        <i class="fas fa-clipboard-list mr-2"></i>신청 시 필요 정보
+                        <i class="fas fa-clipboard-list mr-2"></i>Required Information for Application
                     </h4>
                     <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
                         <ul class="space-y-2">
-                            <li>• 이름 및 참여 인원수</li>
+                            <li>• Name and number of participants</li>
                             <li>• 국적 (Nationality)</li>
-                            <li>• 연령대 및 성별</li>
-                            <li>• 언어 가능 여부</li>
+                            <li>• Age group and gender</li>
+                            <li>• Language preference</li>
                         </ul>
                         <ul class="space-y-2">
-                            <li>• 방문 목적</li>
+                            <li>• Purpose of visit</li>
                             <li>• 연락처 (Emergency Contact)</li>
-                            <li>• 특별 요청사항</li>
+                            <li>• Special requests</li>
                             <li>• Personal information usage consent</li>
                         </ul>
                     </div>
@@ -616,7 +639,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">🥁 Pungmul Experience for Foreigners</h3>
                         <p class="text-gray-600 text-sm mb-4">Traditional Samulnori Experience</p>
-                        <a href="detail-template-en.html" class="bg-orange-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-orange-600">
+                        <a href="detail-template-en.html" class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-600">
                             Learn More
                         </a>
                     </div>
