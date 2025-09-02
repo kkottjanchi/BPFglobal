@@ -135,9 +135,8 @@
             left: 30px;
             top: 60px;
             width: 2px;
-            height: calc(100% + 20px);
+            height: 40px;
             background: #667eea;
-            z-index: 1;
         }
         
         .tour-step:last-child::after {
@@ -148,8 +147,6 @@
             width: 60px;
             height: 60px;
             background: linear-gradient(45deg, #667eea, #764ba2);
-            position: relative;
-            z-index: 2;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -194,26 +191,6 @@
                 padding: 12px 20px;
                 font-size: 16px;
             }
-            
-            .tour-step {
-                margin-bottom: 30px;
-            }
-            
-            .tour-step::after {
-                left: 24px;
-                height: calc(100% + 30px);
-            }
-            
-            .step-number {
-                width: 48px;
-                height: 48px;
-                font-size: 18px;
-                margin-right: 15px;
-            }
-            
-            .tour-route {
-                padding: 10px 0;
-            }
         }
     </style>
 </head>
@@ -247,8 +224,8 @@
                 <h1 class="text-4xl md:text-6xl font-black mb-4 text-shadow">
                     Walking Through Bupyeong
                 </h1>
-                <p class="text-xl md:text-2xl mb-2">Bupyeong Underground Tour</p>
-                <p class="text-lg text-gray-200">Discover the new charm of Bupyeong through the underground shopping center</p>
+                <p class="text-xl md:text-2xl mb-2">Bupyeong Walking Tour</p>
+                <p class="text-lg text-gray-200">Discover the new charm of Bupyeong through shopping tours in the original downtown commercial districts</p>
             </div>
         </div>
     </header>
@@ -270,32 +247,31 @@
                     <h2 class="text-3xl font-bold mb-6 text-gray-800">Program Overview</h2>
                     <div class="space-y-4">
                         <p class="text-lg text-gray-700 leading-relaxed">
-                            A special tour program to experience the history and culture of Bupyeong by walking through 
-                            <strong>Bupyeong Underground Shopping Center</strong>, a hidden gem of Bupyeong, with a local guide.
+                            The Walking Through Bupyeong Shopping Tour is a local stamp tour program where tourists explore <strong>Bupyeong Market, Bupyeong Cultural Street, and Bupyeong Underground Shopping Center</strong> with a commentator and participate directly in mission programs.
                         </p>
                         
                         <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl">
                             <h4 class="text-xl font-bold mb-3 text-blue-700">Tour Highlights</h4>
                             <ul class="space-y-2 text-gray-700">
                                 <li class="flex items-center">
-                                    <i class="fas fa-walking text-blue-500 mr-3"></i>
-                                    <span>Bupyeong Underground Cultural Tour (3-hour course)</span>
+                                    <i class="fas fa-shopping-cart text-blue-500 mr-3"></i>
+                                    <span>Bupyeong Shopping District Tour (3-hour course)</span>
                                 </li>
                                 <li class="flex items-center">
                                     <i class="fas fa-user-tie text-blue-500 mr-3"></i>
-                                    <span>Professional local guide accompaniment</span>
+                                    <span>Professional local guide and safety personnel accompaniment</span>
                                 </li>
                                 <li class="flex items-center">
                                     <i class="fas fa-language text-blue-500 mr-3"></i>
-                                    <span>Multilingual interpretation support</span>
+                                    <span>English interpretation support</span>
                                 </li>
                                 <li class="flex items-center">
-                                    <i class="fas fa-percent text-blue-500 mr-3"></i>
-                                    <span>Local business discount coupons provided</span>
+                                    <i class="fas fa-utensils text-blue-500 mr-3"></i>
+                                    <span>Meals provided</span>
                                 </li>
                                 <li class="flex items-center">
-                                    <i class="fas fa-book text-blue-500 mr-3"></i>
-                                    <span>Stamp tour leaflet provided</span>
+                                    <i class="fas fa-gamepad text-blue-500 mr-3"></i>
+                                    <span>Mission programs and vouchers</span>
                                 </li>
                             </ul>
                         </div>
@@ -322,14 +298,14 @@
                         <div>
                             <h4 class="text-xl font-bold text-gray-800 mb-2">Bupyeong 4-dong Catholic Church Main Gate</h4>
                             <p class="text-gray-600">Attendance check and tour start at gathering place</p>
-                            <p class="text-sm text-blue-600 mt-1"><i class="fas fa-clock mr-1"></i>Gathering time: 11:00 AM / 3:30 PM</p>
+                            <p class="text-sm text-blue-600 mt-1"><i class="fas fa-clock mr-1"></i>Gathering time: 11:00 / 15:30</p>
                         </div>
                     </div>
                     
                     <div class="tour-step">
                         <div class="step-number">2</div>
                         <div>
-                            <h4 class="text-xl font-bold text-gray-800 mb-2">Bupyeong Kkang Market Entrance + Customer Rest Area</h4>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">Bupyeong Kkang Market Entrance + Kkang Market Customer Rest Area</h4>
                             <p class="text-gray-600">Introduction to the history and culture of Bupyeong Market</p>
                             <p class="text-gray-600">Bupyeong Market mission tour (fruit, side dishes, photo printing vouchers provided)</p>
                             <p class="text-gray-600">Bibimbap making experience and meal</p>
@@ -435,15 +411,15 @@
                             <ul class="space-y-2 text-gray-700">
                                 <li class="flex items-center">
                                     <i class="fas fa-globe text-green-500 mr-3"></i>
-                                    <span>외국인 관광객 (사전신청 우선)</span>
+                                    <span>Foreign tourists (advance registration preferred)</span>
                                 </li>
                                 <li class="flex items-center">
                                     <i class="fas fa-user-friends text-green-500 mr-3"></i>
-                                    <span>일반 시민 (현장신청 가능)</span>
+                                    <span>General citizens (on-site registration available)</span>
                                 </li>
                                 <li class="flex items-center">
                                     <i class="fas fa-graduation-cap text-green-500 mr-3"></i>
-                                    <span>유학생 및 다문화가정</span>
+                                    <span>International students and multicultural families</span>
                                 </li>
                             </ul>
                         </div>
@@ -456,16 +432,16 @@
                                     <span>English interpretation service</span>
                                 </li>
                                 <li class="flex items-center">
-                                    <i class="fas fa-utensils text-purple-500 mr-3"></i>
+                                    <i class="fas fa-percent text-purple-500 mr-3"></i>
                                     <span>Meals provided</span>
                                 </li>
                                 <li class="flex items-center">
-                                    <i class="fas fa-gamepad text-purple-500 mr-3"></i>
-                                    <span>Vouchers available for missions</span>
+                                    <i class="fas fa-book text-purple-500 mr-3"></i>
+                                    <span>Mission programs and vouchers</span>
                                 </li>
                                 <li class="flex items-center">
                                     <i class="fas fa-camera text-purple-500 mr-3"></i>
-                                    <span>Guide accompaniment & photo service</span>
+                                    <span>Guide accompaniment and photo service</span>
                                 </li>
                             </ul>
                         </div>
@@ -588,8 +564,8 @@
                         <div class="space-y-3 text-sm">
                             <p><strong>Attire:</strong> Comfortable shoes and clothing (3-hour walking)</p>
                             <p><strong>What to bring:</strong> Personal water bottle, camera (optional)</p>
-                            <p><strong>Language:</strong> Korean, English, other languages with Translation Support</p>
-                            <p><strong>Accessibility:</strong> Stairs required due to underground shopping center characteristics</p>
+                            <p><strong>Language:</strong> Korean, English, and other language interpretation support</p>
+                            <p><strong>Accessibility:</strong> Surface and underground course connection, stairs required</p>
                         </div>
                     </div>
                     
@@ -613,11 +589,11 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <img src="pungmul-class_1.jpg?v=1756739112" alt="Pungmul Experience for Foreigners" class="w-full h-48 object-cover">
+                    <img src="pungmul-class_1.jpg?v=1756739112" alt="Pungmul Class" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">🥁 Pungmul Experience for Foreigners</h3>
-                        <p class="text-gray-600 text-sm mb-4">Traditional Samulnori Experience</p>
-                        <a href="detail-template-en.html" class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-600">
+                        <h3 class="text-xl font-bold mb-2">🥁 Pungmul Class</h3>
+                        <p class="text-gray-600 text-sm mb-4">Traditional Pungmulnori Experience</p>
+                        <a href="detail-template-en.html" class="bg-orange-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-orange-600">
                             Learn More
                         </a>
                     </div>
@@ -650,7 +626,7 @@
     
     <!-- Floating Apply Button -->
     <a href="https://forms.gle/UbUPgw3M39cqGXbd9" target="_blank" class="floating-apply">
-        <i class="fas fa-route mr-2"></i>Tour Registration
+        <i class="fas fa-route mr-2"></i>Apply for Tour
     </a>
     
     <!-- Footer -->
@@ -660,8 +636,8 @@
             <p class="text-xl mb-6">Walk with Bupyeong, Feel Korea!</p>
             <p class="text-gray-400">
                 ⓒ INCHEON BUPYEONG. All Rights Reserved. | 
-                Host: Incheon Bupyeong-gu | 
-                Organizers: Bupyeong Festival Committee, Bupyeong Cultural Foundation, Bupyeong Cultural Center
+                Hosted by: Incheon Bupyeong District | 
+                Organized by: Bupyeong Festival Committee, Bupyeong Cultural Foundation, Bupyeong Cultural Center
             </p>
             
             <div class="mt-8">
