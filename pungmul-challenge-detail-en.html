@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pungmul Challenge | 2025 Bupyeong Pungmul Festival Global Zone</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700;900&display=swap');
+        
+        body {
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #E91E63 0%, #FF5722 50%, #E91E63 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .festival-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .festival-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .apply-btn {
+            background: linear-gradient(45deg, #E91E63, #FF5722);
+            transition: all 0.3s ease;
+        }
+        
+        .apply-btn:hover {
+            background: linear-gradient(45deg, #D81B60, #F4511E);
+            transform: scale(1.05);
+        }
+        
+        .program-detail-card {
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .info-badge {
+            background: linear-gradient(45deg, #E91E63, #FF5722);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 4px;
+        }
+        
+        .sns-platform {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .sns-platform:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.2);
+        }
+        
+        .feature-box {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .breadcrumb {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-btn:hover {
+            background: white;
+            color: #E91E63;
+        }
+        
+        .hashtag-display {
+            background: linear-gradient(45deg, #E91E63, #FF5722);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin: 10px 5px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .hashtag-display:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+        }
+        
+        .challenge-step {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .challenge-step:hover {
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #E91E63, #FF5722);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            margin: 0 auto 15px;
+        }
+        
+        .floating-apply {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #E91E63, #FF5722);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.4);
+            z-index: 1000;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating-apply:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(233, 30, 99, 0.6);
+        }
+        
+        .phone-mockup {
+            background: #333;
+            border-radius: 25px;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .floating-apply {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Hero Section with Breadcrumb -->
+    <header class="hero-gradient text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container mx-auto px-4 py-16 relative z-10">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb text-gray-800 mb-8">
+                <a href="en.html" class="hover:text-gray-600">
+                    <i class="fas fa-home mr-1"></i>Home
+                </a>
+                <i class="fas fa-chevron-right mx-2"></i>
+                <a href="en.html#programs" class="hover:text-gray-600">Pop-up Programs</a>
+                <i class="fas fa-chevron-right mx-2"></i>
+                <span class="font-bold">Pungmul Challenge</span>
+            </div>
+            
+            <!-- Back Button -->
+            <div class="mb-8">
+                <a href="en.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Main</span>
+                </a>
+            </div>
+            
+            <div class="text-center">
+                <div class="text-6xl mb-4">📱</div>
+                <h1 class="text-4xl md:text-6xl font-black mb-4 text-shadow">
+                    Pungmul Challenge
+                </h1>
+                <p class="text-xl md:text-2xl mb-2">풍물챌린지</p>
+                <p class="text-lg text-gray-200">Spread the charm of K-Pungmul to the world through SNS</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-12">
+        
+        <!-- Program Overview -->
+        <section class="mb-16">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Program Image -->
+                <div>
+                    <img src="punmul challenge_1.jpg" alt="Pungmul Challenge" 
+                         class="w-full rounded-2xl shadow-xl program-detail-card">
+                </div>
+                
+                <!-- Program Info -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 text-gray-800">Challenge Overview</h2>
+                    <div class="space-y-4">
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            A global SNS event where you can receive special goods by uploading 
+                            <strong>Pungmul experience videos</strong> to SNS and using designated hashtags. 
+                            Share the beauty of K-Pungmul with people all over the world!
+                        </p>
+                        
+                        <div class="bg-gradient-to-r from-pink-50 to-red-50 p-6 rounded-xl">
+                            <h4 class="text-xl font-bold mb-3 text-pink-700">Challenge Features</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-video text-pink-500 mr-3"></i>
+                                    <span>Film and upload Pungmul experience videos</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-hashtag text-pink-500 mr-3"></i>
+                                    <span>Participate in multilingual hashtag events</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-gift text-pink-500 mr-3"></i>
+                                    <span>Receive goods immediately upon participation confirmation</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-clock text-pink-500 mr-3"></i>
+                                    <span>Operates continuously during festival period</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-globe text-pink-500 mr-3"></i>
+                                    <span>Support for various SNS platforms worldwide</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="info-badge">Free Participation</span>
+                            <span class="info-badge">Instant Goods</span>
+                            <span class="info-badge">Always Open</span>
+                            <span class="info-badge">Global Event</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Challenge Steps -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">How to Participate</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="challenge-step">
+                    <div class="step-number">1</div>
+                    <h4 class="text-lg font-bold mb-3 text-gray-800">Experience Pungmul</h4>
+                    <p class="text-sm text-gray-600">
+                        Experience Pungmul instruments at the Global Zone Pungmul Challenge booth and film a video
+                    </p>
+                </div>
+                
+                <div class="challenge-step">
+                    <div class="step-number">2</div>
+                    <h4 class="text-lg font-bold mb-3 text-gray-800">Upload Video</h4>
+                    <p class="text-sm text-gray-600">
+                        Upload your Pungmul experience video to your SNS account
+                    </p>
+                </div>
+                
+                <div class="challenge-step">
+                    <div class="step-number">3</div>
+                    <h4 class="text-lg font-bold mb-3 text-gray-800">Add Hashtags</h4>
+                    <p class="text-sm text-gray-600">
+                        Complete your post by including the designated hashtags
+                    </p>
+                </div>
+                
+                <div class="challenge-step">
+                    <div class="step-number">4</div>
+                    <h4 class="text-lg font-bold mb-3 text-gray-800">Receive Goods</h4>
+                    <p class="text-sm text-gray-600">
+                        Show your upload screen to the staff and receive special goods!
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Hashtags Section -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Official Hashtags</h2>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-xl">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                        <i class="fas fa-hashtag text-pink-500 mr-3"></i>Required Hashtags
+                    </h3>
+                    <p class="text-gray-600">Please include <strong>at least 2</strong> of the following hashtags</p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center mb-8">
+                    <div class="hashtag-display">#BPF</div>
+                    <div class="hashtag-display">#BupyeongPungmulFestival</div>
+                    <div class="hashtag-display">#富平传统音乐节</div>
+                    <div class="hashtag-display">#富平風物大祭り</div>
+                    <div class="hashtag-display">#LễhộiBupyeongPungmul</div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-pink-100 to-red-100 rounded-xl p-6">
+                    <h4 class="text-lg font-bold mb-3 text-pink-800">
+                        <i class="fas fa-lightbulb mr-2"></i>Hashtag Tips
+                    </h4>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
+                        <div>
+                            <ul class="space-y-2">
+                                <li>• <strong>Korean:</strong> #부평풍물대축제 #K-풍물</li>
+                                <li>• <strong>English:</strong> #Bupyeongfestival #Pungmul</li>
+                                <li>• <strong>Chinese:</strong> #韩国传统 #丰物 #风物节</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="space-y-2">
+                                <li>• <strong>Japanese:</strong> #韓国伝統 #祭り #プンムル</li>
+                                <li>• <strong>Other languages:</strong> #Lễhội #lafête #festa</li>
+                                <li>• <strong>Additional:</strong> Feel free to add personal thoughts!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SNS Platforms -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Supported SNS Platforms</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="sns-platform">
+                    <div class="text-4xl mb-4">📷</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">Instagram</h4>
+                    <p class="text-sm text-gray-600">Stories, Reels, Feed all possible</p>
+                </div>
+                
+                <div class="sns-platform">
+                    <div class="text-4xl mb-4">🎵</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">TikTok</h4>
+                    <p class="text-sm text-gray-600">Short Pungmul challenge videos</p>
+                </div>
+                
+                <div class="sns-platform">
+                    <div class="text-4xl mb-4">📘</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">Facebook</h4>
+                    <p class="text-sm text-gray-600">Posts, Story uploads</p>
+                </div>
+                
+                <div class="sns-platform">
+                    <div class="text-4xl mb-4">🐦</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">X (Twitter)</h4>
+                    <p class="text-sm text-gray-600">Video tweets and retweets</p>
+                </div>
+                
+                <div class="sns-platform">
+                    <div class="text-4xl mb-4">▶️</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">YouTube</h4>
+                    <p class="text-sm text-gray-600">Shorts and regular videos</p>
+                </div>
+                
+                <div class="sns-platform">
+                    <div class="text-4xl mb-4">💬</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">WeChat Story</h4>
+                    <p class="text-sm text-gray-600">WeChat Moments</p>
+                </div>
+                
+                <div class="sns-platform">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">Other Platforms</h4>
+                    <p class="text-sm text-gray-600">Snapchat, LinkedIn, etc.</p>
+                </div>
+                
+                <div class="sns-platform">
+                    <div class="text-4xl mb-4">🌐</div>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">Personal Blogs</h4>
+                    <p class="text-sm text-gray-600">Naver, Tistory, etc.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Challenge Zone -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Experience Zone Guide</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Zone Info -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                        <i class="fas fa-map-marker-alt text-pink-500 mr-3"></i>Pungmul Challenge Zone
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">📍 Location</h4>
+                            <p class="text-gray-800 font-semibold">Global Zone Pungmul Challenge Booth</p>
+                            <p class="text-sm text-gray-600">Street B Zone near Bupyeong Station</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">🕐 Operating Hours</h4>
+                            <p class="text-gray-800">September 27 (Sat) ~ 28 (Sun), 2025</p>
+                            <p class="text-gray-800">11:00 AM ~ 8:00 PM Always Open</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">🎯 Experience Content</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-music text-pink-500 mr-3"></i>
+                                    <span>Pungmul instrument experience</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-camera text-pink-500 mr-3"></i>
+                                    <span>Photo zone shooting with life-size cutouts</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-couch text-pink-500 mr-3"></i>
+                                    <span>Mat rest area provided</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-video text-pink-500 mr-3"></i>
+                                    <span>Watch reference videos and follow along</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Prizes & Guidelines -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                        <i class="fas fa-gift text-green-500 mr-3"></i>Participation Benefits & Guidelines
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">📋 Participation Requirements</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-500 mr-3"></i>
+                                    <span>Have SNS account (public setting)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-500 mr-3"></i>
+                                    <span>Include at least 2 hashtags</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-500 mr-3"></i>
+                                    <span>Show upload screen to staff</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-500 mr-3"></i>
+                                    <span>Once per person (multiple participation possible)</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 text-gray-700">⚠️ Important Notes</h4>
+                            <div class="bg-yellow-50 p-4 rounded-lg">
+                                <p class="text-yellow-700 text-sm">
+                                    • Videos may be used for festival promotion purposes<br>
+                                    • Face mosaic processing available for privacy protection<br>
+                                    • Copyright-free background music recommended
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sample Content -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Video Examples</h2>
+            
+            <div class="bg-gradient-to-r from-pink-600 to-red-600 text-white rounded-2xl p-8">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">
+                            <i class="fas fa-video mr-2"></i>Try making videos like these!
+                        </h3>
+                        <ul class="space-y-3 text-sm">
+                            <li><strong>💡 Idea 1:</strong> Introduce and play each Pungmul instrument</li>
+                            <li><strong>💡 Idea 2:</strong> Pungmul ensemble with friends</li>
+                            <li><strong>💡 Idea 3:</strong> Compare your country's music with Pungmul</li>
+                            <li><strong>💡 Idea 4:</strong> Time-lapse of learning Pungmul process</li>
+                        </ul>
+                        
+                        <div class="mt-6 bg-white bg-opacity-20 p-4 rounded-lg">
+                            <p class="text-sm">
+                                <i class="fas fa-star mr-2"></i>
+                                <strong>Tip:</strong> 15-30 second short videos are the most popular!
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="phone-mockup">
+                        <div class="bg-gray-800 rounded-t-lg p-4 text-center">
+                            <i class="fas fa-mobile-alt text-3xl mb-2"></i>
+                            <p class="text-sm">SNS Upload Example</p>
+                        </div>
+                        <div class="bg-gray-600 p-4 rounded-b-lg">
+                            <p class="text-xs mb-2">"Experiencing Korean traditional Pungmul! 🥁"</p>
+                            <p class="text-xs text-gray-300">
+                                #BPF #BupyeongPungmulFestival<br>
+                                #부평풍물대축제 #K풍물<br>
+                                #KoreanTraditional #Pungmul
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Related Programs -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Check out other programs too!</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="pungmul-class_1.jpg?v=1756739112" alt="Pungmul Class for Foreigners" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">🥁 Pungmul Class for Foreigners</h3>
+                        <p class="text-gray-600 text-sm mb-4">Traditional samulnori experience</p>
+                        <a href="detail-template-en.html" class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-600">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="K-decolounge.jpg" alt="K-Deco Lounge" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">🎨 K-Deco Lounge</h3>
+                        <p class="text-gray-600 text-sm mb-4">Korean traditional material decorating</p>
+                        <a href="k-deco-detail-en.html" class="bg-purple-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-purple-600">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="festival-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="event booth.jpg" alt="Event Booth" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">🎁 Event Booth</h3>
+                        <p class="text-gray-600 text-sm mb-4">Survey participation & goods giveaway</p>
+                        <a href="event-booth-detail-en.html" class="bg-yellow-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-yellow-600">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Floating Apply Button -->
+    <a href="en.html#programs" class="floating-apply">
+        <i class="fas fa-camera mr-2"></i>Join Now
+    </a>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">🇰🇷 2025 Bupyeong Pungmul Festival Global Zone 🇰🇷</h3>
+            <p class="text-xl mb-6">Challenge with Korea, Share the Beat!</p>
+            <p class="text-gray-400">
+                ⓒ INCHEON BUPYEONG. All Rights Reserved. | 
+                Host: Incheon Bupyeong-gu | 
+                Organizer: Bupyeong District Festival Committee, Bupyeong Cultural Foundation, Bupyeong Cultural Center
+            </p>
+            
+            <div class="mt-8">
+                <a href="en.html" class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-full font-bold transition-all">
+                    <i class="fas fa-home mr-2"></i>Back to Main Page
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
