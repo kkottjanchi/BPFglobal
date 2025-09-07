@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 Bupyeong Pungmul Festival Global Zone | K-Traditional Culture Experience</title>
+    <title>2025 부평풍물대축제 글로벌존 | Bupyeong Pungmul Festival Global Zone</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
@@ -98,31 +98,6 @@
         .program-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        
-        /* 🎯 카드 높이 균등화 CSS */
-        .signature-programs .grid {
-            align-items: stretch;
-        }
-        
-        .program-card {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        
-        .program-card .p-8 {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .program-card .text-center.mb-6 {
-            flex-grow: 1;
-        }
-        
-        .program-card .flex.gap-4 {
-            margin-top: auto;
         }
         
         /* ===== 여기부터 새로운 플로팅 버튼 CSS ===== */
@@ -550,14 +525,13 @@
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- 다국어 버튼 (우상단에 위치) - 영어 메인 준비된 순서 -->
+    <!-- 다국어 버튼 (우상단에 위치) - KO/EN 버튼만 제공 -->
     <div class="language-buttons">
-        <a href="index.html" class="lang-btn lang-current" title="English (Current Page)">
+        <a href="en.html" class="lang-btn lang-primary" title="English">
             <span class="flag-icon">🇺🇸</span>
             <span class="lang-text">EN</span>
         </a>
-
-        <a href="ko.html" class="lang-btn" title="한국어">
+        <a href="index.html" class="lang-btn lang-current" title="한국어 (현재 페이지)">
             <span class="flag-icon">🇰🇷</span>
             <span class="lang-text">KO</span>
         </a>
@@ -567,7 +541,7 @@
     <div class="floating-quick-apply" onclick="toggleQuickApply()">
         <div class="quick-apply-text">
             <span class="quick-apply-icon">🚀</span>
-            <span>Quick Apply</span>
+            <span>빠른 신청하기</span>
             <span class="quick-apply-icon">✨</span>
         </div>
     </div>
@@ -575,62 +549,62 @@
     <!-- 빠른신청 드롭다운 메뉴 -->
     <div class="quick-apply-dropdown" id="quickApplyDropdown">
         <h3 style="text-align: center; margin-bottom: 20px; color: #333; font-size: 24px;">
-            🎯 Choose Your Desired Program!
+            🎯 원하는 프로그램을 선택하세요!
         </h3>
         <div class="quick-apply-list">
             <div class="quick-apply-item">
                 <div class="quick-apply-item-title">
                     <span>🥁</span>
-                    <span>Pungmul Class</span>
+                    <span>외국인풍물체험</span>
                 </div>
                 <a href="https://forms.gle/tzi3aRJtZ6gQWB9R8" target="_blank" class="quick-apply-link">
-                    Apply Now!
+                    신청 GO!
                 </a>
             </div>
             
             <div class="quick-apply-item">
                 <div class="quick-apply-item-title">
                     <span>🚶</span>
-                    <span>Bupyeong Walking Tour</span>
+                    <span>걷다보니부평</span>
                 </div>
                 <a href="https://forms.gle/UbUPgw3M39cqGXbd9" target="_blank" class="quick-apply-link">
-                    Apply Now!
+                    신청 GO!
                 </a>
             </div>
             
             <div class="quick-apply-item">
                 <div class="quick-apply-item-title">
                     <span>🎭</span>
-                    <span>Manmanse United Parade</span>
+                    <span>만만세 유나이티드</span>
                 </div>
                 <a href="https://forms.gle/LwJLd9FjgSNiH2SF8" target="_blank" class="quick-apply-link">
-                    Apply Now!
+                    신청 GO!
                 </a>
             </div>
             
             <div class="quick-apply-item">
                 <div class="quick-apply-item-title">
                     <span>🎮</span>
-                    <span>K-Content Playground</span>
+                    <span>K-콘텐츠 놀이터</span>
                 </div>
                 <a href="https://forms.gle/eA1y6YGiv2VKBYfA8" target="_blank" class="quick-apply-link">
-                    Apply Now!
+                    신청 GO!
                 </a>
             </div>
             
             <div class="quick-apply-item">
                 <div class="quick-apply-item-title">
                     <span>🎨</span>
-                    <span>K-Deco Lounge</span>
+                    <span>K-데코라운지</span>
                 </div>
                 <a href="https://forms.gle/zzH1JU4KfVtzBxjT9" target="_blank" class="quick-apply-link">
-                    Apply Now!
+                    신청 GO!
                 </a>
             </div>
         </div>
         <div style="text-align: center; margin-top: 15px;">
             <button onclick="toggleQuickApply()" style="background: #6c757d; color: white; border: none; padding: 10px 30px; border-radius: 20px; cursor: pointer;">
-                Close
+                닫기
             </button>
         </div>
     </div>
@@ -657,42 +631,42 @@
             <div class="text-center">
                 <div class="hero-badge text-white font-bold text-lg mb-6">
 
-                    🎭 29th BPF 2025 🎭
+                    🎭 제29회 BPF 2025 🎭
                 </div>
                 
                 <h1 class="text-5xl md:text-7xl font-bold mb-4 text-shadow leading-tight">
-                    Bupyeong Pungmul Festival
-                    <span class="block text-4xl md:text-6xl text-yellow-300 font-light mt-2">Global Zone</span>
+                    부평풍물대축제
+                    <span class="block text-4xl md:text-6xl text-yellow-300 font-light mt-2">글로벌 존</span>
                 </h1>
                 <p class="text-xl md:text-2xl font-medium mb-8">
-                    🌍 K-Traditional Culture Experience Platform for the World<br>
+                    🌍 세계인과 함께하는 K-전통문화 체험 플랫폼<br>
                     <span class="text-lg text-yellow-200">Play Pungmul, Feel Korea, Share Culture</span>
                 </p>
                 
                 <!-- 🔥 카운트다운 타이머 🔥 -->
                 <div class="countdown-container mb-8">
                     <div class="countdown-title text-lg font-bold text-yellow-300 mb-3">
-                        🚀 Global Zone Opening Countdown! 🚀
+                        🚀 글로벌존 오픈까지 D-DAY! 🚀
                     </div>
                     <div class="countdown-timer" id="countdownTimer">
                         <div class="countdown-item">
                             <div class="countdown-number" id="days">000</div>
-                            <div class="countdown-label">Days</div>
+                            <div class="countdown-label">일</div>
                         </div>
                         <div class="countdown-separator">:</div>
                         <div class="countdown-item">
                             <div class="countdown-number" id="hours">00</div>
-                            <div class="countdown-label">Hours</div>
+                            <div class="countdown-label">시간</div>
                         </div>
                         <div class="countdown-separator">:</div>
                         <div class="countdown-item">
                             <div class="countdown-number" id="minutes">00</div>
-                            <div class="countdown-label">Minutes</div>
+                            <div class="countdown-label">분</div>
                         </div>
                         <div class="countdown-separator">:</div>
                         <div class="countdown-item">
                             <div class="countdown-number" id="seconds">00</div>
-                            <div class="countdown-label">Seconds</div>
+                            <div class="countdown-label">초</div>
                         </div>
                     </div>
                 </div>
@@ -702,22 +676,22 @@
                     <div class="hero-info-item">
                         <div class="text-2xl font-bold">📅</div>
                         <div class="text-sm font-medium mt-1">2025.09.27-28</div>
-                        <div class="text-xs opacity-80">2 Days</div>
+                        <div class="text-xs opacity-80">2일간</div>
                     </div>
                     <div class="hero-info-item">
                         <div class="text-2xl font-bold">👥</div>
-                        <div class="text-sm font-medium mt-1">600K+ Visitors</div>
-                        <div class="text-xs opacity-80">Annually</div>
+                        <div class="text-sm font-medium mt-1">60만+ 방문객</div>
+                        <div class="text-xs opacity-80">연간</div>
                     </div>
                     <div class="hero-info-item">
                         <div class="text-2xl font-bold">🌏</div>
-                        <div class="text-sm font-medium mt-1">5 Languages Support</div>
-                        <div class="text-xs opacity-80">Multilingual</div>
+                        <div class="text-sm font-medium mt-1">5개국 언어 지원</div>
+                        <div class="text-xs opacity-80">다국어</div>
                     </div>
                     <div class="hero-info-item">
                         <div class="text-2xl font-bold">🏆</div>
-                        <div class="text-sm font-medium mt-1">Cultural Tourism Festival</div>
-                        <div class="text-xs opacity-80">MCST Certified</div>
+                        <div class="text-sm font-medium mt-1">문화관광축제</div>
+                        <div class="text-xs opacity-80">문체부 선정</div>
                     </div>
                 </div>
             </div>
@@ -729,17 +703,17 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-                    🌏 Global Zone
+                    🌏 글로벌 존 | Global Zone
                 </h2>
                 <p class="text-xl text-gray-600">
-                    "A Valuable Pungmul Festival, A Bupyeong Festival Together" – A space opening the future of cultural tourism festivals
+                    "가치 있는 풍물축제, 같이하는 부평축제" – 문화관광축제의 미래를 여는 공간
                 </p>
             </div>
             
             <div class="grid lg:grid-cols-3 gap-8 items-start">
                 <!-- 왼쪽: 글로벌존 포스터 -->
                 <div class="lg:col-span-1">
-                    <img src="global-zone-main-poster_3.jpg?v=1756739112" alt="2025 Bupyeong Pungmul Festival Global Zone" 
+                    <img src="global-zone-main-poster_3.jpg?v=1756739112" alt="2025 부평풍물대축제 글로벌존" 
                          class="w-full rounded-2xl shadow-xl">
                 </div>
                 
@@ -748,43 +722,43 @@
                     <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 h-full flex flex-col justify-between">
                         <div>
                             <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-                                The Bupyeong Pungmul Festival has been selected as a <span class="font-bold text-purple-700">2024~2025 Cultural Tourism Festival</span>, 
-                                and is now leaping forward as a festival for the world.
-                                At its core is a dedicated platform for international tourists: 
-                                <span class="font-bold text-orange-600 text-xl">Global Zone</span>.
+                                부평풍물대축제는 <span class="font-bold text-purple-700">2024~2025년 문화관광축제</span>로 선정되며, 
+                                이제 세계 속의 축제로 도약하고 있습니다.
+                                그 핵심은 바로 외국인 관광객을 위한 전용 플랫폼, 
+                                <span class="font-bold text-orange-600 text-xl">글로벌 존(Global Zone)</span>입니다.
                             </p>
                             
                             <div class="bg-white rounded-xl p-6 mb-6 shadow-md">
                                 <p class="text-lg text-gray-800 font-bold text-center">
-                                    Here, visitors are not just 'guests' but become
-                                    <span class="text-2xl font-black text-orange-600 block mt-2">the main participants</span> in the experience.
+                                    여기서는 관람객이 단순한 '손님'이 아니라
+                                    <span class="text-2xl font-black text-orange-600 block mt-2">직접 참여하는 주인공</span>이 됩니다.
                                 </p>
                             </div>
                             
                             <p class="text-base text-gray-700 mb-6">
-                                All participants can create special memories through <span class="font-semibold">multilingual guide & interpretation</span>, 
-                                <span class="font-semibold">K-Pungmul certificate</span>, and 
-                                <span class="font-semibold">Photo Authentication</span>을 통해
-                                for their special Korean journey memories.
+                                모든 참가자는 <span class="font-semibold">다국어 안내·통역</span>, 
+                                <span class="font-semibold">K-풍물 수료증</span>, 
+                                <span class="font-semibold">포토 인증</span>을 통해
+                                한국 여행의 특별한 기록을 남길 수 있습니다.
                             </p>
                         </div>
                         
                         <div class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl p-6">
                             <h4 class="text-lg font-bold text-purple-800 mb-4">
-                                Global Zone as an international tourist attraction program
+                                글로벌 존은 외국인 관광객 유치 프로그램으로서
                             </h4>
                             <ul class="space-y-2 text-sm text-gray-700">
                                 <li class="flex items-start">
                                     <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                    <span>Mutual growth with local businesses</span>
+                                    <span>지역 상권과의 상생</span>
                                 </li>
                                 <li class="flex items-start">
                                     <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                    <span>Multicultural interpretation & ESG eco-friendly experiences</span>
+                                    <span>다문화 통역 봉사와 ESG 기반 친환경 체험</span>
                                 </li>
                                 <li class="flex items-start">
                                     <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                    <span>Performance measurement based on nationality & participation data</span>
+                                    <span>국적·참여율 데이터 기반 성과 측정</span>
                                 </li>
                             </ul>
                         </div>
@@ -797,36 +771,36 @@
     <!-- Festival Overview - 포스터 크기 조정 -->
     <section class="py-20 bg-gray-100">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Festival Overview</h2>
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">축제 소개 | Festival Overview</h2>
             <div class="grid lg:grid-cols-3 gap-8 items-center">
                 <div class="lg:col-span-1">
-                    <img src="festival-poster-en_2.jpg?v=1756739112" alt="2025 Bupyeong Pungmul Festival" class="rounded-lg shadow-xl w-full">
+                    <img src="festival-poster-en_2.jpg?v=1756739112" alt="2025 부평풍물대축제" class="rounded-lg shadow-xl w-full">
                 </div>
                 <div class="lg:col-span-2">
                     <div class="space-y-6">
                         <div class="bg-white rounded-lg p-8 shadow-md">
-                            <h4 class="text-2xl font-bold mb-4 text-orange-600">Korea's Representative Traditional Culture Festival</h4>
+                            <h4 class="text-2xl font-bold mb-4 text-orange-600">대한민국 대표 전통문화축제</h4>
                             <p class="text-lg text-gray-700 mb-2">
-                                Korea's representative traditional culture festival with 29 years of history and tradition, attracting over 600,000 visitors annually as Incheon's flagship festival.
+                                29년의 역사와 전통을 자랑하는 대한민국 대표 전통문화축제로 매년 60만 명 이상의 관람객이 찾는 인천의 대표 축제입니다.
                             </p>
                         </div>
                         <div class="bg-white rounded-lg p-8 shadow-md">
-                            <h4 class="text-2xl font-bold mb-4 text-blue-600">MCST Designated Cultural Tourism Festival</h4>
+                            <h4 class="text-2xl font-bold mb-4 text-blue-600">문화체육관광부 지정 문화관광축제</h4>
                             <p class="text-lg text-gray-700 mb-2">
-                                Selected as a Ministry of Culture, Sports and Tourism Cultural Tourism Festival for 2024~2025, chosen from only 25 out of over 1,200 festivals nationwide for two consecutive years.
+                                전국 1,200여 개 축제 중 25개만 선정되는 문화체육관광부 문화관광축제로 2024~2025년 2년 연속 선정되었습니다.
                             </p>
                         </div>
                         <div class="bg-white rounded-lg p-8 shadow-md">
-                            <h4 class="text-2xl font-bold mb-4 text-green-600">Modern Heritage of Pungmul</h4>
+                            <h4 class="text-2xl font-bold mb-4 text-green-600">풍물의 현대적 계승</h4>
                             <p class="text-lg text-gray-700 mb-4">
-                                A participatory festival that reinterprets traditional pungmul in a modern way, allowing people of all ages and nationalities to enjoy together.
+                                전통 풍물놀이를 현대적으로 재해석하여 남녀노소, 내외국인 모두가 함께 즐길 수 있는 참여형 축제입니다.
                             </p>
                         </div>
                         <div class="text-center mt-8">
                             <a href="https://portal.icbp.go.kr/bpf/" target="_blank" 
                                class="inline-flex items-center bg-purple-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-purple-700 transition-all">
                                 <i class="fas fa-external-link-alt mr-3"></i>
-                                Visit Official Festival Website
+                                축제 공식 홈페이지 방문
                             </a>
                         </div>
                     </div>
@@ -838,67 +812,67 @@
     <!-- Signature Programs -->
     <section id="programs" class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Signature Programs</h2>
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">시그니처 프로그램 | Signature Programs</h2>
             <div class="grid lg:grid-cols-3 gap-8">
                 
-                <!-- Pungmul Class -->
+                <!-- 외국인 풍물체험 -->
                 <div class="program-card bg-white shadow-xl">
-                    <img src="pungmul-class_1.jpg?v=1756739112" alt="Pungmul Class" class="w-full h-64 object-cover">
+                    <img src="pungmul-class_1.jpg?v=1756739112" alt="외국인풍물체험" class="w-full h-64 object-cover">
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-4 text-center">🥁 Pungmul Class</h3>
+                        <h3 class="text-2xl font-bold mb-4 text-center">🥁 외국인풍물체험</h3>
                         <p class="text-gray-600 text-center mb-6">
-                            Traditional Korean Pungmul instruments<br>
-                            Hands-on performance experience + English notation + Certificate issued
+                            한국 전통 풍물놀이 악기<br>
+                            직접 연주 체험 + 영문 가락보 + 수료증 발급
                         </p>
                         <div class="flex gap-4">
-                            <a href="detail-template-en.html" class="flex-1 bg-blue-500 text-white py-3 rounded-lg text-center font-bold hover:bg-blue-600 transition">
-                                View Details
+                            <a href="detail-template.html" class="flex-1 bg-blue-500 text-white py-3 rounded-lg text-center font-bold hover:bg-blue-600 transition">
+                                상세보기
                             </a>
                             <a href="https://forms.gle/tzi3aRJtZ6gQWB9R8" target="_blank" 
                                class="flex-1 bg-green-500 text-white py-3 rounded-lg text-center font-bold hover:bg-green-600 transition">
-                                Apply
+                                신청하기
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Walking Through Bupyeong -->
+                <!-- 걷다보니부평 -->
                 <div class="program-card bg-white shadow-xl">
-                    <img src="bupyeong-tour_en_1.jpg?v=1756739112" alt="Bupyeong Walking Tour" class="w-full h-64 object-cover">
+                    <img src="bupyeong-tour_1.jpg?v=1756739112" alt="걷다보니부평" class="w-full h-64 object-cover">
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-4 text-center">🚶 Bupyeong Walking Tour</h3>
+                        <h3 class="text-2xl font-bold mb-4 text-center">🚶 걷다보니부평</h3>
                         <p class="text-gray-600 text-center mb-6">
-                            Bupyeong underground shopping culture tour (3-hour course) + Local guide<br>
-                            + Interpretation support + Discount coupons
+                            부평 부평쇼핑상권 투어 (3시간 코스) + 로컬 가이드<br>
+                            + 통역 지원 + 할인권 제공
                         </p>
                         <div class="flex gap-4">
-                            <a href="tour-detail-en.html" class="flex-1 bg-blue-500 text-white py-3 rounded-lg text-center font-bold hover:bg-blue-600 transition">
-                                View Details
+                            <a href="tour-detail.html" class="flex-1 bg-blue-500 text-white py-3 rounded-lg text-center font-bold hover:bg-blue-600 transition">
+                                상세보기
                             </a>
                             <a href="https://forms.gle/UbUPgw3M39cqGXbd9" target="_blank" 
                                class="flex-1 bg-green-500 text-white py-3 rounded-lg text-center font-bold hover:bg-green-600 transition">
-                                Apply
+                                신청하기
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Manmanse United -->
+                <!-- 만만세 유나이티드 -->
                 <div class="program-card bg-white shadow-xl">
-                    <img src="manmanse-united_1.jpg?v=1756739112" alt="Manmanse United" class="w-full h-64 object-cover">
+                    <img src="manmanse-united_1.jpg?v=1756739112" alt="만만세 유나이티드" class="w-full h-64 object-cover">
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-4 text-center">🎭 Manmanse United Parade</h3>
+                        <h3 class="text-2xl font-bold mb-4 text-center">🎭 만만세 유나이티드</h3>
                         <p class="text-gray-600 text-center mb-6">
-                            Night parade with multinational participants + Hanbok wearing<br>
-                            + Korean flag performance + Group photos
+                            다국적 참여자들과 함께하는 야간 퍼레이드 + 한복 착용<br>
+                            + 태극기 퍼포먼스 + 단체사진
                         </p>
                         <div class="flex gap-4">
-                            <a href="manmanse-detail-en.html" class="flex-1 bg-blue-500 text-white py-3 rounded-lg text-center font-bold hover:bg-blue-600 transition">
-                                View Details
+                            <a href="manmanse-detail.html" class="flex-1 bg-blue-500 text-white py-3 rounded-lg text-center font-bold hover:bg-blue-600 transition">
+                                상세보기
                             </a>
                             <a href="https://forms.gle/LwJLd9FjgSNiH2SF8" target="_blank" 
                                class="flex-1 bg-green-500 text-white py-3 rounded-lg text-center font-bold hover:bg-green-600 transition">
-                                Apply
+                                신청하기
                             </a>
                         </div>
                     </div>
@@ -910,81 +884,81 @@
     <!-- Pop-up Programs - 이미지 경로 수정 -->
     <section class="py-20 bg-gray-100">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Pop-up Programs</h2>
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">팝업 프로그램 | Pop-up Programs</h2>
             <div class="grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
                 
-                <!-- Pungmul Challenge -->
+                <!-- 풍물챌린지 -->
                 <div class="program-card bg-white shadow-lg">
-                    <img src="punmul challenge_1.jpg" alt="Pungmul Challenge" class="w-full h-64 object-cover">
+                    <img src="punmul challenge_1.jpg" alt="풍물챌린지" class="w-full h-64 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-center mb-3 text-pink-600">Pungmul Challenge</h3>
+                        <h3 class="text-xl font-bold text-center mb-3 text-pink-600">풍물챌린지</h3>
                         <p class="text-sm text-gray-600 text-center mb-4">
-                            Pungmul experience + SNS hashtag authentication<br>
+                            풍물 체험 + SNS 해시태그 인증<br>
+                            굿즈 증정 / 상시 운영
                         </p>
                         <div class="flex gap-2">
-                            <a href="pungmul-challenge-detail-en.html" class="flex-1 bg-blue-500 text-white py-2 rounded text-center text-sm font-bold hover:bg-blue-600">
-                                View Details
+                            <a href="pungmul-challenge-detail.html" class="flex-1 bg-blue-500 text-white py-2 rounded text-center text-sm font-bold hover:bg-blue-600">
+                                상세보기
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- K-Content Playground -->
+                <!-- K-콘텐츠 놀이터 -->
                 <div class="program-card bg-white shadow-lg">
-                    <img src="k-contents playground_1.jpg" alt="K-Content Playground" class="w-full h-64 object-cover">
+                    <img src="k-contents playground_1.jpg" alt="K-콘텐츠 놀이터" class="w-full h-64 object-cover">
                     <div class="p-6"> 
-                        <h3 class="text-xl font-bold text-center mb-3 text-green-600">K-Content Playground</h3>
+                        <h3 class="text-xl font-bold text-center mb-3 text-green-600">K-콘텐츠 놀이터</h3>
                         <p class="text-sm text-gray-600 text-center mb-4">
-                            Korean traditional games experience<br>
-                            Winner Dalgona prizes
-                            / Hourly operation  
-                        </p>
+                            한국 전통놀이 체험<br>
+                            승자 달고나 상품 / 매시간 운영
                         </p>
                         <div class="flex gap-2">
-                            <a href="k-content-detail-en.html" class="flex-1 bg-blue-500 text-white py-2 rounded text-center text-sm font-bold hover:bg-blue-600">
-                                View Details
+                            <a href="k-content-detail.html" class="flex-1 bg-blue-500 text-white py-2 rounded text-center text-sm font-bold hover:bg-blue-600">
+                                상세보기
                             </a>
                             <a href="https://forms.gle/eA1y6YGiv2VKBYfA8" target="_blank" 
                                class="flex-1 bg-green-500 text-white py-2 rounded text-center text-sm font-bold hover:bg-green-600">
-                                Apply
+                                신청하기
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- K-Deco Lounge -->
+                <!-- K-데코라운지 -->
                 <div class="program-card bg-white shadow-lg">
-                    <img src="K-decolounge_1.jpg" alt="K-Deco Lounge" class="w-full h-64 object-cover">
+                    <img src="K-decolounge_1.jpg" alt="K-데코라운지" class="w-full h-64 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-center mb-3 text-purple-600">K-Deco Lounge</h3>
+                        <h3 class="text-xl font-bold text-center mb-3 text-purple-600">K-데코라운지</h3>
                         <p class="text-sm text-gray-600 text-center mb-4">
-                            Korean traditional craft decoration experience<br>
-                            Traditional ornaments, mother-of-pearl stickers
+                            한국 전통 소재 꾸미기 체험<br>
+                            노리개, 자개스티커 / 60분 회전
                         </p>
                         <div class="flex gap-2">
-                            <a href="k-deco-detail-en.html" class="flex-1 bg-blue-500 text-white py-2 rounded text-center text-sm font-bold hover:bg-blue-600">
-                                View Details
+                            <a href="k-deco-detail.html" class="flex-1 bg-blue-500 text-white py-2 rounded text-center text-sm font-bold hover:bg-blue-600">
+                                상세보기
                             </a>
                             <a href="https://forms.gle/zzH1JU4KfVtzBxjT9" target="_blank" 
                                class="flex-1 bg-green-500 text-white py-2 rounded text-center text-sm font-bold hover:bg-green-600">
-                                Apply
+                                신청하기
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Event Booth -->
+                <!-- 글로벌존 운영부스 -->
                 <div class="program-card bg-white shadow-lg">
-                    <img src="event booth_1.jpg" alt="Event Booth" class="w-full h-64 object-cover">
+                    <img src="event booth_1.jpg" alt="글로벌존 운영부스" class="w-full h-64 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-center mb-3 text-yellow-600">Event Booth</h3>
+                        <h3 class="text-xl font-bold text-center mb-3 text-yellow-600">글로벌존 운영부스</h3>
                         <p class="text-sm text-gray-600 text-center mb-4">
-                            Goods giveaway for survey participation<br>
-                            Popcorn & balloons / Always available
+                            설문 참여 시 굿즈 증정<br>
+                            팝콘 & 풍선 / 상시 운영
                         </p>
                         <div class="flex gap-2">
-                            <a href="k-content-detail-en.html" class="flex-1 bg-blue-500 text-white py-2 rounded text-center text-sm font-bold hover:bg-blue-600">
-                                View Details
+                            <a href="event-booth-detail.html" class="flex-1 bg-blue-500 text-white py-2 rounded text-center text-sm font-bold hover:bg-blue-600">
+                                상세보기
+                            </a>
                             </a>
                         </div>
                     </div>
@@ -996,35 +970,35 @@
     <!-- How to Apply -->
     <section class="py-16 korean-traditional">
         <div class="container mx-auto px-4 text-center text-white">
-            <h2 class="text-4xl font-bold mb-8">How to Apply</h2>
+            <h2 class="text-4xl font-bold mb-8">참가신청 안내 | How to Apply</h2>
             <div class="bg-white bg-opacity-20 rounded-lg p-8 max-w-4xl mx-auto">
                 <div class="grid md:grid-cols-2 gap-8 mb-8">
                     <div class="text-left">
-                        <h3 class="text-2xl font-bold mb-4"><i class="fas fa-calendar-check mr-2"></i>Pre-Registration Programs</h3>
+                        <h3 class="text-2xl font-bold mb-4"><i class="fas fa-calendar-check mr-2"></i>사전 신청 프로그램</h3>
                         <ul class="space-y-3 text-lg">
-                            <li><i class="fas fa-music mr-2"></i>Pungmul Experience for Foreigners</li>
-                            <li><i class="fas fa-walking mr-2"></i>Walking Through Bupyeong</li>
-                            <li><i class="fas fa-flag mr-2"></i>Manmanse United</li>
-                            <li><i class="fas fa-gamepad mr-2"></i>K-Content Playground</li>
-                            <li><i class="fas fa-palette mr-2"></i>K-Deco Lounge</li>
+                            <li><i class="fas fa-music mr-2"></i>외국인풍물체험</li>
+                            <li><i class="fas fa-walking mr-2"></i>걷다보니부평</li>
+                            <li><i class="fas fa-flag mr-2"></i>만만세 유나이티드</li>
+                            <li><i class="fas fa-gamepad mr-2"></i>K-콘텐츠 놀이터</li>
+                            <li><i class="fas fa-palette mr-2"></i>K-데코라운지</li>
                         </ul>
                     </div>
                     <div class="text-left">
-                        <h3 class="text-2xl font-bold mb-4"><i class="fas fa-door-open mr-2"></i>On-Site Participation Programs</h3>
+                        <h3 class="text-2xl font-bold mb-4"><i class="fas fa-door-open mr-2"></i>현장 참여 프로그램</h3>
                         <ul class="space-y-3 text-lg">
-                            <li><i class="fas fa-mobile-alt mr-2"></i>Pungmul Challenge</li>
-                            <li><i class="fas fa-gift mr-2"></i>Event Booth</li>
+                            <li><i class="fas fa-mobile-alt mr-2"></i>풍물챌린지</li>
+                            <li><i class="fas fa-gift mr-2"></i>글로벌존 운영부스</li>
                         </ul>
                         <div class="mt-6 p-4 bg-white bg-opacity-30 rounded">
-                            <h4 class="font-bold mb-2">Application Period</h4>
-                            <p>Sequential opening after August 26</p>
-                            <h4 class="font-bold mb-2 mt-3">How to Apply</h4>
-                            <p>Online pre-registration (on-site registration if not filled)</p>
+                            <h4 class="font-bold mb-2">신청 기간</h4>
+                            <p>8월 26일 이후 순차 오픈</p>
+                            <h4 class="font-bold mb-2 mt-3">신청 방법</h4>
+                            <p>온라인 사전신청 (미달 시 현장접수)</p>
                         </div>
                     </div>
                 </div>
                 <div class="text-center">
-                    <h3 class="text-3xl font-bold mb-4">🆓 All Programs Free Participation!</h3>
+                    <h3 class="text-3xl font-bold mb-4">🆓 모든 프로그램 무료 참여!</h3>
                     <p class="text-xl">All Programs are FREE to participate!</p>
                 </div>
             </div>
@@ -1034,40 +1008,40 @@
     <!-- Location & Contact -->
     <section class="py-16 bg-gray-800 text-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12">Location & Contact</h2>
+            <h2 class="text-4xl font-bold text-center mb-12">오시는 길 및 연락처 | Location & Contact</h2>
             <div class="grid md:grid-cols-2 gap-12">
                 <div>
-                    <h3 class="text-2xl font-bold mb-6"><i class="fas fa-map-marker-alt mr-2 text-red-400"></i>Festival Venue</h3>
+                    <h3 class="text-2xl font-bold mb-6"><i class="fas fa-map-marker-alt mr-2 text-red-400"></i>축제 장소</h3>
                     <div class="bg-gray-700 p-6 rounded-lg mb-6">
-                        <p class="text-xl mb-2"><strong>Bupyeong-daero area, Bupyeong-gu, Incheon</strong></p>
-                        <p class="text-lg text-gray-300">Zone B around Bupyeong Station</p>
+                        <p class="text-xl mb-2"><strong>인천광역시 부평구 부평대로 일원</strong></p>
+                        <p class="text-lg text-gray-300">부평역 주변 거리 B존</p>
                         <div class="mt-4">
                             <a href="https://maps.google.com/?q=Bupyeong+Station+Incheon" target="_blank" 
                                class="inline-block bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-white">
-                                <i class="fas fa-map mr-2"></i>View in Google Maps
+                                <i class="fas fa-map mr-2"></i>구글맵에서 보기
                             </a>
                         </div>
                     </div>
                     
-                    <h4 class="text-xl font-bold mb-4"><i class="fas fa-subway mr-2 text-blue-400"></i>Subway</h4>
+                    <h4 class="text-xl font-bold mb-4"><i class="fas fa-subway mr-2 text-blue-400"></i>지하철</h4>
                     <ul class="text-lg space-y-2 mb-6">
-                        <li>• Line 1 Bupyeong Station Exit 1, 5 minutes walk</li>
-                        <li>• Incheon Subway Line 1 Bupyeong Station</li>
+                        <li>• 1호선 부평역 1번 출구 도보 5분</li>
+                        <li>• 인천지하철 1호선 부평역</li>
                     </ul>
                     
-                    <h4 class="text-xl font-bold mb-4"><i class="fas fa-bus mr-2 text-green-400"></i>Bus</h4>
+                    <h4 class="text-xl font-bold mb-4"><i class="fas fa-bus mr-2 text-green-400"></i>버스</h4>
                     <ul class="text-lg space-y-2">
-                        <li>• Get off at Bupyeong Station bus stop</li>
-                        <li>• Multiple city buses available</li>
-                        <li>• Detour operation during festival period</li>
+                        <li>• 부평역 정류장 하차</li>
+                        <li>• 다수 시내버스 운행</li>
+                        <li>• 축제 기간 중 우회 운행</li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h3 class="text-2xl font-bold mb-6"><i class="fas fa-phone mr-2 text-yellow-400"></i>Contact Information</h3>
+                    <h3 class="text-2xl font-bold mb-6"><i class="fas fa-phone mr-2 text-yellow-400"></i>연락처 정보</h3>
                     <div class="bg-gray-700 p-6 rounded-lg space-y-4">
                         <div>
-                            <h4 class="text-xl font-bold text-yellow-400">Bupyeong Festival Committee</h4>
+                            <h4 class="text-xl font-bold text-yellow-400">부평구축제위원회</h4>
                             <p class="text-lg">
                                 <i class="fas fa-phone mr-2"></i>
                                 <a href="tel:032-509-7516" class="hover:text-yellow-300">032-509-7516~7</a>
@@ -1077,23 +1051,23 @@
                             </p>
                             <p class="text-lg">
                                 <i class="fas fa-envelope mr-2"></i>
-                                <a href="mailto:kccf.rpt@gmail.com" class="hover:text-yellow-300">kccf.rpt@gmail.com</a>
+                                <a href="kccf.rpt@gmail.com" class="hover:text-yellow-300">kccf.rpt@gmail.com</a>
                             </p>
                         </div>
                         <div class="border-t border-gray-600 pt-4">
-                            <p class="text-lg"><i class="fas fa-map-marker-alt mr-2"></i>168 Bupyeong-daero, Bupyeong-dong, Bupyeong-gu, Incheon</p>
-                            <p class="text-sm text-gray-400">Postal Code: 21354</p>
+                            <p class="text-lg"><i class="fas fa-map-marker-alt mr-2"></i>인천광역시 부평구 부평대로 168 (부평동)</p>
+                            <p class="text-sm text-gray-400">우편번호: 21354</p>
                         </div>
                     </div>
                     
                     <div class="mt-8 p-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg">
-                        <h4 class="text-xl font-bold mb-4">🌐 Official Channels</h4>
-                        <p class="text-lg mb-2">Official Website: 
+                        <h4 class="text-xl font-bold mb-4">🌐 공식 채널</h4>
+                        <p class="text-lg mb-2">공식 홈페이지: 
                             <a href="https://portal.icbp.go.kr/bpf/" target="_blank" class="hover:text-yellow-300">
                                 portal.icbp.go.kr/bpf/
                             </a>
                         </p>
-                        <p class="text-lg">Bupyeong-gu Culture & Tourism Division: 032-509-6420</p>
+                        <p class="text-lg">부평구청 문화관광과: 032-509-6420</p>
                     </div>
                 </div>
             </div>
@@ -1101,8 +1075,8 @@
             <div class="text-center mt-12 pt-8 border-t border-gray-600">
                 <p class="text-lg text-gray-400">
                     ⓒ INCHEON BUPYEONG. All Rights Reserved. | 
-                    Host: Bupyeong-gu, Incheon | 
-                    Organizer: Bupyeong Festival Committee, Bupyeong Cultural Foundation, Bupyeong Cultural Center
+                    주최: 인천광역시 부평구 | 
+                    주관: 부평구축제위원회, 부평구문화재단, 부평문화원
                 </p>
             </div>
         </div>
@@ -1111,7 +1085,7 @@
     <!-- Footer -->
     <footer class="bg-black text-white py-8 text-center">
         <div class="container mx-auto px-4">
-            <h3 class="text-3xl font-bold mb-4">🇰🇷 2025 Bupyeong Pungmul Festival Global Zone 🇰🇷</h3>
+            <h3 class="text-3xl font-bold mb-4">🇰🇷 2025 부평풍물대축제 글로벌존 🇰🇷</h3>
             <p class="text-xl">Play Pungmul, Feel Korea!</p>
             <div class="mt-6 text-yellow-400">
                 <i class="fas fa-star"></i>
@@ -1126,7 +1100,7 @@
     <script>
         // 🔥 실시간 카운트다운 타이머 🔥
         function updateCountdown() {
-            // Festival start date: September 27, 2025 09:00 (Korea time)
+            // 축제 시작일: 2025년 9월 27일 09:00 (한국시간)
             const festivalDate = new Date('2025-09-27T09:00:00+09:00').getTime();
             const now = new Date().getTime();
             const distance = festivalDate - now;
@@ -1144,14 +1118,14 @@
             } else {
                 // 축제 시작! 🎉
                 document.getElementById('days').textContent = '🎉';
-                document.getElementById('hours').textContent = 'Festival';
-                document.getElementById('minutes').textContent = 'Started';
+                document.getElementById('hours').textContent = '축제';
+                document.getElementById('minutes').textContent = '시작';
                 document.getElementById('seconds').textContent = '🎉';
                 
                 // 타이머 제목도 변경
                 const titleElement = document.querySelector('.countdown-title');
                 if (titleElement) {
-                    titleElement.innerHTML = '🎉 29th Bupyeong Pungmul Festival in Progress! 🎉';
+                    titleElement.innerHTML = '🎉 부평풍물대축제 진행중! 🎉';
                 }
             }
         }
@@ -1180,7 +1154,7 @@
             dropdown.classList.toggle('show');
         }
         
-        // 드롭다운 외부 클릭시 Close
+        // 드롭다운 외부 클릭시 닫기
         document.addEventListener('click', function(event) {
             const dropdown = document.getElementById('quickApplyDropdown');
             const button = document.querySelector('.floating-quick-apply');
@@ -1193,16 +1167,6 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
 
 
 
