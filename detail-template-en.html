@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pungmul Class | 2025 Bupyeong Pungmul Festival Global Zone</title>
+    
+    <!-- Google Analytics 4 (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9XQHVX2M4K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9XQHVX2M4K', {
+        page_title: 'Pungmul Class Detail',
+        page_location: window.location.href,
+        custom_map: {'custom_parameter_1': 'pungmul_class_detail'}
+      });
+      function trackEvent(eventName, parameters = {}) {
+        gtag('event', eventName, {event_category: 'BPF_Pungmul_Class', ...parameters});
+      }
+    </script>
+    
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
@@ -530,6 +547,38 @@
                             <p><strong>A:</strong> All programs are completely free.</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- User Comments & Reviews Section -->
+        <section class="mb-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">
+                    💬 Share Your Pungmul Experience!
+                </h2>
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <div class="text-center mb-6">
+                        <p class="text-lg text-gray-600">
+                            🥁 How was your Pungmul class experience? Share your thoughts and help others! 🥁<br>
+                            <span class="text-sm text-gray-500">Reviews, questions, and cultural exchange are welcome</span>
+                        </p>
+                    </div>
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = window.location.href;
+                            this.page.identifier = 'pungmul-class-detail';
+                            this.page.title = 'Pungmul Class - BPF Global Zone';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://bpf-global-zone.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                 </div>
             </div>
         </section>

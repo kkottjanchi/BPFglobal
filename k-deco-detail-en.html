@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>K-Deco Lounge | 2025 Bupyeong Pungmul Festival Global Zone</title>
+    
+    <!-- Google Analytics 4 (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9XQHVX2M4K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9XQHVX2M4K', {
+        page_title: 'K-Deco Lounge Detail',
+        page_location: window.location.href,
+        custom_map: {'custom_parameter_1': 'k_deco_detail'}
+      });
+      function trackEvent(eventName, parameters = {}) {
+        gtag('event', eventName, {event_category: 'BPF_K_Deco', ...parameters});
+      }
+    </script>
+    
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
