@@ -6,6 +6,48 @@
     <title>2025 Bupyeong Pungmul Festival Global Zone | K-Traditional Culture Experience</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Google Analytics 4 (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9XQHVX2M4K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9XQHVX2M4K', {
+        page_title: 'BPF Global Zone Main',
+        page_location: window.location.href,
+        custom_map: {
+          'custom_parameter_1': 'main_page'
+        }
+      });
+      
+      // 커스텀 이벤트 트래킹 함수들
+      function trackEvent(eventName, parameters = {}) {
+        gtag('event', eventName, {
+          event_category: 'BPF_Interaction',
+          event_label: parameters.label || '',
+          value: parameters.value || 0,
+          ...parameters
+        });
+      }
+      
+      // 프로그램 클릭 트래킹
+      function trackProgramClick(programName) {
+        trackEvent('program_click', {
+          program_name: programName,
+          action: 'click',
+          page: 'main'
+        });
+      }
+      
+      // 언어 변경 트래킹  
+      function trackLanguageChange(language) {
+        trackEvent('language_change', {
+          language: language,
+          action: 'switch'
+        });
+      }
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
         
@@ -557,7 +599,7 @@
             <span class="lang-text">EN</span>
         </a>
 
-        <a href="ko.html" class="lang-btn" title="한국어">
+        <a href="ko.html" onclick="trackLanguageChange('Korean')" class="lang-btn" title="한국어">
             <span class="flag-icon">🇰🇷</span>
             <span class="lang-text">KO</span>
         </a>
@@ -851,7 +893,7 @@
                             Hands-on performance experience + English notation + Certificate issued
                         </p>
                         <div class="flex gap-4">
-                            <a href="detail-template-en.html" class="flex-1 bg-blue-500 text-white py-3 rounded-lg text-center font-bold hover:bg-blue-600 transition">
+                            <a href="detail-template-en.html" onclick="trackProgramClick('Pungmul_Experience')" class="flex-1 bg-blue-500 text-white py-3 rounded-lg text-center font-bold hover:bg-blue-600 transition">
                                 View Details
                             </a>
                             <a href="https://forms.gle/tzi3aRJtZ6gQWB9R8" target="_blank" 
@@ -872,7 +914,7 @@
                             + Interpretation support + Discount coupons
                         </p>
                         <div class="flex gap-4">
-                            <a href="tour-detail-en.html" class="flex-1 bg-blue-500 text-white py-3 rounded-lg text-center font-bold hover:bg-blue-600 transition">
+                            <a href="tour-detail-en.html" onclick="trackProgramClick('Walking_Bupyeong')" class="flex-1 bg-blue-500 text-white py-3 rounded-lg text-center font-bold hover:bg-blue-600 transition">
                                 View Details
                             </a>
                             <a href="https://forms.gle/UbUPgw3M39cqGXbd9" target="_blank" 
@@ -893,7 +935,7 @@
                             + Korean flag performance + Group photos
                         </p>
                         <div class="flex gap-4">
-                            <a href="manmanse-detail-en.html" class="flex-1 bg-blue-500 text-white py-3 rounded-lg text-center font-bold hover:bg-blue-600 transition">
+                            <a href="manmanse-detail-en.html" onclick="trackProgramClick('Manmanse_United')" class="flex-1 bg-blue-500 text-white py-3 rounded-lg text-center font-bold hover:bg-blue-600 transition">
                                 View Details
                             </a>
                             <a href="https://forms.gle/LwJLd9FjgSNiH2SF8" target="_blank" 
@@ -922,7 +964,7 @@
                             Pungmul experience + SNS hashtag authentication<br>
                         </p>
                         <div class="flex gap-2">
-                            <a href="pungmul-challenge-detail-en.html" class="flex-1 bg-blue-500 text-white py-2 rounded text-center text-sm font-bold hover:bg-blue-600">
+                            <a href="pungmul-challenge-detail-en.html" onclick="trackProgramClick('Pungmul_Challenge')" class="flex-1 bg-blue-500 text-white py-2 rounded text-center text-sm font-bold hover:bg-blue-600">
                                 View Details
                             </a>
                         </div>
