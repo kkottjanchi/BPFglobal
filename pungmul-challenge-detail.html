@@ -632,6 +632,30 @@
         </section>
     </div>
     
+    <!-- User Comments & Reviews Section -->
+    <div class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">
+            💬 댓글 및 후기
+        </h2>
+        <div class="bg-white rounded-2xl p-8 shadow-xl">
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                    this.page.url = window.location.href;
+                    this.page.identifier = 'pungmul-challenge-korean';
+                    this.page.title = '풍물챌린지 - BPF Global Zone';
+                };
+                (function() {
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://bpf-global-zone-1.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+    
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-4 text-center">
