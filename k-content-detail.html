@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>K-콘텐츠 놀이터 | 2025 부평풍물대축제 글로벌존</title>
+    
+    <!-- Google Analytics 4 (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9XQHVX2M4K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9XQHVX2M4K', {
+        page_title: 'K-Content Detail Korean',
+        page_location: window.location.href,
+        custom_map: {'custom_parameter_1': 'k_content_detail_kr'}
+      });
+      function trackEvent(eventName, parameters = {}) {
+        gtag('event', eventName, {event_category: 'BPF_K_Content_Detail_KR', ...parameters});
+      }
+    </script>
+    
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
@@ -652,5 +669,8 @@
             });
         });
     </script>
+    <!-- Disqus Comment Count Script -->
+    <script id="dsq-count-scr" src="//bpf-global-zone-1.disqus.com/count.js" async></script>
+
 </body>
 </html>
