@@ -200,6 +200,28 @@
         }
         
         .floating-apply:hover {
+
+        .floating-comment {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);
+            z-index: 1000;
+            animation: bounce 2s infinite;
+            animation-delay: 0.5s;
+        }
+
+        .floating-comment:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.6);
+        }
             transform: scale(1.1);
             box-shadow: 0 15px 40px rgba(233, 30, 99, 0.6);
         }

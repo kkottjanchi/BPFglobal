@@ -197,6 +197,28 @@
         }
         
         .floating-apply:hover {
+
+        .floating-comment {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);
+            z-index: 1000;
+            animation: bounce 2s infinite;
+            animation-delay: 0.5s;
+        }
+
+        .floating-comment:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.6);
+        }
             transform: scale(1.1);
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
         }
@@ -641,7 +663,10 @@
         </section>
     </div>
     
-    <!-- Floating Apply Button -->
+    <!-- Floating Buttons -->
+    <a href="#disqus_thread" class="floating-comment">
+        <i class="fas fa-comments mr-2"></i>댓글
+    </a>
     <a href="https://forms.gle/UbUPgw3M39cqGXbd9" target="_blank" class="floating-apply">
         <i class="fas fa-route mr-2"></i>투어 신청
     </a>
