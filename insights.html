@@ -81,34 +81,39 @@
         </div>
     </header>
 
-    <!-- Quick Stats -->
+    <!-- Real Analytics Access -->
     <section class="py-12">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">🚀 Real-time Analytics</h2>
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">📊 실제 데이터 확인하기</h2>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                <div class="analytics-card bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <div class="insight-number" id="totalVisitors">---</div>
-                    <h3 class="text-lg font-bold text-gray-700">Total Visitors</h3>
-                    <p class="text-sm text-gray-500">All time visits</p>
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-8">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-yellow-700">
+                            <strong>실제 데이터를 확인하세요!</strong> 아래 버튼을 클릭하여 Google Analytics 4에서 실시간 웹사이트 데이터를 확인할 수 있습니다.
+                        </p>
+                    </div>
                 </div>
-                
-                <div class="analytics-card bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <div class="insight-number text-green-600" id="activeUsers">---</div>
-                    <h3 class="text-lg font-bold text-gray-700">Active Users</h3>
-                    <p class="text-sm text-gray-500">Currently online</p>
-                </div>
-                
-                <div class="analytics-card bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <div class="insight-number text-blue-600" id="pageViews">---</div>
-                    <h3 class="text-lg font-bold text-gray-700">Page Views</h3>
-                    <p class="text-sm text-gray-500">Total page views</p>
-                </div>
-                
-                <div class="analytics-card bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <div class="insight-number text-purple-600" id="programClicks">---</div>
-                    <h3 class="text-lg font-bold text-gray-700">Program Clicks</h3>
-                    <p class="text-sm text-gray-500">Program engagement</p>
+            </div>
+            
+            <div class="text-center space-y-6">
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4">추적 ID: <span class="text-blue-600 font-mono">G-1D49SFWVT7</span></h3>
+                    <div class="space-y-4">
+                        <a href="https://analytics.google.com/analytics/web/#/p428158503/reports/reportinghub" target="_blank" 
+                           class="inline-block bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 transition text-lg font-semibold">
+                            <i class="fas fa-chart-line mr-2"></i>실시간 데이터 보기
+                        </a>
+                        <br>
+                        <a href="https://analytics.google.com/analytics/web/#/p428158503/reports/dashboard" target="_blank" 
+                           class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition text-lg font-semibold">
+                            <i class="fas fa-chart-bar mr-2"></i>전체 보고서 보기
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -331,18 +336,7 @@
     </footer>
 
     <script>
-        // 실시간 데이터 시뮬레이션 (실제로는 GA4 API에서 가져와야 함)
-        function updateRealTimeStats() {
-            // 시뮬레이션 데이터 (실제 구현시 GA4 API 연동 필요)
-            document.getElementById('totalVisitors').textContent = Math.floor(Math.random() * 1000 + 500);
-            document.getElementById('activeUsers').textContent = Math.floor(Math.random() * 50 + 10);
-            document.getElementById('pageViews').textContent = Math.floor(Math.random() * 5000 + 1000);
-            document.getElementById('programClicks').textContent = Math.floor(Math.random() * 200 + 50);
-        }
-
-        // 페이지 로드시 및 30초마다 업데이트
-        updateRealTimeStats();
-        setInterval(updateRealTimeStats, 30000);
+        // Real GA4 tracking only - no fake data
 
         // 페이지 방문 트래킹
         gtag('event', 'page_view', {
