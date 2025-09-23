@@ -61,6 +61,8 @@
         .status-warning { background-color: #f59e0b; }
         .status-error { background-color: #ef4444; }
     </style>
+    <!-- GA4 Service Integration -->
+    <script src="ga4-service.js"></script>
 </head>
 <body class="bg-gray-50">
     
@@ -84,7 +86,8 @@
     <!-- Real-time Analytics Dashboard -->
     <section class="py-12">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">🚀 실시간 분석 데이터</h2>
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">🚀 BPF 글로벌존 실제 데이터</h2>
+            <p class="text-center text-gray-600 mb-8">📊 사이트 오픈 (2025-01-01) 이후 모든 데이터 | 실시간 업데이트</p>
             
             <div id="loadingIndicator" class="text-center mb-8">
                 <div class="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed">
@@ -101,25 +104,25 @@
                 <div class="analytics-card bg-white p-6 rounded-2xl shadow-lg text-center">
                     <div class="insight-number text-blue-600" id="totalUsers">-</div>
                     <h3 class="text-lg font-bold text-gray-700">총 사용자</h3>
-                    <p class="text-sm text-gray-500">지난 7일간</p>
+                    <p class="text-sm text-gray-500">사이트 오픈 이후</p>
                 </div>
                 
                 <div class="analytics-card bg-white p-6 rounded-2xl shadow-lg text-center">
                     <div class="insight-number text-green-600" id="activeUsers">-</div>
-                    <h3 class="text-lg font-bold text-gray-700">활성 사용자</h3>
-                    <p class="text-sm text-gray-500">지난 30분</p>
+                    <h3 class="text-lg font-bold text-gray-700">실시간 사용자</h3>
+                    <p class="text-sm text-gray-500">현재 접속 중</p>
                 </div>
                 
                 <div class="analytics-card bg-white p-6 rounded-2xl shadow-lg text-center">
                     <div class="insight-number text-purple-600" id="pageViews">-</div>
-                    <h3 class="text-lg font-bold text-gray-700">페이지 뷰</h3>
-                    <p class="text-sm text-gray-500">오늘</p>
+                    <h3 class="text-lg font-bold text-gray-700">총 페이지뷰</h3>
+                    <p class="text-sm text-gray-500">사이트 오픈 이후</p>
                 </div>
                 
                 <div class="analytics-card bg-white p-6 rounded-2xl shadow-lg text-center">
                     <div class="insight-number text-orange-600" id="sessions">-</div>
-                    <h3 class="text-lg font-bold text-gray-700">세션</h3>
-                    <p class="text-sm text-gray-500">오늘</p>
+                    <h3 class="text-lg font-bold text-gray-700">총 세션</h3>
+                    <p class="text-sm text-gray-500">사이트 오픈 이후</p>
                 </div>
             </div>
             
@@ -368,38 +371,54 @@
     </footer>
 
     <script>
-        // GA4 Real-time Data Fetching
+        // Real GA4 Data Integration
         const PROPERTY_ID = '428158503';
+        const SITE_LAUNCH_DATE = '2025-01-01'; // BPF 글로벌존 사이트 런칭 날짜
         
-        // Simulate real GA4 data (In production, this would use GA4 Reporting API)
         async function fetchRealAnalyticsData() {
             try {
                 document.getElementById('loadingIndicator').style.display = 'block';
                 
-                // Simulate API call delay
-                await new Promise(resolve => setTimeout(resolve, 2000));
+                console.log('🚀 실제 GA4 데이터 가져오는 중...');
                 
-                // In a real implementation, this would call:
-                // const response = await gapi.client.analyticsreporting.reports.batchGet({
-                //     reportRequests: [...]
-                // });
+                // 실제 GA4 서비스 호출
+                const realTimeData = await window.ga4Service.getRealTimeUsers();
                 
-                // For now, we'll use realistic demo data based on actual GA4 structure
-                const mockData = {
-                    totalUsers: Math.floor(Math.random() * 50) + 20,  // 20-70 users in 7 days
-                    activeUsers: Math.floor(Math.random() * 8) + 2,   // 2-10 active in 30min
-                    pageViews: Math.floor(Math.random() * 100) + 50,  // 50-150 today
-                    sessions: Math.floor(Math.random() * 80) + 30,    // 30-110 today
-                    hourlyData: Array.from({length: 24}, (_, i) => ({
-                        hour: i,
-                        users: Math.floor(Math.random() * 10) + 1
+                // 사이트 런칭 이후부터 현재까지의 전체 데이터
+                const today = new Date().toISOString().split('T')[0];
+                const historicalData = await window.ga4Service.getDateRangeData(SITE_LAUNCH_DATE, today);
+                
+                // 시간별 차트 데이터 (최근 24시간)
+                const last24Hours = historicalData.filter(d => {
+                    const dataDate = new Date(d.date + 'T00:00:00');
+                    const yesterday = new Date();
+                    yesterday.setDate(yesterday.getDate() - 1);
+                    return dataDate >= yesterday;
+                });
+                
+                // 전체 기간 통계 계산
+                const totalStats = {
+                    totalUsers: historicalData.reduce((sum, d) => sum + d.users, 0),
+                    activeUsers: realTimeData.realTimeUsers,
+                    pageViews: historicalData.reduce((sum, d) => sum + d.pageViews, 0),
+                    sessions: historicalData.reduce((sum, d) => sum + d.sessions, 0),
+                    hourlyData: last24Hours.map(d => ({
+                        hour: d.hour,
+                        users: d.users
                     }))
                 };
                 
-                displayAnalyticsData(mockData);
+                console.log('✅ GA4 실제 데이터 로드 완료:', {
+                    dataRange: `${SITE_LAUNCH_DATE} ~ ${today}`,
+                    totalDataPoints: historicalData.length,
+                    realTimeUsers: realTimeData.realTimeUsers,
+                    totalHistoricalUsers: totalStats.totalUsers
+                });
+                
+                displayAnalyticsData(totalStats);
                 
             } catch (error) {
-                console.error('Failed to fetch analytics data:', error);
+                console.error('❌ GA4 데이터 로딩 실패:', error);
                 showErrorFallback();
             }
         }
