@@ -1,82 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analytics Insights | BPF Global Zone Dashboard</title>
+    <title>📊 BPF Analytics Insights</title>
+    <meta name="description" content="Real-time visitor data and user engagement analytics">
     
-    <!-- Google Analytics 4 (GA4) -->
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1D49SFWVT7"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-1D49SFWVT7', {
-        page_title: 'Analytics Insights Dashboard',
-        page_location: window.location.href,
-        custom_map: {'custom_parameter_1': 'insights_dashboard'}
-      });
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-1D49SFWVT7');
     </script>
-    
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700;900&display=swap');
-        
-        body {
-            font-family: 'Noto Sans', sans-serif;
-        }
-        
         .gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         
         .analytics-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
         }
         
         .analytics-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
         
         .insight-number {
-            font-size: 3rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4f46e5;
         }
         
         .status-indicator {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            display: inline-block;
             margin-right: 8px;
+            flex-shrink: 0;
         }
         
-        .status-active { background-color: #10b981; }
-        .status-warning { background-color: #f59e0b; }
-        .status-error { background-color: #ef4444; }
+        .status-active {
+            background-color: #10b981;
+        }
     </style>
-    <!-- Real GA4 API Integration with Service Account -->
-    <script src="https://apis.google.com/js/api.js"></script>
-    <script src="ga4-api-client.js"></script>
 </head>
-<body class="bg-gray-50">
-    
+
+<body class="bg-gray-100 min-h-screen">
     <!-- Header -->
-    <header class="gradient-bg text-white py-6">
+    <header class="gradient-bg text-white py-8">
         <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center">
+            <div class="flex items-center justify-between">
                 <div>
-                    <h1 class="text-3xl font-bold">📊 BPF Analytics Insights</h1>
+                    <h1 class="text-4xl font-bold mb-2">📊 BPF Analytics Insights</h1>
                     <p class="text-blue-100">Real-time visitor data and user engagement analytics</p>
                 </div>
-                <div class="flex space-x-4">
-                    <a href="index.html" class="bg-white bg-opacity-20 hover:bg-opacity-30 px-4 py-2 rounded-lg transition">
+                <div class="text-right">
+                    <a href="index.html" class="bg-white bg-opacity-20 hover:bg-opacity-30 px-6 py-2 rounded-lg transition">
                         <i class="fas fa-home mr-2"></i>Back to Main
                     </a>
                 </div>
@@ -84,70 +73,66 @@
         </div>
     </header>
 
-    <!-- Real-time Analytics Dashboard -->
+    <!-- 진짜 GA4 데이터만 -->
     <section class="py-12">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">🚀 BPF 글로벌존 실제 데이터</h2>
-            <p class="text-center text-gray-600 mb-8">📊 사이트 오픈 (2025-01-01) 이후 모든 데이터 | 실시간 업데이트</p>
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">🎯 진짜 GA4 데이터만 보기</h2>
             
-            <div id="loadingIndicator" class="text-center mb-8">
-                <div class="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed">
-                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    데이터 로딩 중...
-                </div>
-            </div>
-            
-            <!-- Real Analytics Grid -->
-            <div id="analyticsGrid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" style="display: none;">
-                <div class="analytics-card bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <div class="insight-number text-blue-600" id="totalUsers">-</div>
-                    <h3 class="text-lg font-bold text-gray-700">총 사용자</h3>
-                    <p class="text-sm text-gray-500">사이트 오픈 이후</p>
-                </div>
-                
-                <div class="analytics-card bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <div class="insight-number text-green-600" id="activeUsers">-</div>
-                    <h3 class="text-lg font-bold text-gray-700">실시간 사용자</h3>
-                    <p class="text-sm text-gray-500">현재 접속 중</p>
-                </div>
-                
-                <div class="analytics-card bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <div class="insight-number text-purple-600" id="pageViews">-</div>
-                    <h3 class="text-lg font-bold text-gray-700">총 페이지뷰</h3>
-                    <p class="text-sm text-gray-500">사이트 오픈 이후</p>
-                </div>
-                
-                <div class="analytics-card bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <div class="insight-number text-orange-600" id="sessions">-</div>
-                    <h3 class="text-lg font-bold text-gray-700">총 세션</h3>
-                    <p class="text-sm text-gray-500">사이트 오픈 이후</p>
-                </div>
-            </div>
-            
-            <!-- Recent Activity Chart -->
-            <div id="chartContainer" class="bg-white rounded-2xl shadow-lg p-6 mb-8" style="display: none;">
-                <h3 class="text-xl font-bold mb-4">📈 시간별 방문자</h3>
-                <div class="h-64 flex items-end space-x-2" id="hourlyChart">
-                    <!-- Chart will be generated here -->
-                </div>
-            </div>
-            
-            <!-- Error Fallback -->
-            <div id="errorFallback" class="bg-red-50 border-l-4 border-red-400 p-6 mb-8" style="display: none;">
+            <div class="bg-red-50 border-l-4 border-red-400 p-6 mb-8">
                 <div class="flex">
                     <div class="flex-shrink-0">
                         <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" /></svg>
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                        </svg>
                     </div>
                     <div class="ml-3">
                         <p class="text-sm text-red-700">
-                            <strong>데이터를 불러올 수 없습니다.</strong> 
-                            <a href="https://analytics.google.com/analytics/web/#/p428158503" target="_blank" class="underline font-semibold">
-                                Google Analytics에서 직접 확인하기
-                            </a>
+                            <strong>⚠️ 중요 고지: 가짜 데이터 제거 완료</strong><br>
+                            이전에 표시되던 모든 시뮬레이션 숫자들을 완전히 제거했습니다.<br>
+                            이제 <strong>오직 실제 Google Analytics 4</strong>에서만 데이터를 확인할 수 있습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 직접 GA4 링크만 -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                    <div class="text-6xl mb-4">📊</div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600">실제 GA4 대시보드</h3>
+                    <p class="text-gray-600 mb-6">Google Analytics 4에서 실제 데이터를 직접 확인하세요</p>
+                    <a href="https://analytics.google.com/analytics/web/#/p428158503/reports/intelligenthome" target="_blank" 
+                       class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition text-lg font-semibold">
+                        <i class="fas fa-external-link-alt mr-2"></i>GA4 대시보드 열기
+                    </a>
+                    <p class="text-xs text-gray-500 mt-4">속성 ID: 428158503</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                    <div class="text-6xl mb-4">⚡</div>
+                    <h3 class="text-2xl font-bold mb-4 text-green-600">실시간 데이터</h3>
+                    <p class="text-gray-600 mb-6">현재 접속 중인 사용자와 실시간 활동을 확인하세요</p>
+                    <a href="https://analytics.google.com/analytics/web/#/p428158503/reports/realtime" target="_blank" 
+                       class="inline-block bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 transition text-lg font-semibold">
+                        <i class="fas fa-chart-line mr-2"></i>실시간 보고서 열기
+                    </a>
+                    <p class="text-xs text-gray-500 mt-4">지난 30분간 활동 데이터</p>
+                </div>
+            </div>
+            
+            <!-- GA4 추적 확인 -->
+            <div class="bg-blue-50 border-l-4 border-blue-400 p-6 mt-8">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-blue-700">
+                            <strong>✅ GA4 추적이 활성화되어 있습니다</strong><br>
+                            추적 ID: <code class="bg-blue-100 px-2 py-1 rounded">G-1D49SFWVT7</code><br>
+                            이 페이지 방문도 실시간으로 GA4에 기록되고 있습니다.
                         </p>
                     </div>
                 </div>
@@ -172,7 +157,7 @@
                             <span class="status-indicator status-active"></span>
                             <div>
                                 <h4 class="font-bold text-gray-800">실시간 데이터 확인</h4>
-                                <p class="text-sm text-gray-600">현재 사이트에 접속 중인 사용자 수를 실시간으로 확인</p>
+                                <p class="text-sm text-gray-600">현재 사이트를 보고 있는 사용자 수 실시간으로 확인</p>
                             </div>
                         </div>
                         
@@ -245,60 +230,18 @@
                             <span class="status-indicator status-active"></span>
                             <div>
                                 <h4 class="font-bold text-gray-800">SNS 연동</h4>
-                                <p class="text-sm text-gray-600">Facebook, Twitter 등 SNS 계정으로 댓글 작성 가능</p>
+                                <p class="text-sm text-gray-600">Facebook, Twitter 등 SNS 계정으로 로그인 가능</p>
                             </div>
                         </div>
                     </div>
                     
                     <div class="mt-6">
-                        <a href="https://disqus.com/admin/moderate/bpf-global-zone/" target="_blank" 
+                        <a href="https://disqus.com/admin/moderator/" target="_blank" 
                            class="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition inline-flex items-center">
                             <i class="fas fa-external-link-alt mr-2"></i>
-                            Disqus 관리 패널 열기
+                            Disqus 관리자 패널 열기
                         </a>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Usage Instructions -->
-    <section class="py-12">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">🎯 활용 가이드</h2>
-            
-            <div class="grid lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-2xl p-6 shadow-lg">
-                    <div class="text-4xl mb-4 text-center">📊</div>
-                    <h3 class="text-xl font-bold mb-4 text-center">일간 체크리스트</h3>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li>✅ 실시간 방문자 수 확인</li>
-                        <li>✅ 새로운 댓글/질문 확인</li>
-                        <li>✅ 인기 프로그램 순위 체크</li>
-                        <li>✅ 이상 트래픽 모니터링</li>
-                    </ul>
-                </div>
-                
-                <div class="bg-white rounded-2xl p-6 shadow-lg">
-                    <div class="text-4xl mb-4 text-center">📈</div>
-                    <h3 class="text-xl font-bold mb-4 text-center">주간 분석</h3>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li>📈 주간 방문자 추이 분석</li>
-                        <li>🌍 국가별 방문 패턴 확인</li>
-                        <li>💬 사용자 피드백 요약</li>
-                        <li>🎯 프로그램별 관심도 비교</li>
-                    </ul>
-                </div>
-                
-                <div class="bg-white rounded-2xl p-6 shadow-lg">
-                    <div class="text-4xl mb-4 text-center">🚀</div>
-                    <h3 class="text-xl font-bold mb-4 text-center">마케팅 인사이트</h3>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li>🎪 축제 홍보 효과 측정</li>
-                        <li>📱 SNS 유입 경로 분석</li>
-                        <li>👥 타겟 국가 마케팅 전략</li>
-                        <li>📝 콘텐츠 개선 방향 설정</li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -366,289 +309,33 @@
                 📊 Analytics Dashboard for 2025 Bupyeong Pungmul Festival Global Zone
             </p>
             <p class="text-sm text-gray-500 mt-2">
-                Real-time data tracking since implementation • Updated automatically
+                ✅ 진짜 GA4 데이터만 표시 • 가짜 시뮬레이션 완전 제거
             </p>
         </div>
     </footer>
 
     <script>
-        // Real GA4 API Integration with Service Account
-        const PROPERTY_ID = '428158503';
-        const SERVICE_ACCOUNT_EMAIL = 'bpf-analytics@nsd-number.iam.gserviceaccount.com';
-        
-        console.log('🚀 Service Account GA4 API Integration Started');
-        console.log('🔑 Service Account:', SERVICE_ACCOUNT_EMAIL);
-        console.log('🏠 Property ID:', PROPERTY_ID);
-        
-        async function fetchRealAnalyticsData() {
-            try {
-                document.getElementById('loadingIndicator').style.display = 'block';
-                
-                console.log('🚀 Starting Real GA4 API Data Collection...');
-                console.log('🔑 Using Service Account:', SERVICE_ACCOUNT_EMAIL);
-                
-                // Use real GA4 API client with Service Account
-                const analyticsData = await window.ga4ApiClient.getComprehensiveAnalytics();
-                
-                console.log('✅ GA4 API Data Retrieved Successfully:', {
-                    totalUsers: analyticsData.totalUsers,
-                    activeUsers: analyticsData.activeUsers,
-                    dataRange: analyticsData.dataRange,
-                    realTimeLocations: analyticsData.realTimeLocations.length
-                });
-                
-                // Format data for display
-                const displayData = {
-                    totalUsers: analyticsData.totalUsers,
-                    activeUsers: analyticsData.activeUsers,
-                    pageViews: analyticsData.totalPageViews,
-                    sessions: analyticsData.totalSessions,
-                    hourlyData: analyticsData.hourlyData
-                };
-                
-                displayAnalyticsData(displayData);
-                
-                // Show additional real-time info
-                showRealTimeLocations(analyticsData.realTimeLocations);
-                
-                // Update status
-                updateDataStatus(analyticsData.lastUpdated, analyticsData.dataRange);
-                
-            } catch (error) {
-                console.error('❌ GA4 API Data Collection Failed:', error);
-                console.log('🔄 Falling back to enhanced simulation with Service Account awareness...');
-                
-                // Enhanced fallback with Service Account context
-                showEnhancedFallbackData();
-            }
-        }
-        
-        // Enhanced fallback with Service Account awareness
-        function showEnhancedFallbackData() {
-            console.log('📊 Service Account 기반 향상된 시뮬레이션 데이터 사용');
-            
-            // More realistic data since Service Account is properly configured
-            const enhancedData = {
-                totalUsers: 47, // More realistic number for a festival site
-                activeUsers: 3,  // Current active users
-                pageViews: 156,  // Total page views since launch
-                sessions: 89,    // Total sessions
-                hourlyData: generateRealisticHourlyPattern()
-            };
-            
-            displayAnalyticsData(enhancedData);
-            
-            // Show Service Account status
-            showServiceAccountStatus(true);
-        }
-        
-        // Generate realistic hourly pattern based on Korean festival site
-        function generateRealisticHourlyPattern() {
-            const currentHour = new Date().getHours();
-            const hourlyData = [];
-            
-            for (let i = 0; i < 24; i++) {
-                let users = 0;
-                
-                // Korean timezone activity patterns
-                if (i >= 9 && i <= 18) users = Math.floor(Math.random() * 8) + 5; // Business hours
-                else if (i >= 19 && i <= 23) users = Math.floor(Math.random() * 6) + 3; // Evening
-                else if (i >= 0 && i <= 6) users = Math.floor(Math.random() * 2); // Night
-                else users = Math.floor(Math.random() * 4) + 1; // Other hours
-                
-                hourlyData.push({ hour: i, users });
-            }
-            
-            return hourlyData;
-        }
-        
-        // Show real-time location data
-        function showRealTimeLocations(locations) {
-            if (!locations || locations.length === 0) return;
-            
-            const locationContainer = document.getElementById('chartContainer');
-            if (locationContainer) {
-                const locationHtml = `
-                    <div class="mt-6">
-                        <h4 class="text-lg font-semibold mb-3">🌍 실시간 접속 지역</h4>
-                        <div class="space-y-2">
-                            ${locations.map(loc => `
-                                <div class="flex justify-between items-center bg-gray-50 rounded-lg p-3">
-                                    <span class="text-sm">📍 ${loc.city}, ${loc.country}</span>
-                                    <span class="text-sm font-semibold text-blue-600">${loc.users}명</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-                
-                locationContainer.innerHTML += locationHtml;
-            }
-        }
-        
-        // Show Service Account connection status
-        function showServiceAccountStatus(isConnected) {
-            const statusHtml = `
-                <div class="bg-${isConnected ? 'green' : 'yellow'}-50 border-l-4 border-${isConnected ? 'green' : 'yellow'}-400 p-4 mt-6">
-                    <div class="flex">
-                        <div class="flex-shrink-0">
-                            ${isConnected ? '✅' : '🔄'}
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm text-${isConnected ? 'green' : 'yellow'}-700">
-                                <strong>Service Account 상태:</strong> 
-                                ${isConnected ? 'GA4 API 연결됨 (배치된 데이터 기반)' : '연결 시도 중...'}
-                            </p>
-                            <p class="text-xs text-${isConnected ? 'green' : 'yellow'}-600 mt-1">
-                                ${SERVICE_ACCOUNT_EMAIL}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            const container = document.getElementById('chartContainer');
-            if (container) {
-                container.innerHTML += statusHtml;
-            }
-        }
-        
-        // Update data status with timestamp
-        function updateDataStatus(lastUpdated, dataRange) {
-            const statusElement = document.querySelector('.text-center.text-gray-600');
-            if (statusElement) {
-                statusElement.innerHTML = `
-                    📊 Service Account로 수집된 데이터 | 범위: ${dataRange}<br>
-                    <span class="text-xs">마지막 업데이트: ${new Date(lastUpdated).toLocaleString('ko-KR')}</span>
-                `;
-            }
-        }
-        
-        // Show error fallback with Service Account info
-        function showErrorFallback() {
-            document.getElementById('loadingIndicator').style.display = 'none';
-            document.getElementById('errorFallback').style.display = 'block';
-            
-            // Update error message with Service Account context
-            const errorElement = document.getElementById('errorFallback');
-            errorElement.innerHTML = `
-                <div class="flex">
-                    <div class="flex-shrink-0">
-                        <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" /></svg>
-                    </div>
-                    <div class="ml-3">
-                        <p class="text-sm text-red-700">
-                            <strong>GA4 API 연결 실패</strong><br>
-                            Service Account(미역자)가 설정되었지만 API 호출에 실패했습니다.<br>
-                            <small class="text-red-600">${SERVICE_ACCOUNT_EMAIL}</small><br><br>
-                            <a href="https://analytics.google.com/analytics/web/#/p428158503" target="_blank" 
-                               class="underline font-semibold hover:text-red-800">
-                                📊 GA4 대시보드에서 직접 확인하기 →
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            `;
-        }
-        
-        function displayAnalyticsData(data) {
-            // Hide loading
-            document.getElementById('loadingIndicator').style.display = 'none';
-            
-            // Show data grids
-            document.getElementById('analyticsGrid').style.display = 'grid';
-            document.getElementById('chartContainer').style.display = 'block';
-            
-            // Update metrics
-            document.getElementById('totalUsers').textContent = data.totalUsers.toLocaleString();
-            document.getElementById('activeUsers').textContent = data.activeUsers.toLocaleString();
-            document.getElementById('pageViews').textContent = data.pageViews.toLocaleString();
-            document.getElementById('sessions').textContent = data.sessions.toLocaleString();
-            
-            // Create hourly chart
-            const chartContainer = document.getElementById('hourlyChart');
-            const maxUsers = Math.max(...data.hourlyData.map(d => d.users));
-            
-            chartContainer.innerHTML = data.hourlyData.map(d => {
-                const height = (d.users / maxUsers) * 200;
-                return `
-                    <div class="flex flex-col items-center">
-                        <div class="bg-blue-500 w-8 transition-all duration-1000 rounded-t" 
-                             style="height: ${height}px;"
-                             title="${d.hour}시: ${d.users}명">
-                        </div>
-                        <span class="text-xs text-gray-500 mt-2">${d.hour}</span>
-                    </div>
-                `;
-            }).join('');
-        }
-        
-        function showErrorFallback() {
-            document.getElementById('loadingIndicator').style.display = 'none';
-            document.getElementById('errorFallback').style.display = 'block';
-        }
-        
-        // Auto-refresh every 5 minutes
-        function startAutoRefresh() {
-            setInterval(fetchRealAnalyticsData, 5 * 60 * 1000);
-        }
-        
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            // 직접 데이터 수집 시작
-            fetchRealAnalyticsData();
-            startAutoRefresh();
-            
-            // 페이지 활동 추적
-            trackPageActivity();
-        });
-        
-        // 실제 페이지 활동 추적
-        function trackPageActivity() {
-            let activityCount = 0;
-            
-            // 스크롤, 클릭, 키보드 입력 등 실제 사용자 활동 감지
-            ['scroll', 'click', 'keydown', 'mousemove'].forEach(event => {
-                document.addEventListener(event, function() {
-                    activityCount++;
-                    
-                    // 활동이 감지되면 실시간 사용자로 카운트
-                    const activeElement = document.getElementById('activeUsers');
-                    if (activeElement && activityCount > 0) {
-                        activeElement.style.color = '#10b981'; // 활성 상태 표시
-                    }
-                }, {passive: true});
-            });
-            
-            // 5분간 비활성 시 비활성 상태로 변경
-            setTimeout(() => {
-                if (activityCount === 0) {
-                    const activeElement = document.getElementById('activeUsers');
-                    if (activeElement) {
-                        activeElement.style.color = '#6b7280'; // 비활성 상태
-                    }
-                }
-            }, 5 * 60 * 1000);
-        }
-
-        
         // GA4 Event Tracking
         gtag('event', 'page_view', {
-            page_title: 'Real Analytics Dashboard',
+            page_title: 'Real Analytics Dashboard - No Fake Data',
             page_location: window.location.href,
             event_category: 'BPF_Analytics',
-            event_label: 'real_dashboard_visit'
+            event_label: 'real_data_only_page'
         });
         
-        // Track dashboard interactions
-        function trackDashboardInteraction(action) {
-            gtag('event', 'dashboard_interaction', {
-                event_category: 'BPF_Analytics',
-                event_label: action,
-                value: 1
-            });
-        }
+        // Track external link clicks
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('a[href*="analytics.google.com"]')) {
+                gtag('event', 'click', {
+                    event_category: 'external_link',
+                    event_label: 'ga4_dashboard_click',
+                    value: 1
+                });
+            }
+        });
+        
+        console.log('✅ 진짜 GA4 추적만 활성화됨 - 가짜 데이터 완전 제거');
+        console.log('📊 실제 데이터는 GA4 대시보드에서만 확인 가능');
     </script>
 </body>
 </html>
