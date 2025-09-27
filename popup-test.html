@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팝업 강제 테스트</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-md mx-auto bg-white rounded-lg p-6">
+        <h1 class="text-2xl font-bold mb-4">🧪 팝업 강제 테스트</h1>
+        
+        <div class="space-y-4">
+            <button onclick="forceShowPopup()" class="w-full bg-red-600 text-white py-3 px-4 rounded-lg hover:bg-red-700">
+                🚨 강제 팝업 표시
+            </button>
+            
+            <button onclick="clearAllCookies()" class="w-full bg-yellow-600 text-white py-3 px-4 rounded-lg hover:bg-yellow-700">
+                🍪 모든 쿠키 삭제
+            </button>
+            
+            <button onclick="clearStorage()" class="w-full bg-orange-600 text-white py-3 px-4 rounded-lg hover:bg-orange-700">
+                🧹 스토리지 전체 삭제
+            </button>
+            
+            <button onclick="checkStatus()" class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700">
+                🔍 상태 확인
+            </button>
+        </div>
+        
+        <div id="status" class="mt-4 text-sm bg-gray-50 p-3 rounded"></div>
+    </div>
+    
+    <script src="survey-popup.js"></script>
+    <script>
+        function forceShowPopup() {
+            try {
+                // 모든 제한 제거
+                document.cookie = 'bpf_survey_completed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                localStorage.removeItem('bpf_popup_disabled');
+                
+                // 팝업 강제 표시
+                if (typeof surveyPopup !== 'undefined') {
+                    surveyPopup.showPopup();
+                    updateStatus('✅ 팝업 강제 표시 완료!', 'green');
+                } else {
+                    updateStatus('❌ surveyPopup 객체를 찾을 수 없습니다!', 'red');
+                }
+            } catch (error) {
+                updateStatus(`❌ 오류: ${error.message}`, 'red');
+                console.error('팝업 표시 오류:', error);
+            }
+        }
+        
+        function clearAllCookies() {
+            // 모든 쿠키 삭제
+            document.cookie.split(";").forEach(function(c) { 
+                document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+            });
+            updateStatus('🍪 모든 쿠키 삭제 완료', 'blue');
+        }
+        
+        function clearStorage() {
+            localStorage.clear();
+            sessionStorage.clear();
+            updateStatus('🧹 로컬스토리지 전체 삭제 완료', 'blue');
+        }
+        
+        function checkStatus() {
+            const status = {
+                surveyPopup: typeof surveyPopup !== 'undefined',
+                completedCookie: document.cookie.includes('bpf_survey_completed'),
+                disabledFlag: localStorage.getItem('bpf_popup_disabled'),
+                responseCount: localStorage.getItem('bpf_survey_responses') ? 
+                    JSON.parse(localStorage.getItem('bpf_survey_responses')).length : 0
+            };
+            
+            updateStatus(`
+                📊 시스템 상태:<br>
+                • surveyPopup 객체: ${status.surveyPopup ? '✅' : '❌'}<br>
+                • 완료 쿠키: ${status.completedCookie ? '🔒 있음' : '✅ 없음'}<br>
+                • 비활성화 플래그: ${status.disabledFlag ? '🔒 비활성화됨' : '✅ 활성화됨'}<br>
+                • 저장된 응답: ${status.responseCount}개
+            `, 'gray');
+        }
+        
+        function updateStatus(message, color) {
+            const statusDiv = document.getElementById('status');
+            const colors = {
+                green: 'text-green-700 bg-green-50',
+                red: 'text-red-700 bg-red-50', 
+                blue: 'text-blue-700 bg-blue-50',
+                gray: 'text-gray-700 bg-gray-50'
+            };
+            statusDiv.className = `mt-4 text-sm p-3 rounded ${colors[color] || colors.gray}`;
+            statusDiv.innerHTML = message;
+        }
+        
+        // 페이지 로드시 상태 확인
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(checkStatus, 1000);
+        });
+    </script>
+</body>
+</html>

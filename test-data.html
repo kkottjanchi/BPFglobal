@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테스트 데이터 추가</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-md mx-auto bg-white rounded-lg p-6">
+        <h1 class="text-2xl font-bold mb-4">🧪 테스트 데이터 추가</h1>
+        
+        <button onclick="addTestData()" class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700">
+            📊 테스트 데이터 추가하기
+        </button>
+        
+        <div class="mt-4">
+            <a href="survey-admin.html" class="text-blue-600 hover:underline">
+                → 관리자 대시보드로 이동
+            </a>
+        </div>
+        
+        <div id="result" class="mt-4 text-sm"></div>
+    </div>
+    
+    <script src="survey-popup.js"></script>
+    <script>
+        function addTestData() {
+            // 테스트 데이터 생성
+            const testResponses = [
+                {
+                    id: 'test_001',
+                    name: '김철수',
+                    nationality: '대한민국',
+                    programs: ['k-content', 'pungmul'],
+                    expectations: '한국 전통문화를 배우고 싶어요!',
+                    timestamp: new Date().toISOString(),
+                    submittedAt: new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }),
+                    language: 'ko',
+                    pageUrl: window.location.href
+                },
+                {
+                    id: 'test_002',
+                    name: 'John Smith',
+                    nationality: 'USA',
+                    programs: ['k-deco', 'tour'],
+                    expectations: 'Looking forward to Korean culture experience!',
+                    timestamp: new Date(Date.now() - 60000).toISOString(),
+                    submittedAt: new Date(Date.now() - 60000).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }),
+                    language: 'en',
+                    pageUrl: window.location.href
+                },
+                {
+                    id: 'test_003',
+                    name: '田中太郎',
+                    nationality: '일본',
+                    programs: ['manmanse', 'k-content', 'pungmul'],
+                    expectations: 'Korean traditional music sounds amazing!',
+                    timestamp: new Date(Date.now() - 120000).toISOString(),
+                    submittedAt: new Date(Date.now() - 120000).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }),
+                    language: 'en',
+                    pageUrl: window.location.href
+                }
+            ];
+            
+            try {
+                // 기존 데이터 가져오기
+                const existing = localStorage.getItem('bpf_survey_responses');
+                const responses = existing ? JSON.parse(existing) : [];
+                
+                // 테스트 데이터 추가
+                responses.push(...testResponses);
+                
+                // 저장
+                localStorage.setItem('bpf_survey_responses', JSON.stringify(responses));
+                
+                document.getElementById('result').innerHTML = `
+                    <div class="text-green-600">
+                        ✅ 테스트 데이터 ${testResponses.length}개가 추가되었습니다!<br>
+                        <strong>총 응답 수:</strong> ${responses.length}개
+                    </div>
+                `;
+                
+                console.log('✅ 테스트 데이터 추가 완료:', responses);
+                
+            } catch (error) {
+                document.getElementById('result').innerHTML = `
+                    <div class="text-red-600">
+                        ❌ 데이터 추가 실패: ${error.message}
+                    </div>
+                `;
+                console.error('❌ 데이터 추가 실패:', error);
+            }
+        }
+    </script>
+</body>
+</html>

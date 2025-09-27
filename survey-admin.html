@@ -13,75 +13,49 @@
                 🎪 BPF 설문 팝업 관리자
             </h1>
             
-            <!-- 자체 수집 시스템 대시보드 -->
-            <div class="mb-8 bg-gradient-to-r from-green-500 to-blue-600 rounded-lg p-6 text-white">
-                <h2 class="text-2xl font-bold mb-4">🏆 완전 자체 수집 시스템 활성화!</h2>
-                <p class="text-lg">외부 링크 없이 완전 자체 데이터 수집 & CSV 다운로드 지원</p>
-                <p class="text-sm mt-2 opacity-90">⚠️ Google Forms 링크 불필요 - 브라우저 내 완전 자체 보관</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6 mb-8">
-                <!-- 실시간 통계 -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Google Forms 링크 설정 -->
                 <div class="bg-blue-50 rounded-lg p-6">
-                    <h2 class="text-xl font-bold mb-4 text-blue-800">📊 실시간 응답 통계</h2>
-                    <div id="responseStats" class="space-y-3">
-                        <div class="text-center text-gray-500">데이터 로딩중...</div>
+                    <h2 class="text-xl font-bold mb-4 text-blue-800">📝 Google Forms 링크 설정</h2>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Google Forms 설문 링크
+                        </label>
+                        <input type="url" id="surveyUrl" 
+                               placeholder="https://forms.gle/NfYJ9UhvwSWypowt5"
+                               value="https://forms.gle/NfYJ9UhvwSWypowt5"
+                               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                     </div>
-                    <button onclick="refreshStats()" 
-                            class="w-full mt-4 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">
-                        🔄 새로고침
+                    
+                    <button onclick="updateSurveyLink()" 
+                            class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition">
+                        🔗 링크 업데이트
                     </button>
+                    
+                    <div id="linkStatus" class="mt-4 text-sm"></div>
                 </div>
                 
-                <!-- 데이터 관리 -->
+                <!-- 팝업 테스트 -->
                 <div class="bg-green-50 rounded-lg p-6">
-                    <h2 class="text-xl font-bold mb-4 text-green-800">💾 데이터 관리</h2>
-                    <div class="space-y-3">
-                        <button onclick="downloadCSV()" 
-                                class="w-full bg-green-600 text-white py-3 px-4 rounded-lg hover:bg-green-700 transition">
-                            📥 CSV 다운로드
-                        </button>
-                        <button onclick="viewAllResponses()" 
-                                class="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg hover:bg-indigo-700 transition">
-                            👁️ 전체 응답 보기
-                        </button>
-                        <button onclick="clearResponses()" 
-                                class="w-full bg-red-600 text-white py-3 px-4 rounded-lg hover:bg-red-700 transition">
-                            🗑️ 응답 데이터 삭제
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- 팝업 제어 -->
-                <div class="bg-purple-50 rounded-lg p-6">
-                    <h2 class="text-xl font-bold mb-4 text-purple-800">🎮 팝업 제어</h2>
-                    <div class="space-y-3">
+                    <h2 class="text-xl font-bold mb-4 text-green-800">🧪 팝업 테스트</h2>
+                    
+                    <div class="space-y-4">
                         <button onclick="testPopup()" 
-                                class="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition">
+                                class="w-full bg-green-600 text-white py-3 px-4 rounded-lg hover:bg-green-700 transition">
                             🎯 팝업 미리보기
                         </button>
+                        
                         <button onclick="resetCookie()" 
                                 class="w-full bg-yellow-600 text-white py-3 px-4 rounded-lg hover:bg-yellow-700 transition">
-                            🔄 쿠키 리셋
+                            🔄 쿠키 리셋 (다시 표시되게 하기)
                         </button>
+                        
                         <button onclick="togglePopupStatus()" 
                                 class="w-full bg-gray-600 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition">
                             ⏸️ 팝업 활성화/비활성화
                         </button>
                     </div>
-                </div>
-            </div>
-
-            <!-- 응답 상세 뷰 -->
-            <div id="responseDetails" class="mt-8 bg-white rounded-lg shadow-lg p-6 hidden">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-xl font-bold text-gray-800">📋 수집된 응답 상세</h2>
-                    <button onclick="hideResponseDetails()" class="text-gray-500 hover:text-gray-700">
-                        ✕ 닫기
-                    </button>
-                </div>
-                <div id="responseList" class="space-y-4 max-h-96 overflow-y-auto">
-                    <!-- 응답 데이터가 여기에 표시됩니다 -->
                 </div>
             </div>
             
@@ -94,7 +68,7 @@
                         <h3 class="font-semibold text-gray-700 mb-2">📋 수집 데이터</h3>
                         <ul class="text-sm text-gray-600 space-y-1">
                             <li>• 이름 (최대 50자)</li>
-                            <li>• 국적 (드롭다운 선택)</li>
+                            <li>• 국적 (단답형 입력)</li>
                             <li>• 관심 프로그램 (다중 선택)</li>
                             <li>• 기대평/궁금한 점 (최대 200자)</li>
                         </ul>
@@ -112,15 +86,14 @@
                     </div>
                 </div>
                 
-                <div class="mt-6 p-4 bg-yellow-100 rounded-lg">
-                    <h4 class="font-semibold text-yellow-800 mb-2">🔧 설정 방법</h4>
-                    <ol class="text-sm text-yellow-700 space-y-1">
-                        <li>1. Google Forms에서 설문지 생성</li>
-                        <li>2. "보내기" → "링크" → URL 복사</li>
-                        <li>3. 위 "설문 링크 설정"에 붙여넣기</li>
-                        <li>4. "링크 업데이트" 버튼 클릭</li>
-                        <li>5. "팝업 미리보기"로 테스트</li>
-                    </ol>
+                <div class="mt-6 p-4 bg-green-100 rounded-lg">
+                    <h4 class="font-semibold text-green-800 mb-2">✅ 현재 설정된 링크</h4>
+                    <div class="text-sm text-green-700 space-y-1">
+                        <div><strong>Google Forms:</strong> https://forms.gle/NfYJ9UhvwSWypowt5</div>
+                        <div>• 팝업에서 설문 작성 후 자동으로 Google Forms 새창에서 열림</div>
+                        <div>• 이중언어 팝업 (한국어/영어 동시 표기)</div>
+                        <div>• 국적 단답형 입력으로 자유롭게 작성 가능</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -130,115 +103,26 @@
     <script src="survey-popup.js"></script>
     
     <script>
-        // 실시간 통계 새로고침
-        function refreshStats() {
-            if (typeof surveyPopup !== 'undefined') {
-                const stats = surveyPopup.getResponseStats();
-                const statsDiv = document.getElementById('responseStats');
+        function updateSurveyLink() {
+            const url = document.getElementById('surveyUrl').value;
+            const status = document.getElementById('linkStatus');
+            
+            if (!url) {
+                status.innerHTML = '<span class="text-red-600">❌ URL을 입력해주세요</span>';
+                return;
+            }
+            
+            try {
+                new URL(url); // URL 유효성 검사
                 
-                if (stats.total === 0) {
-                    statsDiv.innerHTML = `
-                        <div class="text-center text-gray-500">
-                            <div class="text-3xl mb-2">📝</div>
-                            <div>아직 응답이 없습니다</div>
-                        </div>
-                    `;
+                if (typeof surveyPopup !== 'undefined') {
+                    surveyPopup.updateSurveyUrl(url);
+                    status.innerHTML = '<span class="text-green-600">✅ Google Forms 링크가 업데이트되었습니다!</span>';
                 } else {
-                    const topNationality = Object.entries(stats.nationalities)
-                        .sort(([,a], [,b]) => b - a)[0] || ['없음', 0];
-                    
-                    const topProgram = Object.entries(stats.programs)
-                        .sort(([,a], [,b]) => b - a)[0] || ['없음', 0];
-                    
-                    statsDiv.innerHTML = `
-                        <div class="text-center mb-4">
-                            <div class="text-3xl font-bold text-blue-600">${stats.total}</div>
-                            <div class="text-sm text-gray-600">총 응답수</div>
-                        </div>
-                        <div class="space-y-2 text-sm">
-                            <div class="flex justify-between">
-                                <span>🌍 최다 국적:</span>
-                                <span class="font-semibold">${topNationality[0]} (${topNationality[1]}명)</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>🎭 인기 프로그램:</span>
-                                <span class="font-semibold">${topProgram[0]}</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>🇰🇷 한국어:</span>
-                                <span>${stats.languages.ko}명</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>🇺🇸 English:</span>
-                                <span>${stats.languages.en}명</span>
-                            </div>
-                        </div>
-                    `;
+                    status.innerHTML = '<span class="text-red-600">❌ 팝업 시스템을 찾을 수 없습니다</span>';
                 }
-            }
-        }
-
-        // CSV 다운로드
-        function downloadCSV() {
-            if (typeof surveyPopup !== 'undefined') {
-                surveyPopup.downloadResponsesAsCSV();
-            } else {
-                alert('팝업 시스템을 찾을 수 없습니다.');
-            }
-        }
-
-        // 전체 응답 보기
-        function viewAllResponses() {
-            if (typeof surveyPopup !== 'undefined') {
-                const responses = surveyPopup.getAllResponses();
-                const detailsDiv = document.getElementById('responseDetails');
-                const listDiv = document.getElementById('responseList');
-                
-                if (responses.length === 0) {
-                    alert('저장된 응답이 없습니다.\nNo responses found.');
-                    return;
-                }
-                
-                listDiv.innerHTML = responses.map((r, i) => `
-                    <div class="border rounded-lg p-4 bg-gray-50">
-                        <div class="flex justify-between items-center mb-2">
-                            <h3 class="font-bold text-lg">#${i + 1} ${r.name}</h3>
-                            <span class="text-sm text-gray-500">${r.submittedAt}</span>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-4 text-sm">
-                            <div>
-                                <strong>국적:</strong> ${r.nationality}<br>
-                                <strong>언어:</strong> ${r.language === 'ko' ? '한국어' : 'English'}<br>
-                                <strong>관심 프로그램:</strong> ${r.programs.join(', ') || '없음'}
-                            </div>
-                            <div>
-                                <strong>기대사항:</strong><br>
-                                <div class="bg-white p-2 rounded border">
-                                    ${r.expectations || '(없음)'}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-                
-                detailsDiv.classList.remove('hidden');
-                detailsDiv.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // 응답 상세 숨기기
-        function hideResponseDetails() {
-            document.getElementById('responseDetails').classList.add('hidden');
-        }
-
-        // 응답 데이터 삭제
-        function clearResponses() {
-            if (confirm('⚠️ 정말로 모든 수집된 응답을 삭제하시겠습니까?\n\n이 작업은 되돌릴 수 없습니다!')) {
-                localStorage.removeItem('bpf_survey_responses');
-                sessionStorage.removeItem('bpf_survey_responses');
-                refreshStats();
-                hideResponseDetails();
-                alert('✅ 모든 응답 데이터가 삭제되었습니다.');
+            } catch (e) {
+                status.innerHTML = '<span class="text-red-600">❌ 올바른 URL 형식이 아닙니다</span>';
             }
         }
         
@@ -281,15 +165,12 @@
             }
         }
         
-        // 페이지 로드시 통계 초기화
+        // 페이지 로드시 저장된 URL 복원
         window.addEventListener('DOMContentLoaded', function() {
-            // 통계 자동 새로고침
-            setTimeout(() => {
-                refreshStats();
-                
-                // 5초마다 자동 새로고침
-                setInterval(refreshStats, 5000);
-            }, 500);
+            const savedUrl = localStorage.getItem('bpf_survey_url');
+            if (savedUrl) {
+                document.getElementById('surveyUrl').value = savedUrl;
+            }
         });
     </script>
 </body>

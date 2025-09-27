@@ -9,8 +9,8 @@ class SurveyPopup {
             expectations: ''
         };
         
-        // 자체 수집 시스템 - 외부 링크 불필요!
-        this.storageKey = 'bpf_survey_responses';
+        // Google Forms 링크 설정
+        this.surveySubmitUrl = 'https://forms.gle/NfYJ9UhvwSWypowt5'; // 사용자 제공 링크
         
         this.init();
     }
@@ -22,6 +22,9 @@ class SurveyPopup {
     }
 
     init() {
+        // 저장된 URL 로드
+        this.loadSavedUrl();
+
         // 관리자가 팝업을 비활성화했는지 확인
         if (localStorage.getItem('bpf_popup_disabled') === 'true') {
             return;
@@ -221,85 +224,36 @@ class SurveyPopup {
             });
         }
 
-        // 자체 수집 시스템에 데이터 저장
-        this.saveSurveyResponse();
-        
-        // 성공 메시지 표시
-        this.showSuccessMessage();
+        // Google Forms 링크로 리디렉션
+        this.redirectToGoogleForms();
         
         // 팝업 닫기 및 완료 쿠키 설정
-        setTimeout(() => {
-            this.closePopup();
-        }, 2000);
+        this.closePopup();
         this.setCookie('bpf_survey_completed', 'true', 30); // 30일간 표시 안함
     }
 
-    saveSurveyResponse() {
-        // 기존 응답들 불러오기
-        const existingResponses = this.getSurveyResponses();
+    redirectToGoogleForms() {
+        // Google Forms로 데이터를 전달하면서 새 창에서 열기
+        const params = new URLSearchParams({
+            'entry.이름': this.surveyData.name || '',
+            'entry.국적': this.surveyData.nationality || '',
+            'entry.프로그램': this.surveyData.programs.join(', ') || '',
+            'entry.기대사항': this.surveyData.expectations || '',
+            'usp': 'pp_url'
+        });
         
-        // 새 응답 추가
-        const newResponse = {
-            id: 'resp_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
-            ...this.surveyData,
-            timestamp: new Date().toISOString(),
-            submittedAt: new Date().toLocaleString('ko-KR', {
-                timeZone: 'Asia/Seoul',
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            }),
-            userAgent: navigator.userAgent,
-            pageUrl: window.location.href
-        };
+        // Google Forms 링크로 새 창에서 열기
+        const formUrl = `${this.surveySubmitUrl}?${params.toString()}`;
+        window.open(formUrl, '_blank', 'width=800,height=800,scrollbars=yes,resizable=yes');
         
-        existingResponses.push(newResponse);
-        
-        // LocalStorage에 저장
-        try {
-            localStorage.setItem(this.storageKey, JSON.stringify(existingResponses));
-            console.log('✅ 설문 응답 저장 완료:', newResponse);
-        } catch (error) {
-            console.error('❌ 설문 응답 저장 실패:', error);
-            // 백업으로 sessionStorage 사용
-            sessionStorage.setItem(this.storageKey, JSON.stringify(existingResponses));
-        }
+        console.log('✅ Google Forms로 리디렉션:', formUrl);
     }
 
-    getSurveyResponses() {
-        try {
-            const data = localStorage.getItem(this.storageKey) || sessionStorage.getItem(this.storageKey);
-            return data ? JSON.parse(data) : [];
-        } catch (error) {
-            console.error('응답 데이터 로드 실패:', error);
-            return [];
-        }
-    }
-
-    showSuccessMessage() {
-        const popup = document.querySelector('.bpf-survey-popup');
-        if (popup) {
-            popup.innerHTML = `
-                <div class="bpf-survey-header">
-                    <h3>🎉 설문 완료 / Survey Complete</h3>
-                </div>
-                <div class="bpf-survey-body" style="text-align: center; padding: 40px 20px;">
-                    <div style="font-size: 18px; color: #28a745; margin-bottom: 20px;">
-                        🎉 설문 참여 완료!<br>
-                        🎉 Survey Completed!<br><br>
-                        <span style="font-size: 16px;">소중한 의견 감사합니다!<br>
-                        Thank you for your feedback!</span>
-                    </div>
-                    <div style="font-size: 14px; color: #666;">
-                        응답이 안전하게 저장되었습니다.<br>
-                        Your response has been saved securely.
-                    </div>
-                </div>
-            `;
-        }
+    // 설문 링크 업데이트 메서드
+    updateSurveyUrl(newUrl) {
+        this.surveySubmitUrl = newUrl;
+        localStorage.setItem('bpf_survey_url', newUrl);
+        console.log('✅ 설문 링크 업데이트:', newUrl);
     }
 
     closePopup() {
@@ -312,78 +266,12 @@ class SurveyPopup {
         }
     }
 
-    // 관리자용: 수집된 응답 조회 메서드
-    getAllResponses() {
-        return this.getSurveyResponses();
-    }
-
-    // 관리자용: CSV 다운로드 메서드
-    downloadResponsesAsCSV() {
-        const responses = this.getSurveyResponses();
-        if (responses.length === 0) {
-            alert('저장된 응답이 없습니다.\nNo responses found.');
-            return;
+    // 설정된 URL로 업데이트
+    loadSavedUrl() {
+        const savedUrl = localStorage.getItem('bpf_survey_url');
+        if (savedUrl) {
+            this.surveySubmitUrl = savedUrl;
         }
-
-        const headers = [
-            'Response ID', 'Name 이름', 'Nationality 국적', 'Programs of Interest 관심프로그램', 
-            'Expectations 기대사항', 'Language 언어', 'Submitted Time 제출시간', 
-            'Page URL 페이지주소'
-        ];
-
-        const csvContent = [
-            headers.join(','),
-            ...responses.map(r => [
-                r.id,
-                `"${r.name}"`,
-                r.nationality,
-                `"${r.programs.join(';')}"`,
-                `"${(r.expectations || '').replace(/"/g, '""')}"`,
-                r.language || 'unknown',
-                r.submittedAt,
-                `"${r.pageUrl || ''}"`
-            ].join(','))
-        ].join('\n');
-
-        const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' });
-        const link = document.createElement('a');
-        const url = URL.createObjectURL(blob);
-        link.setAttribute('href', url);
-        link.setAttribute('download', `BPF_Survey_Responses_${new Date().toISOString().split('T')[0]}.csv`);
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-        
-        console.log(`📥 CSV 다운로드 완료: ${responses.length}개 응답`);
-    }
-
-    // 관리자용: 응답 통계 조회
-    getResponseStats() {
-        const responses = this.getSurveyResponses();
-        const stats = {
-            total: responses.length,
-            nationalities: {},
-            programs: {},
-            languages: { ko: 0, en: 0 },
-            lastSubmitted: responses.length > 0 ? responses[responses.length - 1].submittedAt : null
-        };
-
-        responses.forEach(r => {
-            // 국적 통계
-            stats.nationalities[r.nationality] = (stats.nationalities[r.nationality] || 0) + 1;
-            
-            // 프로그램 통계
-            r.programs.forEach(prog => {
-                stats.programs[prog] = (stats.programs[prog] || 0) + 1;
-            });
-            
-            // 언어 통계
-            if (r.language === 'ko') stats.languages.ko++;
-            else stats.languages.en++;
-        });
-
-        return stats;
     }
 }
 
