@@ -73,7 +73,8 @@ class SurveyPopup {
         const overlay = document.createElement('div');
         overlay.className = 'bpf-survey-overlay';
         
-        const content = this.isKorean ? this.getKoreanContent() : this.getEnglishContent();
+        // 항상 이중언어 콘텐츠 사용
+        const content = this.getBilingualContent();
         
         overlay.innerHTML = `
             <div class="bpf-survey-popup">
@@ -95,13 +96,13 @@ class SurveyPopup {
                             <label>${content.nationalityLabel}</label>
                             <select id="survey-nationality">
                                 <option value="">${content.selectNationality}</option>
-                                <option value="KR">🇰🇷 ${content.korea}</option>
-                                <option value="US">🇺🇸 USA</option>
-                                <option value="JP">🇯🇵 Japan</option>
-                                <option value="CN">🇨🇳 China</option>
-                                <option value="VN">🇻🇳 Vietnam</option>
-                                <option value="TH">🇹🇭 Thailand</option>
-                                <option value="PH">🇵🇭 Philippines</option>
+                                <option value="KR">${content.korea}</option>
+                                <option value="US">🇺🇸 미국 / USA</option>
+                                <option value="JP">🇯🇵 일본 / Japan</option>
+                                <option value="CN">🇨🇳 중국 / China</option>
+                                <option value="VN">🇻🇳 베트남 / Vietnam</option>
+                                <option value="TH">🇹🇭 태국 / Thailand</option>
+                                <option value="PH">🇵🇭 필리핀 / Philippines</option>
                                 <option value="OTHER">${content.other}</option>
                             </select>
                         </div>
@@ -159,50 +160,36 @@ class SurveyPopup {
         return overlay;
     }
 
-    getKoreanContent() {
+    getBilingualContent() {
         return {
-            title: '🎪 부평 풍물 글로벌존 오픈!',
-            description: '축제 시작을 기념해 간단한 설문에 참여해주세요! (30초 소요)',
-            nameLabel: '이름',
-            namePlaceholder: '이름을 입력해주세요',
-            nationalityLabel: '국적',
-            selectNationality: '국적을 선택해주세요',
-            korea: '대한민국',
-            other: '기타',
-            programLabel: '관심있는 프로그램 (다중선택 가능)',
-            kContent: 'K-콘텐츠 체험',
-            kDeco: 'K-데코 만들기',
-            manmanse: '만만세 체험',
-            pungmul: '풍물 체험',
-            tour: '부평 투어',
-            expectationLabel: '축제에 대한 기대나 궁금한 점',
-            expectationPlaceholder: '자유롭게 작성해주세요...',
-            laterButton: '나중에',
-            submitButton: '참여하기'
+            title: '🎪 부평 풍물 글로벌존 오픈!<br>🎪 Bupyeong Pungmul Global Zone Open!',
+            description: '축제 시작을 기념해 간단한 설문에 참여해주세요! (30초 소요)<br><span class="text-sm text-blue-600">Join our quick survey to celebrate the festival launch! (Takes 30 seconds)</span>',
+            nameLabel: '이름 / Name',
+            namePlaceholder: '이름을 입력해주세요 / Enter your name',
+            nationalityLabel: '국적 / Nationality',
+            selectNationality: '국적을 선택해주세요 / Select your nationality',
+            korea: '🇰🇷 대한민국 / South Korea',
+            other: '🌍 기타 / Other',
+            programLabel: '관심있는 프로그램 (다중선택 가능)<br><span class="text-sm text-blue-600">Programs of Interest (Multiple selection allowed)</span>',
+            kContent: 'K-콘텐츠 체험 / K-Content Experience',
+            kDeco: 'K-데코 만들기 / K-Deco Making',
+            manmanse: '만만세 체험 / Manmanse Experience',
+            pungmul: '풍물 체험 / Pungmul Experience',
+            tour: '부평 투어 / Bupyeong Tour',
+            expectationLabel: '축제에 대한 기대나 궁금한 점<br><span class="text-sm text-blue-600">Expectations or Questions about the Festival</span>',
+            expectationPlaceholder: '자유롭게 작성해주세요... / Share your thoughts...',
+            laterButton: '나중에 / Later',
+            submitButton: '참여하기 / Submit'
         };
     }
 
+    // 기존 한국어/영어 개별 함수들은 호환성을 위해 유지
+    getKoreanContent() {
+        return this.getBilingualContent();
+    }
+
     getEnglishContent() {
-        return {
-            title: '🎪 Bupyeong Pungmul Global Zone Open!',
-            description: 'Join our quick survey to celebrate the festival launch! (Takes 30 seconds)',
-            nameLabel: 'Name',
-            namePlaceholder: 'Enter your name',
-            nationalityLabel: 'Nationality',
-            selectNationality: 'Select your nationality',
-            korea: 'South Korea',
-            other: 'Other',
-            programLabel: 'Programs of Interest (Multiple selection allowed)',
-            kContent: 'K-Content Experience',
-            kDeco: 'K-Deco Making',
-            manmanse: 'Manmanse Experience',
-            pungmul: 'Pungmul Experience',
-            tour: 'Bupyeong Tour',
-            expectationLabel: 'Expectations or Questions about the Festival',
-            expectationPlaceholder: 'Share your thoughts...',
-            laterButton: 'Later',
-            submitButton: 'Submit'
-        };
+        return this.getBilingualContent();
     }
 
     handleSubmit() {
@@ -216,14 +203,14 @@ class SurveyPopup {
             selectedPrograms.push(cb.value);
         });
 
-        // 유효성 검사
+        // 유효성 검사 - 이중언어
         if (!name) {
-            alert(this.isKorean ? '이름을 입력해주세요!' : 'Please enter your name!');
+            alert('이름을 입력해주세요!\nPlease enter your name!');
             return;
         }
 
         if (!nationality) {
-            alert(this.isKorean ? '국적을 선택해주세요!' : 'Please select your nationality!');
+            alert('국적을 선택해주세요!\nPlease select your nationality!');
             return;
         }
 
@@ -307,20 +294,20 @@ class SurveyPopup {
     showSuccessMessage() {
         const popup = document.querySelector('.bpf-survey-popup');
         if (popup) {
-            const successMessage = this.isKorean ? 
-                '🎉 설문 참여 완료!<br>소중한 의견 감사합니다!' : 
-                '🎉 Survey Completed!<br>Thank you for your feedback!';
-            
             popup.innerHTML = `
                 <div class="bpf-survey-header">
-                    <h3>${this.isKorean ? '설문 완료' : 'Survey Complete'}</h3>
+                    <h3>🎉 설문 완료 / Survey Complete</h3>
                 </div>
                 <div class="bpf-survey-body" style="text-align: center; padding: 40px 20px;">
                     <div style="font-size: 18px; color: #28a745; margin-bottom: 20px;">
-                        ${successMessage}
+                        🎉 설문 참여 완료!<br>
+                        🎉 Survey Completed!<br><br>
+                        <span style="font-size: 16px;">소중한 의견 감사합니다!<br>
+                        Thank you for your feedback!</span>
                     </div>
                     <div style="font-size: 14px; color: #666;">
-                        ${this.isKorean ? '응답이 안전하게 저장되었습니다.' : 'Your response has been saved securely.'}
+                        응답이 안전하게 저장되었습니다.<br>
+                        Your response has been saved securely.
                     </div>
                 </div>
             `;
@@ -346,14 +333,14 @@ class SurveyPopup {
     downloadResponsesAsCSV() {
         const responses = this.getSurveyResponses();
         if (responses.length === 0) {
-            alert(this.isKorean ? '저장된 응답이 없습니다.' : 'No responses found.');
+            alert('저장된 응답이 없습니다.\nNo responses found.');
             return;
         }
 
         const headers = [
-            'ID', '이름/Name', '국적/Nationality', '관심프로그램/Programs', 
-            '기대사항/Expectations', '언어/Language', '제출시간/Submitted', 
-            '페이지URL/Page URL'
+            'Response ID', 'Name 이름', 'Nationality 국적', 'Programs of Interest 관심프로그램', 
+            'Expectations 기대사항', 'Language 언어', 'Submitted Time 제출시간', 
+            'Page URL 페이지주소'
         ];
 
         const csvContent = [
