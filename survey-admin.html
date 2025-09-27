@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BPF 설문 팝업 관리자</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+            <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">
+                🎪 BPF 설문 팝업 관리자
+            </h1>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- 설문 링크 설정 -->
+                <div class="bg-blue-50 rounded-lg p-6">
+                    <h2 class="text-xl font-bold mb-4 text-blue-800">📝 설문 링크 설정</h2>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Google Forms 또는 외부 설문 링크
+                        </label>
+                        <input type="url" id="surveyUrl" 
+                               placeholder="https://forms.gle/your-form-id"
+                               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    
+                    <button onclick="updateSurveyLink()" 
+                            class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition">
+                        🔗 링크 업데이트
+                    </button>
+                    
+                    <div id="linkStatus" class="mt-4 text-sm"></div>
+                </div>
+                
+                <!-- 팝업 테스트 -->
+                <div class="bg-green-50 rounded-lg p-6">
+                    <h2 class="text-xl font-bold mb-4 text-green-800">🧪 팝업 테스트</h2>
+                    
+                    <div class="space-y-4">
+                        <button onclick="testPopup()" 
+                                class="w-full bg-green-600 text-white py-3 px-4 rounded-lg hover:bg-green-700 transition">
+                            🎯 팝업 미리보기
+                        </button>
+                        
+                        <button onclick="resetCookie()" 
+                                class="w-full bg-yellow-600 text-white py-3 px-4 rounded-lg hover:bg-yellow-700 transition">
+                            🔄 쿠키 리셋 (다시 표시되게 하기)
+                        </button>
+                        
+                        <button onclick="clearAllData()" 
+                                class="w-full bg-red-600 text-white py-3 px-4 rounded-lg hover:bg-red-700 transition">
+                            🗑️ 모든 데이터 초기화
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 설정 정보 -->
+            <div class="mt-8 bg-gray-50 rounded-lg p-6">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">ℹ️ 팝업 설정 정보</h2>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-semibold text-gray-700 mb-2">📋 수집 데이터</h3>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 이름 (최대 50자)</li>
+                            <li>• 국적 (드롭다운 선택)</li>
+                            <li>• 관심 프로그램 (다중 선택)</li>
+                            <li>• 기대평/궁금한 점 (최대 200자)</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-semibold text-gray-700 mb-2">⚙️ 동작 설정</h3>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 페이지 로드 2초 후 표시</li>
+                            <li>• 첫 방문자만 표시</li>
+                            <li>• 참여 후 30일간 표시 안함</li>
+                            <li>• 한/영 자동 언어 감지</li>
+                            <li>• GA4 이벤트 자동 추적</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-yellow-100 rounded-lg">
+                    <h4 class="font-semibold text-yellow-800 mb-2">🔧 설정 방법</h4>
+                    <ol class="text-sm text-yellow-700 space-y-1">
+                        <li>1. Google Forms에서 설문지 생성</li>
+                        <li>2. "보내기" → "링크" → URL 복사</li>
+                        <li>3. 위 "설문 링크 설정"에 붙여넣기</li>
+                        <li>4. "링크 업데이트" 버튼 클릭</li>
+                        <li>5. "팝업 미리보기"로 테스트</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Survey Popup Integration -->
+    <script src="survey-popup.js"></script>
+    
+    <script>
+        function updateSurveyLink() {
+            const url = document.getElementById('surveyUrl').value;
+            const status = document.getElementById('linkStatus');
+            
+            if (!url) {
+                status.innerHTML = '<span class="text-red-600">❌ URL을 입력해주세요</span>';
+                return;
+            }
+            
+            try {
+                new URL(url); // URL 유효성 검사
+                
+                if (typeof surveyPopup !== 'undefined') {
+                    surveyPopup.updateSurveyUrl(url);
+                    localStorage.setItem('bpf_survey_url', url);
+                    status.innerHTML = '<span class="text-green-600">✅ 설문 링크가 업데이트되었습니다</span>';
+                } else {
+                    status.innerHTML = '<span class="text-red-600">❌ 팝업 시스템을 찾을 수 없습니다</span>';
+                }
+            } catch (e) {
+                status.innerHTML = '<span class="text-red-600">❌ 올바른 URL 형식이 아닙니다</span>';
+            }
+        }
+        
+        function testPopup() {
+            if (typeof surveyPopup !== 'undefined') {
+                // 쿠키 임시 삭제하고 팝업 표시
+                const originalCookie = document.cookie.match(/bpf_survey_completed=([^;]*)/);
+                document.cookie = 'bpf_survey_completed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                
+                setTimeout(() => {
+                    surveyPopup.showPopup();
+                    
+                    // 원래 쿠키 복원 (5초 후)
+                    setTimeout(() => {
+                        if (originalCookie) {
+                            document.cookie = `bpf_survey_completed=${originalCookie[1]}; path=/; max-age=2592000`;
+                        }
+                    }, 5000);
+                }, 100);
+            } else {
+                alert('팝업 시스템을 찾을 수 없습니다. 페이지를 새로고침해주세요.');
+            }
+        }
+        
+        function resetCookie() {
+            document.cookie = 'bpf_survey_completed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            alert('✅ 쿠키가 리셋되었습니다. 이제 팝업이 다시 표시됩니다.');
+        }
+        
+        function clearAllData() {
+            if (confirm('정말로 모든 설문 관련 데이터를 삭제하시겠습니까?')) {
+                // 쿠키 삭제
+                document.cookie = 'bpf_survey_completed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                
+                // 로컬스토리지 삭제
+                localStorage.removeItem('bpf_survey_url');
+                
+                // 입력 필드 초기화
+                document.getElementById('surveyUrl').value = '';
+                document.getElementById('linkStatus').innerHTML = '';
+                
+                alert('✅ 모든 데이터가 초기화되었습니다.');
+            }
+        }
+        
+        // 페이지 로드시 저장된 URL 복원
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedUrl = localStorage.getItem('bpf_survey_url');
+            if (savedUrl) {
+                document.getElementById('surveyUrl').value = savedUrl;
+                if (typeof surveyPopup !== 'undefined') {
+                    surveyPopup.updateSurveyUrl(savedUrl);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
