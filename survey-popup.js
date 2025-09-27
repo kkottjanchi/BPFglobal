@@ -91,20 +91,10 @@ class SurveyPopup {
                             <input type="text" id="survey-name" placeholder="${content.namePlaceholder}" maxlength="50">
                         </div>
 
-                        <!-- 국적 선택 -->
+                        <!-- 국적 입력 -->
                         <div class="bpf-form-group">
                             <label>${content.nationalityLabel}</label>
-                            <select id="survey-nationality">
-                                <option value="">${content.selectNationality}</option>
-                                <option value="KR">${content.korea}</option>
-                                <option value="US">🇺🇸 미국 / USA</option>
-                                <option value="JP">🇯🇵 일본 / Japan</option>
-                                <option value="CN">🇨🇳 중국 / China</option>
-                                <option value="VN">🇻🇳 베트남 / Vietnam</option>
-                                <option value="TH">🇹🇭 태국 / Thailand</option>
-                                <option value="PH">🇵🇭 필리핀 / Philippines</option>
-                                <option value="OTHER">${content.other}</option>
-                            </select>
+                            <input type="text" id="survey-nationality" placeholder="${content.nationalityPlaceholder}" maxlength="30">
                         </div>
 
                         <!-- 프로그램 선택 -->
@@ -167,9 +157,7 @@ class SurveyPopup {
             nameLabel: '이름 / Name',
             namePlaceholder: '이름을 입력해주세요 / Enter your name',
             nationalityLabel: '국적 / Nationality',
-            selectNationality: '국적을 선택해주세요 / Select your nationality',
-            korea: '🇰🇷 대한민국 / South Korea',
-            other: '🌍 기타 / Other',
+            nationalityPlaceholder: '예: 대한민국, 미국, 일본... / e.g. Korea, USA, Japan...',
             programLabel: '관심있는 프로그램 (다중선택 가능)<br><span class="text-sm text-blue-600">Programs of Interest (Multiple selection allowed)</span>',
             kContent: 'K-콘텐츠 체험 / K-Content Experience',
             kDeco: 'K-데코 만들기 / K-Deco Making',
@@ -195,7 +183,7 @@ class SurveyPopup {
     handleSubmit() {
         // 폼 데이터 수집
         const name = document.getElementById('survey-name').value.trim();
-        const nationality = document.getElementById('survey-nationality').value;
+        const nationality = document.getElementById('survey-nationality').value.trim();
         const expectations = document.getElementById('survey-expectations').value.trim();
         
         const selectedPrograms = [];
@@ -210,7 +198,7 @@ class SurveyPopup {
         }
 
         if (!nationality) {
-            alert('국적을 선택해주세요!\nPlease select your nationality!');
+            alert('국적을 입력해주세요!\nPlease enter your nationality!');
             return;
         }
 
