@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팝업 강제 테스트 - BPF</title>
+</head>
+<body style="background: #f0f0f0; padding: 20px; font-family: Arial, sans-serif;">
+    <div style="max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px;">
+        <h1>🚨 팝업 강제 테스트</h1>
+        
+        <button onclick="forceShowPopup()" style="background: red; color: white; padding: 15px 30px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+            🚨 지금 즉시 팝업 표시!
+        </button>
+        
+        <div id="status" style="margin-top: 20px; padding: 10px; background: #f9f9f9; border-radius: 5px;">
+            상태: 준비됨
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <h3>📋 현재 설정:</h3>
+            <ul>
+                <li>Google Forms: https://forms.gle/NfYJ9UhvwSWypowt5</li>
+                <li>팝업 지연시간: 1초 (강제)</li>
+                <li>쿠키/비활성화 체크: 무시</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- 팝업 스크립트 로드 -->
+    <script src="survey-popup.js"></script>
+    
+    <script>
+        function forceShowPopup() {
+            document.getElementById('status').innerHTML = '🚨 팝업 강제 실행 중...';
+            
+            // 모든 제한 해제
+            document.cookie = 'bpf_survey_completed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            localStorage.removeItem('bpf_popup_disabled');
+            
+            // 즉시 팝업 표시
+            if (typeof surveyPopup !== 'undefined') {
+                surveyPopup.showPopup();
+                document.getElementById('status').innerHTML = '✅ 팝업 표시 완료!';
+            } else {
+                document.getElementById('status').innerHTML = '❌ surveyPopup 객체를 찾을 수 없습니다!';
+                
+                // 수동으로 팝업 객체 생성 시도
+                try {
+                    const popup = new SurveyPopup();
+                    popup.showPopup();
+                    document.getElementById('status').innerHTML = '✅ 수동 생성 후 팝업 표시 완료!';
+                } catch (error) {
+                    document.getElementById('status').innerHTML = `❌ 수동 생성 실패: ${error.message}`;
+                }
+            }
+        }
+        
+        // 페이지 로드 즉시 상태 확인
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                const status = document.getElementById('status');
+                if (typeof surveyPopup !== 'undefined') {
+                    status.innerHTML = '✅ surveyPopup 객체 로드됨 - 팝업 준비완료!';
+                } else if (typeof SurveyPopup !== 'undefined') {
+                    status.innerHTML = '⚠️ SurveyPopup 클래스만 로드됨 - 수동 생성 필요';
+                } else {
+                    status.innerHTML = '❌ 팝업 스크립트 로드 실패!';
+                }
+            }, 500);
+        });
+        
+        // 자동으로 3초 후 팝업 표시
+        setTimeout(function() {
+            document.getElementById('status').innerHTML = '⏰ 3초 후 자동 팝업 표시...';
+            setTimeout(forceShowPopup, 3000);
+        }, 100);
+    </script>
+</body>
+</html>

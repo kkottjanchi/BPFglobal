@@ -9,7 +9,7 @@ class SurveyPopup {
             expectations: ''
         };
         
-        // Google Forms 링크 설정
+        // Google Forms 링크 설정 - 올바른 링크로 수정
         this.surveySubmitUrl = 'https://forms.gle/NfYJ9UhvwSWypowt5'; // 사용자 제공 링크
         
         this.init();
@@ -25,20 +25,14 @@ class SurveyPopup {
         // 저장된 URL 로드
         this.loadSavedUrl();
 
-        // 관리자가 팝업을 비활성화했는지 확인
-        if (localStorage.getItem('bpf_popup_disabled') === 'true') {
-            return;
-        }
-
-        // 쿠키 확인 - 이미 참여했으면 표시 안함
-        if (this.getCookie('bpf_survey_completed')) {
-            return;
-        }
-
-        // 페이지 로드 후 2초 뒤 팝업 표시
+        // 강제로 팝업 표시 (디버깅용)
+        console.log('🚨 팝업 시스템 초기화 중...');
+        
+        // 페이지 로드 후 1초 뒤 무조건 팝업 표시
         setTimeout(() => {
+            console.log('🚨 팝업 강제 표시!');
             this.showPopup();
-        }, 2000);
+        }, 1000);
     }
 
     getCookie(name) {
@@ -233,20 +227,14 @@ class SurveyPopup {
     }
 
     redirectToGoogleForms() {
-        // Google Forms로 데이터를 전달하면서 새 창에서 열기
-        const params = new URLSearchParams({
-            'entry.이름': this.surveyData.name || '',
-            'entry.국적': this.surveyData.nationality || '',
-            'entry.프로그램': this.surveyData.programs.join(', ') || '',
-            'entry.기대사항': this.surveyData.expectations || '',
-            'usp': 'pp_url'
-        });
-        
-        // Google Forms 링크로 새 창에서 열기
-        const formUrl = `${this.surveySubmitUrl}?${params.toString()}`;
+        // 단순히 Google Forms 링크만 새 창에서 열기
+        const formUrl = this.surveySubmitUrl;
         window.open(formUrl, '_blank', 'width=800,height=800,scrollbars=yes,resizable=yes');
         
         console.log('✅ Google Forms로 리디렉션:', formUrl);
+        
+        // 성공 메시지 표시
+        alert('🎉 설문 페이지가 새 창에서 열렸습니다!\n🎉 Survey page opened in new window!\n\n새 창에서 설문을 작성해주세요.');
     }
 
     // 설문 링크 업데이트 메서드
