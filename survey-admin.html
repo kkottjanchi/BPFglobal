@@ -153,31 +153,28 @@
             alert('✅ 쿠키가 리셋되었습니다. 이제 팝업이 다시 표시됩니다.');
         }
         
-        function clearAllData() {
-            if (confirm('정말로 모든 설문 관련 데이터를 삭제하시겠습니까?')) {
-                // 쿠키 삭제
-                document.cookie = 'bpf_survey_completed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-                
-                // 로컬스토리지 삭제
-                localStorage.removeItem('bpf_survey_url');
-                
-                // 입력 필드 초기화
-                document.getElementById('surveyUrl').value = '';
-                document.getElementById('linkStatus').innerHTML = '';
-                
-                alert('✅ 모든 데이터가 초기화되었습니다.');
+        // 팝업 활성화/비활성화 토글
+        function togglePopupStatus() {
+            const isDisabled = localStorage.getItem('bpf_popup_disabled') === 'true';
+            
+            if (isDisabled) {
+                localStorage.removeItem('bpf_popup_disabled');
+                alert('✅ 팝업이 활성화되었습니다.');
+            } else {
+                localStorage.setItem('bpf_popup_disabled', 'true');
+                alert('⏸️ 팝업이 비활성화되었습니다.');
             }
         }
         
-        // 페이지 로드시 저장된 URL 복원
+        // 페이지 로드시 통계 초기화
         window.addEventListener('DOMContentLoaded', function() {
-            const savedUrl = localStorage.getItem('bpf_survey_url');
-            if (savedUrl) {
-                document.getElementById('surveyUrl').value = savedUrl;
-                if (typeof surveyPopup !== 'undefined') {
-                    surveyPopup.updateSurveyUrl(savedUrl);
-                }
-            }
+            // 통계 자동 새로고침
+            setTimeout(() => {
+                refreshStats();
+                
+                // 5초마다 자동 새로고침
+                setInterval(refreshStats, 5000);
+            }, 500);
         });
     </script>
 </body>

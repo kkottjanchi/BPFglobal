@@ -9,8 +9,8 @@ class SurveyPopup {
             expectations: ''
         };
         
-        // 설문 링크는 나중에 업데이트
-        this.surveySubmitUrl = 'https://forms.gle/YOUR-FORM-ID'; // 사용자가 제공할 링크
+        // 자체 수집 시스템 - 외부 링크 불필요!
+        this.storageKey = 'bpf_survey_responses';
         
         this.init();
     }
@@ -22,6 +22,11 @@ class SurveyPopup {
     }
 
     init() {
+        // 관리자가 팝업을 비활성화했는지 확인
+        if (localStorage.getItem('bpf_popup_disabled') === 'true') {
+            return;
+        }
+
         // 쿠키 확인 - 이미 참여했으면 표시 안함
         if (this.getCookie('bpf_survey_completed')) {
             return;
@@ -241,26 +246,85 @@ class SurveyPopup {
             });
         }
 
-        // 외부 설문 링크로 리디렉션 (사용자가 제공할 링크)
-        this.redirectToExternalSurvey();
+        // 자체 수집 시스템에 데이터 저장
+        this.saveSurveyResponse();
+        
+        // 성공 메시지 표시
+        this.showSuccessMessage();
         
         // 팝업 닫기 및 완료 쿠키 설정
-        this.closePopup();
+        setTimeout(() => {
+            this.closePopup();
+        }, 2000);
         this.setCookie('bpf_survey_completed', 'true', 30); // 30일간 표시 안함
     }
 
-    redirectToExternalSurvey() {
-        // 사용자가 제공할 설문 링크로 이동
-        // 데이터를 URL 파라미터로 전달 (선택사항)
-        const params = new URLSearchParams({
-            name: this.surveyData.name,
-            nationality: this.surveyData.nationality,
-            programs: this.surveyData.programs.join(','),
-            lang: this.surveyData.language
-        });
+    saveSurveyResponse() {
+        // 기존 응답들 불러오기
+        const existingResponses = this.getSurveyResponses();
         
-        // 새 창에서 설문 링크 열기
-        window.open(`${this.surveySubmitUrl}?${params.toString()}`, '_blank');
+        // 새 응답 추가
+        const newResponse = {
+            id: 'resp_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+            ...this.surveyData,
+            timestamp: new Date().toISOString(),
+            submittedAt: new Date().toLocaleString('ko-KR', {
+                timeZone: 'Asia/Seoul',
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            }),
+            userAgent: navigator.userAgent,
+            pageUrl: window.location.href
+        };
+        
+        existingResponses.push(newResponse);
+        
+        // LocalStorage에 저장
+        try {
+            localStorage.setItem(this.storageKey, JSON.stringify(existingResponses));
+            console.log('✅ 설문 응답 저장 완료:', newResponse);
+        } catch (error) {
+            console.error('❌ 설문 응답 저장 실패:', error);
+            // 백업으로 sessionStorage 사용
+            sessionStorage.setItem(this.storageKey, JSON.stringify(existingResponses));
+        }
+    }
+
+    getSurveyResponses() {
+        try {
+            const data = localStorage.getItem(this.storageKey) || sessionStorage.getItem(this.storageKey);
+            return data ? JSON.parse(data) : [];
+        } catch (error) {
+            console.error('응답 데이터 로드 실패:', error);
+            return [];
+        }
+    }
+
+    showSuccessMessage() {
+        const popup = document.querySelector('.bpf-survey-popup');
+        if (popup) {
+            const successMessage = this.isKorean ? 
+                '🎉 설문 참여 완료!<br>소중한 의견 감사합니다!' : 
+                '🎉 Survey Completed!<br>Thank you for your feedback!';
+            
+            popup.innerHTML = `
+                <div class="bpf-survey-header">
+                    <h3>${this.isKorean ? '설문 완료' : 'Survey Complete'}</h3>
+                </div>
+                <div class="bpf-survey-body" style="text-align: center; padding: 40px 20px;">
+                    <div style="font-size: 18px; color: #28a745; margin-bottom: 20px;">
+                        ${successMessage}
+                    </div>
+                    <div style="font-size: 14px; color: #666;">
+                        ${this.isKorean ? '응답이 안전하게 저장되었습니다.' : 'Your response has been saved securely.'}
+                    </div>
+                </div>
+            `;
+        }
     }
 
     closePopup() {
@@ -273,10 +337,78 @@ class SurveyPopup {
         }
     }
 
-    // 설문 링크 업데이트 메서드 (사용자가 호출할 수 있음)
-    updateSurveyUrl(newUrl) {
-        this.surveySubmitUrl = newUrl;
-        console.log('Survey URL updated:', newUrl);
+    // 관리자용: 수집된 응답 조회 메서드
+    getAllResponses() {
+        return this.getSurveyResponses();
+    }
+
+    // 관리자용: CSV 다운로드 메서드
+    downloadResponsesAsCSV() {
+        const responses = this.getSurveyResponses();
+        if (responses.length === 0) {
+            alert(this.isKorean ? '저장된 응답이 없습니다.' : 'No responses found.');
+            return;
+        }
+
+        const headers = [
+            'ID', '이름/Name', '국적/Nationality', '관심프로그램/Programs', 
+            '기대사항/Expectations', '언어/Language', '제출시간/Submitted', 
+            '페이지URL/Page URL'
+        ];
+
+        const csvContent = [
+            headers.join(','),
+            ...responses.map(r => [
+                r.id,
+                `"${r.name}"`,
+                r.nationality,
+                `"${r.programs.join(';')}"`,
+                `"${(r.expectations || '').replace(/"/g, '""')}"`,
+                r.language || 'unknown',
+                r.submittedAt,
+                `"${r.pageUrl || ''}"`
+            ].join(','))
+        ].join('\n');
+
+        const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', `BPF_Survey_Responses_${new Date().toISOString().split('T')[0]}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        
+        console.log(`📥 CSV 다운로드 완료: ${responses.length}개 응답`);
+    }
+
+    // 관리자용: 응답 통계 조회
+    getResponseStats() {
+        const responses = this.getSurveyResponses();
+        const stats = {
+            total: responses.length,
+            nationalities: {},
+            programs: {},
+            languages: { ko: 0, en: 0 },
+            lastSubmitted: responses.length > 0 ? responses[responses.length - 1].submittedAt : null
+        };
+
+        responses.forEach(r => {
+            // 국적 통계
+            stats.nationalities[r.nationality] = (stats.nationalities[r.nationality] || 0) + 1;
+            
+            // 프로그램 통계
+            r.programs.forEach(prog => {
+                stats.programs[prog] = (stats.programs[prog] || 0) + 1;
+            });
+            
+            // 언어 통계
+            if (r.language === 'ko') stats.languages.ko++;
+            else stats.languages.en++;
+        });
+
+        return stats;
     }
 }
 
