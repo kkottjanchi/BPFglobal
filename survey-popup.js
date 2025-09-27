@@ -22,17 +22,9 @@ class SurveyPopup {
     }
 
     init() {
-        // 저장된 URL 로드
-        this.loadSavedUrl();
-
-        // 강제로 팝업 표시 (디버깅용)
-        console.log('🚨 팝업 시스템 초기화 중...');
-        
-        // 페이지 로드 후 1초 뒤 무조건 팝업 표시
-        setTimeout(() => {
-            console.log('🚨 팝업 강제 표시!');
-            this.showPopup();
-        }, 1000);
+        // 팝업 완전 비활성화 - 더 이상 팝업 표시 안함
+        console.log('🚫 팝업 시스템 비활성화됨');
+        return; // 모든 팝업 기능 중단
     }
 
     getCookie(name) {
