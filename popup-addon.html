@@ -1,0 +1,111 @@
+    <!-- Thank You Popup HTML -->
+    <div id="thankYouPopup" class="popup-overlay">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closePopup()">&times;</button>
+            
+            <!-- Language Toggle -->
+            <div class="popup-lang-toggle">
+                <button class="popup-lang-tab active" onclick="switchPopupLang('en')">
+                    🇺🇸 English
+                </button>
+                <button class="popup-lang-tab" onclick="switchPopupLang('ko')">
+                    🇰🇷 한국어
+                </button>
+            </div>
+
+            <div class="text-center">
+                <!-- Success Badge -->
+                <div class="popup-success-badge">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span id="popup-badge-text">Festival Successfully Completed!</span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-4xl md:text-5xl font-black mb-4" id="popup-main-title">
+                    Thank You! 🎊
+                </h1>
+                
+                <p class="text-lg mb-8 max-w-2xl mx-auto leading-relaxed" id="popup-subtitle">
+                    2025 Bupyeong Pungmul Global Zone has brought Korean traditional culture to the world
+                </p>
+
+                <!-- Stats Grid -->
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="popup-stats-card">
+                        <div class="popup-floating-icon mb-3">
+                            <i class="fas fa-users text-3xl text-white"></i>
+                        </div>
+                        <div class="popup-number-display">1.3K</div>
+                        <div class="text-sm font-bold text-white mb-1" id="popup-stat1-title">Global Visitors</div>
+                        <div class="text-xs text-gray-200" id="popup-stat1-desc">From around the world</div>
+                    </div>
+                    
+                    <div class="popup-stats-card">
+                        <div class="popup-floating-icon mb-3" style="animation-delay: 0.5s">
+                            <i class="fas fa-globe text-3xl text-white"></i>
+                        </div>
+                        <div class="popup-number-display">5+</div>
+                        <div class="text-sm font-bold text-white mb-1" id="popup-stat2-title">Countries</div>
+                        <div class="text-xs text-gray-200 flex justify-center items-center">
+                            <span class="popup-country-flag">🇰🇷</span>
+                            <span class="popup-country-flag">🇺🇸</span>
+                            <span class="popup-country-flag">🇫🇷</span>
+                            <span class="popup-country-flag">🇬🇧</span>
+                            <span class="popup-country-flag">🇩🇪</span>
+                        </div>
+                    </div>
+                    
+                    <div class="popup-stats-card">
+                        <div class="popup-floating-icon mb-3" style="animation-delay: 1s">
+                            <i class="fas fa-heart text-3xl text-white"></i>
+                        </div>
+                        <div class="popup-number-display">8.7K</div>
+                        <div class="text-sm font-bold text-white mb-1" id="popup-stat3-title">Engagements</div>
+                        <div class="text-xs text-gray-200" id="popup-stat3-desc">Cultural interactions</div>
+                    </div>
+                </div>
+
+                <!-- Success Message -->
+                <div class="bg-white bg-opacity-10 rounded-xl p-6 mb-6">
+                    <div class="mb-4">
+                        <i class="fas fa-trophy text-4xl text-yellow-300 popup-floating-icon"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-4" id="popup-success-title">
+                        Mission Accomplished: Global K-Culture Bridge Built! 🌉
+                    </h2>
+                    <p class="text-sm leading-relaxed text-gray-100 mb-4" id="popup-success-message">
+                        Together, we've created meaningful connections across cultures through the beauty of Korean traditional Pungmul. 
+                        This website continues as a bridge for ongoing cultural exchange and conversation.
+                    </p>
+                    <div class="bg-white bg-opacity-20 rounded-lg p-3 inline-block">
+                        <p class="text-xs font-semibold" id="popup-website-status">
+                            🌍 This platform remains open for continued cultural dialogue
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Control Buttons -->
+                <div class="popup-control-buttons">
+                    <button class="popup-control-btn" onclick="hidePopupToday()">
+                        <i class="fas fa-clock mr-2"></i>
+                        <span id="popup-btn-today">Hide for Today</span>
+                    </button>
+                    <button class="popup-control-btn" onclick="hidePopupSession()">
+                        <i class="fas fa-eye-slash mr-2"></i>
+                        <span id="popup-btn-session">Hide for Session</span>
+                    </button>
+                    <button class="popup-control-btn" onclick="hidePopupForever()">
+                        <i class="fas fa-times-circle mr-2"></i>
+                        <span id="popup-btn-forever">Never Show Again</span>
+                    </button>
+                    <button class="popup-control-btn primary" onclick="continueToSite()">
+                        <i class="fas fa-arrow-right mr-2"></i>
+                        <span id="popup-btn-continue">Explore Festival Programs</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thank You Popup JavaScript -->
+    <script src="popup-script.js"></script>
