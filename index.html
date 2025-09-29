@@ -597,7 +597,7 @@
         class ThankYouPopup {
             constructor() {
                 this.storageKey = 'bpf_thankyou_displayed';
-                this.currentLang = 'ko'; // 기본 한국어
+                this.currentLang = 'en'; // 기본 영어
                 
                 this.content = {
                     ko: {
@@ -670,8 +670,8 @@
                         <button class="popup-close" onclick="thankYouPopup.close()">&times;</button>
                         
                         <div class="popup-lang-switch">
-                            <button onclick="thankYouPopup.switchLang('ko')" class="${this.currentLang === 'ko' ? 'active' : ''}">🇰🇷 한국어</button>
                             <button onclick="thankYouPopup.switchLang('en')" class="${this.currentLang === 'en' ? 'active' : ''}">🇺🇸 English</button>
+                            <button onclick="thankYouPopup.switchLang('ko')" class="${this.currentLang === 'ko' ? 'active' : ''}">🇰🇷 한국어</button>
                         </div>
                         
                         <div class="popup-content">
